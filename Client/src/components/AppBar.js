@@ -15,6 +15,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+
 const useStyles = makeStyles((theme) => ({
   bcAppbar: {
     backgroundColor: '#f9e99d',
@@ -71,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
   },
   sectionDesktop: {
     display: 'none',
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('sm')]: {
       display: 'flex',
     },
   },
@@ -167,14 +168,20 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
+      
       <AppBar position="static" className={classes.bcAppbar}>
         <Toolbar>
+         
           <IconButton
             edge="start"
             className={classes.menuButton}
+            aria-controls={menuId}
+            aria-haspopup="true"
+            onClick={handleProfileMenuOpen}
             color="inherit"
             aria-label="open drawer"
-          >
+          >     
+                   
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
