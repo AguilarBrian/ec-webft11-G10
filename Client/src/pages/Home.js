@@ -1,10 +1,9 @@
 import React from 'react'
-import MenuAppBar from '../components/AppBar';
-
+import SideBar from '../components/SideBar'
 export const Home = () => {
     return (
         <div>
-            <MenuAppBar/>
+            <SideBar/>
         </div>
     )
 }
