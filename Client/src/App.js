@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Route } from "react-router-dom";
 //import { userContext } from './components/userContext';
-import Home from './components/AppBar'
+import { Home } from './pages/Home';
 
 function App() {
   return (
