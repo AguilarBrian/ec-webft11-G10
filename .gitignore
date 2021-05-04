@@ -2,3 +2,4 @@ node_modules/
 Api/package-lock.json
 Client/package-lock.json
 Client/yarn.lock
+.env
