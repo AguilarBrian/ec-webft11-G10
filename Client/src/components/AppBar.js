@@ -16,6 +16,10 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 const useStyles = makeStyles((theme) => ({
+  bcAppbar: {
+    backgroundColor: '#f9e99d',
+    color:'black',
+  },
   grow: {
     flexGrow: 1,
   },
@@ -163,7 +167,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.bcAppbar}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -174,7 +178,7 @@ export default function PrimarySearchAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            FastFoodBest! or whatever
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
