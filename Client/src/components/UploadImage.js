@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 //import { render } from "react-dom";
 import { storage } from "../firebase";
-import FullWidthGrid from './Grid';
-
- const UploadImage = () => {
+import { Button } from '@material-ui/core';
+const UploadImage = () => {
     const [image, setImage] = useState(null);
     const [url, setUrl] = useState("");
     const [progress, setProgress] = useState(0);
@@ -42,17 +41,25 @@ import FullWidthGrid from './Grid';
     console.log("image: ", image);
 
     return (
-        <div>
-            <FullWidthGrid/>
+        <>
             <progress value={progress} max="100" />
-            <br />
-            <br />
+            <p>
+                <label>Product Image</label>
+
+            </p>
             <input type="file" onChange={handleChange} />
-            <button onClick={handleUpload}>Upload</button>
-            <br />
+            <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                onClick={handleUpload}
+            >
+                Upload
+                  </Button>
+            {/* <br />
             {url}
-            <br />
-        </div>
+            <br /> */}
+        </>
     );
 };
 
