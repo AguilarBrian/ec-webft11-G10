@@ -9,7 +9,6 @@ function App() {
     <React.Fragment>
       {/* <userContext.Provider value={{}}> */}
         <Route exact path='/' component={Home} />
-        <Route exact path='/upload' component={UploadImage} />
       {/* </userContext.Provider> */}
     </React.Fragment>
   );
