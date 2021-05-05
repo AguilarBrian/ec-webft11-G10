@@ -102,9 +102,9 @@ export default function PersistentDrawerLeft() {
                         <ListItemIcon><InboxIcon /></ListItemIcon>
                         <ListItemText primary="Crear Productos"/>
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button to="/CreateCategory" component={Link}>
                         <ListItemIcon><InboxIcon /></ListItemIcon>
-                        <ListItemText primary="Categorias" />
+                        <ListItemText primary="Crear Categorias" />
                     </ListItem>
                 </List>
                 <Divider />
