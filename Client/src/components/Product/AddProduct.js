@@ -1,73 +1,9 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField, Checkbox, Radio, Select } from 'final-form-material-ui';
-import {
-  Typography,
-  Paper,
-  Link,
-  Grid,
-  Button,
-  CssBaseline,
-  RadioGroup,
-  FormLabel,
-  MenuItem,
-  FormGroup,
-  FormControl,
-  FormControlLabel,
-} from '@material-ui/core';
-// Picker
+import {Typography,Paper,Link,Grid,Button,CssBaseline,RadioGroup,FormLabel,MenuItem,FormGroup,FormControl,FormControlLabel,} from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  TimePicker,
-  DatePicker,
-} from '@material-ui/pickers';
-
-function DatePickerWrapper(props) {
-  const {
-    input: { name, onChange, value, ...restInput },
-    meta,
-    ...rest
-  } = props;
-  const showError =
-    ((meta.submitError && !meta.dirtySinceLastSubmit) || meta.error) &&
-    meta.touched;
-
-  return (
-    <DatePicker
-      {...rest}
-      name={name}
-      helperText={showError ? meta.error || meta.submitError : undefined}
-      error={showError}
-      inputProps={restInput}
-      onChange={onChange}
-      value={value === '' ? null : value}
-    />
-  );
-}
-
-function TimePickerWrapper(props) {
-  const {
-    input: { name, onChange, value, ...restInput },
-    meta,
-    ...rest
-  } = props;
-  const showError =
-    ((meta.submitError && !meta.dirtySinceLastSubmit) || meta.error) &&
-    meta.touched;
-
-  return (
-    <TimePicker
-      {...rest}
-      name={name}
-      helperText={showError ? meta.error || meta.submitError : undefined}
-      error={showError}
-      inputProps={restInput}
-      onChange={onChange}
-      value={value === '' ? null : value}
-    />
-  );
-}
+import {MuiPickersUtilsProvider,TimePicker,DatePicker,} from '@material-ui/pickers';
 
 const onSubmit = async values => {
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -76,9 +12,22 @@ const onSubmit = async values => {
 };
 const validate = values => {
   const errors = {};
-  if (!values.firstName) {
-    errors.firstName = 'Required';
+  if (!values.productName) {
+    errors.productName = 'Required';
   }
+  if (!values.description) {
+    errors.description = 'Required';
+  }
+  if (!values.category) {
+    errors.category = 'Required';
+  }
+  if (!values.price) {
+    errors.price = 'Required';
+  }
+  if (!values.stock) {
+    errors.stock = 'Required';
+  }
+  
   return errors;
 };
 
@@ -99,7 +48,7 @@ function AddProduct() {
                   <Field
                     fullWidth
                     required
-                    name="ProductName"
+                    name="productName"
                     component={TextField}
                     type="text"
                     label="Nombre del Producto"
@@ -109,7 +58,7 @@ function AddProduct() {
                 <Grid item xs={12}>
                   <Field
                     fullWidth
-                    name="Description"
+                    name="description"
                     component={TextField}
                     multiline
                     label="Descripcion"
@@ -118,9 +67,9 @@ function AddProduct() {
                 <Grid item xs={12}>
                   <Field
                     fullWidth
-                    name="city"
+                    name="category"
                     component={Select}
-                    label="Select a Category"
+                    label="Selecciona la categoria"
                     formControlProps={{ fullWidth: true }}
                   >
                     <MenuItem value="blabla">Rojo</MenuItem>
@@ -132,6 +81,7 @@ function AddProduct() {
                   <Grid item xs={6}>
                     <Field
                       name="price"
+                      type='number'
                       component={TextField}
                       fullWidth
                       margin="normal"
