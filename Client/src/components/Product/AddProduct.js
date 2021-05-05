@@ -1,10 +1,9 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import { TextField, Checkbox, Radio, Select } from 'final-form-material-ui';
-import {Typography,Paper,Link,Grid,Button,CssBaseline,RadioGroup,FormLabel,MenuItem,FormGroup,FormControl,FormControlLabel,} from '@material-ui/core';
+import { TextField,  Select } from 'final-form-material-ui';
+import {Paper,Grid,Button,CssBaseline,MenuItem} from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
-import {MuiPickersUtilsProvider,TimePicker,DatePicker,} from '@material-ui/pickers';
-import { useState } from 'react';
+import {MuiPickersUtilsProvider} from '@material-ui/pickers';
 
 const onSubmit = async values => {
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -32,29 +31,18 @@ const validate = values => {
   
   return errors;
 };
-    
-const reset = values => {
-    values.productName=''
-    values.description=''
-    values.category=''
-    values.price=''
-    values.stock=''
-}
 
 function AddProduct() {
     
-    const [name, setName] = useState('nombre');
-
     return (
         <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
       <CssBaseline />
       
       <Form
         onSubmit={onSubmit}
-        reset={reset}
         initialValues={{}}
         validate={validate}
-        render={({ handleSubmit, reset, submitting, pristine, values }) => (
+        render={({ handleSubmit, submitting, pristine, values }) => (
           <form onSubmit={handleSubmit} noValidate>
             <Paper style={{ padding: 16 }}>
               <Grid container alignItems="flex-start" spacing={2}>
@@ -113,16 +101,7 @@ function AddProduct() {
                     />
                   </Grid>
                 </MuiPickersUtilsProvider>
-                <Grid item style={{ marginTop: 16 }}>
-                  <Button
-                    type="button"
-                    variant="contained"
-                    onClick={reset(values)}
-                    disabled={submitting || pristine}
-                  >
-                    Reset
-                  </Button>
-                </Grid>
+        
                 <Grid item style={{ marginTop: 16 }}>
                   <Button
                     variant="contained"

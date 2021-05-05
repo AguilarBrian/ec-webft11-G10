@@ -8,7 +8,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Badge from '@material-ui/core/Badge';
 import List from '@material-ui/core/List';
 import { Button } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
