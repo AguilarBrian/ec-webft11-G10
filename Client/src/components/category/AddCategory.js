@@ -1,9 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import { TextField,  Select } from 'final-form-material-ui';
-import {Paper,Grid,Button,CssBaseline,MenuItem} from '@material-ui/core';
-import DateFnsUtils from '@date-io/date-fns';
-import {MuiPickersUtilsProvider} from '@material-ui/pickers';
+import { TextField} from 'final-form-material-ui';
+import {Paper,Grid,Button,CssBaseline} from '@material-ui/core';
 
 const onSubmit = async values => {
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -18,21 +16,11 @@ const validate = values => {
   }
   if (!values.description) {
     errors.description = 'Required';
-  }
-  if (!values.category) {
-    errors.category = 'Required';
-  }
-  if (!values.price) {
-    errors.price = 'Required';
-  }
-  if (!values.stock) {
-    errors.stock = 'Required';
-  }
-  
+  }  
   return errors;
 };
 
-function AddProduct() {
+function AddCategory() {
     
     return (
         <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
@@ -65,42 +53,7 @@ function AddProduct() {
                     multiline
                     label="Descripcion"
                   />
-                </Grid>
-                <Grid item xs={12}>
-                  <Field
-                    fullWidth
-                    name="category"
-                    component={Select}
-                    label="Selecciona la categoria"
-                    formControlProps={{ fullWidth: true }}
-                  >
-                    <MenuItem value="blabla">Rojo</MenuItem>
-                    <MenuItem value="blabla">Negro</MenuItem>
-                    <MenuItem value="blabla">Azul</MenuItem>
-                  </Field>
-                </Grid>
-                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                  <Grid item xs={6}>
-                    <Field
-                      name="price"
-                      type='number'
-                      component={TextField}
-                      fullWidth
-                      margin="normal"
-                      label="Precio"
-                    />
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Field
-                      name="stock"
-                      type='number'
-                      component={TextField}
-                      fullWidth
-                      margin="normal"
-                      label="Stock"
-                    />
-                  </Grid>
-                </MuiPickersUtilsProvider>
+                </Grid>            
         
                 <Grid item style={{ marginTop: 16 }}>
                   <Button
@@ -122,4 +75,4 @@ function AddProduct() {
   );
 }
 
-export default AddProduct;
+export default AddCategory;

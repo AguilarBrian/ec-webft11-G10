@@ -8,7 +8,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Badge from '@material-ui/core/Badge';
 import List from '@material-ui/core/List';
 import { Button } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
@@ -103,9 +102,9 @@ export default function PersistentDrawerLeft() {
                         <ListItemIcon><InboxIcon /></ListItemIcon>
                         <ListItemText primary="Crear Productos"/>
                     </ListItem>
-                    <ListItem button>
+                    <ListItem button to="/CreateCategory" component={Link}>
                         <ListItemIcon><InboxIcon /></ListItemIcon>
-                        <ListItemText primary="Categorias" />
+                        <ListItemText primary="Crear Categorias" />
                     </ListItem>
                 </List>
                 <Divider />
