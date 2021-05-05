@@ -23,8 +23,6 @@ import MailIcon from '@material-ui/icons/Mail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useStyles } from './styles'
 import { Link } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
-
 
 export default function PersistentDrawerLeft() {
     const classes = useStyles();
@@ -38,8 +36,6 @@ export default function PersistentDrawerLeft() {
     const handleDrawerClose = () => {
         setOpen(false);
     };    
-
-    let history = useHistory();
 
     return (
         <div className={classes.root}>
