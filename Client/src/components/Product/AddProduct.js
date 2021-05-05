@@ -4,12 +4,14 @@ import { TextField, Checkbox, Radio, Select } from 'final-form-material-ui';
 import {Typography,Paper,Link,Grid,Button,CssBaseline,RadioGroup,FormLabel,MenuItem,FormGroup,FormControl,FormControlLabel,} from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import {MuiPickersUtilsProvider,TimePicker,DatePicker,} from '@material-ui/pickers';
+import { useState } from 'react';
 
 const onSubmit = async values => {
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   await sleep(300);
   window.alert(JSON.stringify(values, 0, 2));
 };
+
 const validate = values => {
   const errors = {};
   if (!values.productName) {
@@ -30,14 +32,26 @@ const validate = values => {
   
   return errors;
 };
+    
+const reset = values => {
+    values.productName=''
+    values.description=''
+    values.category=''
+    values.price=''
+    values.stock=''
+}
 
 function AddProduct() {
-  return (
-    <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
+    
+    const [name, setName] = useState('nombre');
+
+    return (
+        <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
       <CssBaseline />
       
       <Form
         onSubmit={onSubmit}
+        reset={reset}
         initialValues={{}}
         validate={validate}
         render={({ handleSubmit, reset, submitting, pristine, values }) => (
@@ -91,6 +105,7 @@ function AddProduct() {
                   <Grid item xs={6}>
                     <Field
                       name="stock"
+                      type='number'
                       component={TextField}
                       fullWidth
                       margin="normal"
@@ -102,7 +117,7 @@ function AddProduct() {
                   <Button
                     type="button"
                     variant="contained"
-                    onClick={reset}
+                    onClick={reset(values)}
                     disabled={submitting || pristine}
                   >
                     Reset
