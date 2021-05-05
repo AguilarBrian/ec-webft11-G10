@@ -1,10 +1,10 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField,  Select } from 'final-form-material-ui';
+import UploadImage from '../UploadImage';
 import {Paper,Grid,Button,CssBaseline,MenuItem} from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';
-
 const onSubmit = async values => {
   const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
   await sleep(300);
@@ -56,6 +56,9 @@ function AddProduct() {
                     label="Nombre del Producto"
                   />                
                 </Grid>
+                <Grid item xs={6}>
+                 <UploadImage />                
+                </Grid>
                 
                 <Grid item xs={12}>
                   <Field
@@ -74,9 +77,9 @@ function AddProduct() {
                     label="Selecciona la categoria"
                     formControlProps={{ fullWidth: true }}
                   >
-                    <MenuItem value="blabla">Rojo</MenuItem>
-                    <MenuItem value="blabla">Negro</MenuItem>
-                    <MenuItem value="blabla">Azul</MenuItem>
+                    <MenuItem value="postre">postre</MenuItem>
+                    <MenuItem value="pizza">Pizza</MenuItem>
+                    <MenuItem value="hamburguesa">Hamburguesa</MenuItem>
                   </Field>
                 </Grid>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -102,7 +105,9 @@ function AddProduct() {
                   </Grid>
                 </MuiPickersUtilsProvider>
         
-                <Grid item style={{ marginTop: 16 }}>
+                <Grid item
+                xs={12}
+                style={{ marginTop: 16}}>
                   <Button
                     variant="contained"
                     color="primary"
