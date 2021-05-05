@@ -24,7 +24,6 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useStyles } from './styles'
 
 
-
 export default function PersistentDrawerLeft() {
     const classes = useStyles();
     const theme = useTheme();
