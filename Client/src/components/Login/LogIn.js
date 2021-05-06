@@ -27,7 +27,7 @@ const validate = values => {
 function LogIn() {
 
     return (
-        <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
+        <div style={{ padding: 16, margin: 'auto', maxWidth: 350 }}>
             <CssBaseline />
             <Form
                 onSubmit={onSubmit}
@@ -36,8 +36,8 @@ function LogIn() {
                 render={({ handleSubmit, submitting, pristine, values }) => (
                     <form onSubmit={handleSubmit} noValidate>
                         <Paper style={{ padding: 16 }}>
-                            <Grid container alignItems="flex-start" spacing={6}>
-                                <Grid item xs={6}>
+                            <Grid container style={{display:"contents"}} spacing={6}>
+                                <Grid item xs={6} style={{maxWidth: "100%",width: "100%"}}  >
                                     <Field
                                         fullWidth
                                         required
@@ -47,7 +47,7 @@ function LogIn() {
                                         label="Nombre"
                                     />
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={6} style={{maxWidth: "100%",width: "100%"}} >
                                     <Field
                                         fullWidth
                                         required
@@ -57,7 +57,7 @@ function LogIn() {
                                         label="Apellido"
                                     />
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={6} style={{maxWidth: "100%",width: "100%"}} >
                                     <Field
                                         name="email"
                                         fullWidth
@@ -69,7 +69,7 @@ function LogIn() {
                                 </Grid>
                                 <Grid item
                                     xs={12}
-                                    style={{ marginTop: 16 }}>
+                                    style={{ marginTop: 16, display: "flex",justifyContent: "center" }}>
                                     <Button
                                         to="/Home"
                                         component={Link}
