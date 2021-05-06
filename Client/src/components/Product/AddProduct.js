@@ -1,15 +1,12 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import { TextField,  Select } from 'final-form-material-ui';
+import { TextField, Select } from 'final-form-material-ui';
 import UploadImage from './UploadImage';
-import {Paper,Grid,Button,CssBaseline,MenuItem} from '@material-ui/core';
+import { Paper, Grid, Button, CssBaseline, MenuItem } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
-import {MuiPickersUtilsProvider} from '@material-ui/pickers';
-const onSubmit = async values => {
-  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-  await sleep(300);
-  window.alert(JSON.stringify(values, 0, 2));
-};
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import { useDispatch, useSelector } from 'react-redux'
+import { postProducts } from '../../store/product/product.actions';
 
 const validate = values => {
   const errors = {};
@@ -29,15 +26,23 @@ const validate = values => {
     errors.stock = 'Required';
   }
   
+  
   return errors;
 };
 
 function AddProduct() {
-    
-    return (
-        <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
+  const dispatch = useDispatch()
+  const onSubmit = async values => {
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+    await sleep(300);
+    window.alert(JSON.stringify(values, 0, 2));
+   
+    dispatch(postProducts(JSON.stringify(values, 0, 2)))
+  };
+  return (
+    <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
       <CssBaseline />
-      
+
       <Form
         onSubmit={onSubmit}
         initialValues={{}}
@@ -54,12 +59,14 @@ function AddProduct() {
                     component={TextField}
                     type="text"
                     label="Nombre del Producto"
-                  />                
+                  />
                 </Grid>
                 <Grid item xs={6}>
-                 <UploadImage />                
+                  <UploadImage
+               
+                  />
                 </Grid>
-                
+
                 <Grid item xs={12}>
                   <Field
                     fullWidth
@@ -104,10 +111,10 @@ function AddProduct() {
                     />
                   </Grid>
                 </MuiPickersUtilsProvider>
-        
+
                 <Grid item
-                xs={12}
-                style={{ marginTop: 16}}>
+                  xs={12}
+                  style={{ marginTop: 16 }}>
                   <Button
                     variant="contained"
                     color="primary"

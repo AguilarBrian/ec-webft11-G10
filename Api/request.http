@@ -1,0 +1,10 @@
+POST http://localhost:3001/products
+Content-Type: application/json
+
+{
+    "name":"asdf",
+    "description":"asdfasdf",
+    "price":21,
+    "stock":21,
+    "category":"postre",
+}
