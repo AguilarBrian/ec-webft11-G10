@@ -2,7 +2,18 @@ import axios from 'axios'
 
 export const POST_PRODUCTS_SUCCESS = "POST_PRODUCTS_SUCCESS";
 export const POST_PRODUCTS_FAILURE = "POST_PRODUCTS_FAILURE";
+
+export const SET_PRODUCT_IMG = "SET_PRODUCT_IMG";
+
 const serverUrl="http://localhost:3001"
+
+
+export const setImgUrl=(imgUrl)=>{
+    return {
+        type: SET_PRODUCT_IMG,
+        payload: imgUrl
+    }
+}
 export const postProducts = (product) => {
     return (dispatch) => {
         const options = {

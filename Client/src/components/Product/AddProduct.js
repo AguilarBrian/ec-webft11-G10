@@ -32,24 +32,22 @@ const validate = values => {
 
 function AddProduct() {
   const dispatch = useDispatch()
-
+  const productImg = useSelector(state => state.productsReducers.productImg)
 
   const onSubmit = async values => {
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await sleep(300);
-    window.alert(JSON.stringify(values, 0, 2));
-
-    dispatch(postProducts(JSON.stringify(values, 0, 2)))
+    let productData={...values,productImg}
+    window.alert(JSON.stringify(productData, 0, 2));
+    dispatch(postProducts(JSON.stringify(productData, 0, 2)))
+    
   };
   return (
     <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
       <CssBaseline />
       <Paper style={{ padding: 16 }}>
         <UploadImage />
-
       </Paper>
-
-
       <Form
         onSubmit={onSubmit}
         initialValues={{}}
@@ -69,8 +67,6 @@ function AddProduct() {
                   />
                 </Grid>
                 <Grid item xs={6}>
-
-                  />
                 </Grid>
 
                 <Grid item xs={12}>
