@@ -46,19 +46,21 @@ const {
   // Review,
 } = sequelize.models;
 
-// PRODUCTS CATEGORIES
+
+// PRODUCTS Category
+
 Product.belongsToMany(Category, { through: 'Products_Categories' });
 Category.belongsToMany(Product, { through: 'Products_Categories' });
 
 // Product.belongsToMany(Order, { through: 'Products_Order'  });
 // Order.belongsToMany(Product, { through: 'Products_Order' });
 
-// // PRODUCTS COMMENTS
+// PRODUCTS COMMENTS
 // Product.hasMany(Review, { foreignKey: "productId" });
 // Review.belongsTo(Product);
 
 // User.hasMany(Review, { foreignKey: "userId" });
-// Review.belongsTo(User);
+// Review.belongsTo(User)
 
 // User.hasMany(Order, { foreignKey: "userId" });
 // Order.belongsTo(User);

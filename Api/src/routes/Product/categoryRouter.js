@@ -1,16 +1,29 @@
 const server = require('express').Router();
 const { Category } = require('../../db.js');
 
+var p = new Promise(resolve => resolve(true))
+
+const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
+
+
+    categories.forEach(category => (
+        p = p.then(() => (
+            Category.create({
+                name: category,
+                description: "Platos de " + category
+            })
+        ))
+    ))
+
 
 
 // TRAE TODAS LAS CATEGORIAS |
 //----------------------------
-server.get('/', (req, res) => {
+server.get('/get', (req, res) => {
     Category.findAll()
         .then(category => {
-            
             res.status(200)
-            res.send(category);
+            res.json(category);
         })
         .catch(err => res.send(err));
 });

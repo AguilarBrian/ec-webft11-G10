@@ -1,11 +1,41 @@
 const server = require("express").Router();
 const { Product } = require("../../db.js");
 
+const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
+
+const romanNumbers = ['I', 'II', 'III', 'IV', 'V']
+
+const randomNumber = (min, max) => (Math.random() * (max - min) + (min + 0.5)) | 0
+const randomMessage = (val) => lorem.slice(0, (Math.random() * (val - 1) + 1.5) | 0)
+const lorem = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+
+var p = new Promise(resolve => resolve(true))
+
+
+  categories.forEach((category, i) => {
+      for (let j = 0; j < 5; j++) {
+          p = p.then(() => (
+              Product.create({
+                  name: category + " " + romanNumbers[j],
+                  description: randomMessage(255),
+                  price: randomNumber(50, 200),
+                  stock:  randomNumber(10, 30),
+                  img:"imagen"
+              })
+          ))
+          .then( product => {
+              product.setCategories([i + 1]);
+              // return product.setImages([i + 1]);
+          })
+      }
+  })
+
+
+
 
 // TRAE TODOS LOS PRODUCTOS |
 //---------------------------
-server.get("/", (req, res, next) => {
-  
+server.get("/", (req, res, next) => { 
   Product.findAll() 
     .then((products) => {
       res.send(products);
@@ -34,7 +64,7 @@ server.post("/", (req, res) => {
   const { name, description, price, stock, category, img } = req.body; 
   if (!name || !price || !description ||!stock|| !category || !img) {
     
-    return res.send("Es necesario completar el campo name y price");
+    return res.send("Es necesario completar todos los campos");
   }
   Product.create({
     
@@ -46,7 +76,7 @@ server.post("/", (req, res) => {
   }).then((product) => {
     return product.setCategories(category).then(
       () => res.send(product),
-      () => res.send('no se pudo agregar la categoria'))
+      () => res.send('se pudo agregar la categoria'))
   }).catch((err) => res.send(err))
 })
 
