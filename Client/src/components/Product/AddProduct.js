@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField,  Select } from 'final-form-material-ui';
-import UploadImage from '../UploadImage';
+import UploadImage from './UploadImage';
 import {Paper,Grid,Button,CssBaseline,MenuItem} from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import {MuiPickersUtilsProvider} from '@material-ui/pickers';

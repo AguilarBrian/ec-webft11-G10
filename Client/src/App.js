@@ -2,7 +2,6 @@ import React from 'react';
 import { Route } from "react-router-dom";
 import { userContext } from './components/userContext';
 import { Home } from './pages/Home';
-
 import PageAddProduct from './pages/addProduct/PageAddProduct'
 import PageAddCategory from './pages/addCategory/PageAddCategory'
 //import  UploadImage  from './components/UploadImage';
