@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField } from 'final-form-material-ui';
-import { Paper, Grid, Button, CssBaseline, MenuItem } from '@material-ui/core';
+import { Paper, Grid, Button, CssBaseline} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const onSubmit = async values => {
