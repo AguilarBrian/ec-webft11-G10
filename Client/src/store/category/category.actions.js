@@ -8,7 +8,7 @@ export const postCategory = () => {
 
     return (dispatch) => {
 const serverUrl="http://localhost:3001"
-        axios.get(`${serverUrl}/category/`)
+        axios.get(`${serverUrl}products/category/get`)
             .then(category => {
                 dispatch(postCategorySuccess(category.data))
             })
