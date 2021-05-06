@@ -2,7 +2,7 @@ import React, { useState } from "react";
 //import { render } from "react-dom";
 import { storage } from "../../firebase";
 import css from './upload.module.css';  
-import { Button, CssBaseline } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 const UploadImage = () => {
     const [image, setImage] = useState(null);
     const [url, setUrl] = useState("");
