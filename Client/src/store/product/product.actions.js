@@ -1,13 +1,11 @@
 import axios from 'axios'
 
-export const POST_PRODUCTS_REQUEST = "POST_PRODUCTS_REQUEST";
 export const POST_PRODUCTS_SUCCESS = "POST_PRODUCTS_SUCCESS";
 export const POST_PRODUCTS_FAILURE = "POST_PRODUCTS_FAILURE";
 export const postProducts = () => {
 
     return (dispatch) => {
-        dispatch(postProductsRequest())
-        axios.get(`${serverUrl}/products/`)
+        axios.get(`http://localhost:3001/products/`)
             .then(products => {
                 dispatch(postProductsSuccess(products.data))
             })
@@ -16,11 +14,7 @@ export const postProducts = () => {
             })
     }
 }
-export const postProductsRequest = () => {
-    return {
-        type: POST_PRODUCTS_REQUEST,
-    }
-}
+
 export const postProductsSuccess = (products) => {
     return {
         type: POST_PRODUCTS_SUCCESS,
