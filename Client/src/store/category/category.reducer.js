@@ -1,8 +1,8 @@
 import { POST_CATEGORY_SUCCESS, POST_CATEGORY_FAILURE } from './category.actions';
 
 const initialState = {
-    category: [],
-    categoryError: "",
+  category: [],
+  categoryError: "",
 };
 
 const categoryReducer = (state = initialState, action) => {

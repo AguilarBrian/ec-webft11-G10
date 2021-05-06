@@ -4,9 +4,7 @@ export const POST_PRODUCTS_SUCCESS = "POST_PRODUCTS_SUCCESS";
 export const POST_PRODUCTS_FAILURE = "POST_PRODUCTS_FAILURE";
 const serverUrl="http://localhost:3001"
 export const postProducts = (product) => {
-
     return (dispatch) => {
-
         const options = {
             method: 'POST',
             url: `${serverUrl}/products/`,
@@ -15,7 +13,6 @@ export const postProducts = (product) => {
             },
             data: product
         };
-
         return axios.request(options).then(function (products) {
             dispatch(postProductsSuccess(products.data))
         })

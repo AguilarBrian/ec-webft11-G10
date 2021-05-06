@@ -56,7 +56,7 @@ export default function PersistentDrawerLeft() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Button variant="h6" color='inherit' to="/" component={Link}>
+                    <Button variant="h6" color='inherit' to="/Home" component={Link}>
                         FastFoodBest! or whatever
                     </Button>
                     <div className={classes.search}>
@@ -105,6 +105,10 @@ export default function PersistentDrawerLeft() {
                     <ListItem button to="/CreateCategory" component={Link}>
                         <ListItemIcon><InboxIcon /></ListItemIcon>
                         <ListItemText primary="Crear Categorias" />
+                    </ListItem>
+                    <ListItem button to="/OrdersView" component={Link}>
+                        <ListItemIcon><InboxIcon /></ListItemIcon>
+                        <ListItemText primary="Ver Ordenes" />
                     </ListItem>
                 </List>
                 <Divider />

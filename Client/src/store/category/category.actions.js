@@ -2,10 +2,13 @@ import axios from 'axios'
 
 export const POST_CATEGORY_SUCCESS = "POST_CATEGORY_SUCCESS";
 export const POST_CATEGORY_FAILURE = "POST_CATEGORY_FAILURE";
+const serverUrl="http://localhost:3001"
+
 export const postCategory = () => {
 
     return (dispatch) => {
-        axios.get(`http://localhost:3001/category/`)
+const serverUrl="http://localhost:3001"
+        axios.get(`${serverUrl}/category/`)
             .then(category => {
                 dispatch(postCategorySuccess(category.data))
             })

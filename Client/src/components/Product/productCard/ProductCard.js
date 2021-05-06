@@ -29,7 +29,7 @@ export default function ImgMediaCard({ image, title, description, price }) {
       </CardActionArea>
       <CardActions>
         <Typography variant='h5'>
-            ${!price ? 150 : price}
+          ${!price ? 150 : price}
         </Typography>
       </CardActions>
     </Card>
