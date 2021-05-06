@@ -79,10 +79,10 @@ const dispatch = useDispatch()
                 )
                 
             }
-            <p>
+            {/* <p>
             <img src={url} alt="" width="100" ></img>
 
-            </p>
+            </p> */}
             
         </>
     );
