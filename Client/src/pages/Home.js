@@ -1,9 +1,11 @@
 import React from 'react'
-import SideBar from '../components/SideBar'
+import AppBar from '../components/appBar/AppBar'
+import Catalog from '../components/catalog/Catalog';
 export const Home = () => {
     return (
         <div>
-            <SideBar/>
+            <AppBar/>
+            <Catalog/>
         </div>
     )
 }
