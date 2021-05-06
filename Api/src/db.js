@@ -41,26 +41,26 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const {
   Product,
-  // Categories,
+  Category,
   // User,
   // Order,
   // Review,  
 } = sequelize.models;
 
 
-// // PRODUCTS CATEGORIES
-// Product.belongsToMany(Categories, { through: 'Products_Categories', as: 'categories' });
-// Categories.belongsToMany(Product, { through: 'Products_Categories', as: 'products' });
+// PRODUCTS Category
+Product.belongsToMany(Category, { through: 'Products_Categories' });
+Category.belongsToMany(Product, { through: 'Products_Categories' });
 
 // Product.belongsToMany(Order, { through: 'Products_Order'  });
 // Order.belongsToMany(Product, { through: 'Products_Order' });
 
-// // PRODUCTS COMMENTS
+// PRODUCTS COMMENTS
 // Product.hasMany(Review, { foreignKey: "productId" });
 // Review.belongsTo(Product);
 
 // User.hasMany(Review, { foreignKey: "userId" });
-// Review.belongsTo(User);
+// Review.belongsTo(User)
 
 
 // User.hasMany(Order, { foreignKey: "userId" });
