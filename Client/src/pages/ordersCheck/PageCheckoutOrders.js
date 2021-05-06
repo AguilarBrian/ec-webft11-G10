@@ -1,5 +1,5 @@
 import React from 'react';
-import AppBar from '../../components/appBar/AppBar'
+import AppBar from '../../components/AppBar/AppBar'
 import OrderView from '../../components/admin/OrderView'
 
 function PageCheckoutOrders(props) {

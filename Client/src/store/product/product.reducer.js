@@ -1,4 +1,4 @@
-import { POST_PRODUCTS_SUCCESS, POST_PRODUCTS_FAILURE } from './product.actions';
+import { POST_PRODUCTS_SUCCESS, POST_PRODUCTS_FAILURE, GET_PRODUCTS } from './product.actions';
 
 const initialState = {
   products: [],
@@ -16,6 +16,11 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         productError: action.payload,
+      };
+    case GET_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
       };
     default:
       return state;
