@@ -1,13 +1,35 @@
 import axios from 'axios'
 
-export const GET_SHIFTS = 'GET_SHIFTS'
+export const POST_PRODUCTS_REQUEST = "POST_PRODUCTS_REQUEST";
+export const POST_PRODUCTS_SUCCESS = "POST_PRODUCTS_SUCCESS";
+export const POST_PRODUCTS_FAILURE = "POST_PRODUCTS_FAILURE";
+export const postProducts = () => {
 
-export const getShifts = () => dispatch => {
-    let URL = `http://192.168.0.209:5000/peluAPP/turnos`
-    axios.get(URL)
-        .then(res => {
-            dispatch({ type: 'GET_SHIFTS', payload: res.data})
-        }).catch(err => {
-            dispatch({ type: 'GET_SHIFTS', payload: err })
-        })
+    return (dispatch) => {
+        dispatch(postProductsRequest())
+        axios.get(`${serverUrl}/products/`)
+            .then(products => {
+                dispatch(postProductsSuccess(products.data))
+            })
+            .catch(error => {
+                dispatch(postProductsFailure(error))
+            })
+    }
+}
+export const postProductsRequest = () => {
+    return {
+        type: POST_PRODUCTS_REQUEST,
+    }
+}
+export const postProductsSuccess = (products) => {
+    return {
+        type: POST_PRODUCTS_SUCCESS,
+        payload: products
+    }
+}
+export const postProductsFailure = (error) => {
+    return {
+        type: POST_PRODUCTS_FAILURE,
+        payload: error
+    }
 }
