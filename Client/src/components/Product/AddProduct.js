@@ -25,23 +25,30 @@ const validate = values => {
   if (!values.stock) {
     errors.stock = 'Required';
   }
-  
-  
+
+
   return errors;
 };
 
 function AddProduct() {
   const dispatch = useDispatch()
+
+
   const onSubmit = async values => {
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await sleep(300);
     window.alert(JSON.stringify(values, 0, 2));
-   
+
     dispatch(postProducts(JSON.stringify(values, 0, 2)))
   };
   return (
     <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
       <CssBaseline />
+      <Paper style={{ padding: 16 }}>
+        <UploadImage />
+
+      </Paper>
+
 
       <Form
         onSubmit={onSubmit}
@@ -62,8 +69,7 @@ function AddProduct() {
                   />
                 </Grid>
                 <Grid item xs={6}>
-                  <UploadImage
-               
+
                   />
                 </Grid>
 
