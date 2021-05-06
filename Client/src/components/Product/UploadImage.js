@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 //import { render } from "react-dom";
-import { storage } from "../firebase";
+import { storage } from "../../firebase";
+import css from './upload.module.css';  
 import { Button } from '@material-ui/core';
 const UploadImage = () => {
     const [image, setImage] = useState(null);
@@ -15,7 +16,7 @@ const UploadImage = () => {
 
     const handleUpload = () => {
         try {
-
+            
             const uploadTask = storage.ref(`images/${image.name}`).put(image);
             uploadTask.on(
                 "state_changed",
@@ -47,12 +48,12 @@ const UploadImage = () => {
 
     return (
         <>
-            <progress value={progress} max="100" />
+            <progress className={css.chargeBar} value={progress} max="100" />
             <p>
                 <label>Product Image</label>
 
             </p>
-            <input type="file" onChange={handleChange} />
+            <input className={css.buttonStyle} type="file" onChange={handleChange} />
             <Button
                 variant="contained"
                 color="primary"

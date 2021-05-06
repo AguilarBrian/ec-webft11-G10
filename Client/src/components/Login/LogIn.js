@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField } from 'final-form-material-ui';
-import UploadImage from '../UploadImage';
 import { Paper, Grid, Button, CssBaseline, MenuItem } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
