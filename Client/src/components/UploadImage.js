@@ -15,7 +15,7 @@ const UploadImage = () => {
 
     const handleUpload = () => {
         try {
-            
+
             const uploadTask = storage.ref(`images/${image.name}`).put(image);
             uploadTask.on(
                 "state_changed",
