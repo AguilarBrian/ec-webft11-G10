@@ -25,8 +25,6 @@ const validate = values => {
   if (!values.stock) {
     errors.stock = 'Required';
   }
-
-
   return errors;
 };
 
