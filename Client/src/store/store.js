@@ -5,7 +5,7 @@ import combineReducers from './index';
 
 const store = createStore(
   combineReducers,
-  composeWithDevTools(applyMiddleware(thunk))
-);
+    composeWithDevTools(applyMiddleware(thunk))
+  );
 
 export default store;
