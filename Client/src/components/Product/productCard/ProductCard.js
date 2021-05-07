@@ -5,7 +5,7 @@ import { useStyles } from './styles'
 import defaultImg from './default.png'
 
 
-export default function ImgMediaCard({ image, title, description, price }) {
+export default function ImgMediaCard({ img, name, description, price }) {
   const classes = useStyles();
 
   return (
@@ -15,12 +15,12 @@ export default function ImgMediaCard({ image, title, description, price }) {
           component="img"
           alt="Food"
           height="140"
-          image={!image ? defaultImg : image}
+          image={!img ? defaultImg : img}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {!title ? 'Some food' : title}
+            {!name ? 'Some food' : name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {!description ? 'Food is great to eat, it makes you healthy! Sometimes...' : description}

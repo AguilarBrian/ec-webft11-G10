@@ -1,5 +1,7 @@
 import axios from 'axios'
+const serverUrl="http://localhost:3001"
 
+export const GET_PRODUCTS = "GET_PRODUCTS";
 export const POST_PRODUCTS_SUCCESS = "POST_PRODUCTS_SUCCESS";
 export const POST_PRODUCTS_FAILURE = "POST_PRODUCTS_FAILURE";
 
@@ -14,6 +16,7 @@ export const setImgUrl=(imgUrl)=>{
         payload: imgUrl
     }
 }
+
 export const postProducts = (product) => {
     return (dispatch) => {
         const options = {
@@ -30,6 +33,18 @@ export const postProducts = (product) => {
             .catch(error => {
                 dispatch(postProductsFailure(error))
             })
+    }
+}
+
+export const getProducts = () => {
+    return (dispatch) => {
+        return axios.get(`${serverUrl}/products/`).then(result => {
+            dispatch({
+                type: GET_PRODUCTS,
+                payload: result.data
+            })
+        })
+        .catch(err => console.log({message: err.message}))
     }
 }
 
