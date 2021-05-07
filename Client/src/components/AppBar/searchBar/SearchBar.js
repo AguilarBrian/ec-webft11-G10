@@ -3,6 +3,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { useStyles } from '../styles'
 import { useDispatch } from 'react-redux'
 import { searchProducts,getProducts } from '../../../store/product/product.actions';
+
 export const SearchBar = () => {
     const dispatch = useDispatch()
 
@@ -19,11 +20,9 @@ export const SearchBar = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(searchProducts(title))
-
     }
 
     return (
-
         <>
             <form onSubmit={(e) => handleSubmit(e)}>
 

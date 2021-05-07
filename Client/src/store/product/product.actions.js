@@ -3,20 +3,14 @@ const serverUrl="http://localhost:3001"
 
 export const POST_PRODUCTS_SUCCESS = "POST_PRODUCTS_SUCCESS";
 export const POST_PRODUCTS_FAILURE = "POST_PRODUCTS_FAILURE";
-
 export const GET_PRODUCTS = "GET_PRODUCTS";
-
-
 export const SET_PRODUCT_IMG = "SET_PRODUCT_IMG";
-
 export const SEARCH_PRODUCT_REQUEST = "SEARCH_PRODUCT_REQUEST";
 export const SEARCH_PRODUCT_SUCCESS = "SEARCH_PRODUCT_SUCCESS";
 export const SEARCH_PRODUCT_FAILURE = "SEARCH_PRODUCT_FAILURE";
 
 // PARA QUE TRAIGA PRODUCTOS POR NOMBRE
 export const searchProducts = (name) => {
-
-    console.log("asdasd")
     return (dispatch) => {
         dispatch(searchProductRequest())
         axios.get(`${serverUrl}/products/search/${name}`)

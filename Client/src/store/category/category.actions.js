@@ -11,4 +11,3 @@ export const getCategory = () => dispatch => {
             dispatch({ type: 'GET_CATEGORY', payload: err })
         })
 }
-
