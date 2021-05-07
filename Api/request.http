@@ -8,3 +8,5 @@ Content-Type: application/json
     "stock":21,
     "category":"postre",
 }
+
+GET http://localhost:3001/category/productsbycategories/pizza
