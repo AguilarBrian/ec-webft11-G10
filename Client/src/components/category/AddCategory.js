@@ -79,10 +79,9 @@ function AddCategory() {
                     Submit
                   </Button>
                   {
-                    (status.data=='no se puede agregar la categoría porque falta el "name"')?(
+                    (status && status.data)?(status.data=='no se puede agregar la categoría porque falta el "name"')?(
                       <Typography>no se puede agregar la categoría porque falta completar datos</Typography>
-                    ):((status=='')?(<Typography></Typography>):(<CheckIcon />)                      
-                    )
+                    ):((status=='')?(<Typography></Typography>):(<CheckIcon />)):(<Typography></Typography>)
                   }
                 </Grid>
               </Grid>
