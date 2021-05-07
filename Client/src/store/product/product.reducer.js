@@ -9,7 +9,6 @@ const initialState = {
   Error:"",
   Loading:"",
   searchResults:[]
-
 };
 
 const productReducer = (state = initialState, action) => {

@@ -17,7 +17,7 @@ export const getCategory = () => dispatch => {
 }
 
 export const postAddCategory = (category) => dispatch => {
-    let URL = `http://localhost:3001/products/category`
+    let URL = `http://localhost:3001/category`
     axios.post(URL, category, {headers: {'Content-Type': 'application/json'}})
     .then(res => {
         dispatch({ type: 'POST_ADD_CATEGORY', payload: res.status })

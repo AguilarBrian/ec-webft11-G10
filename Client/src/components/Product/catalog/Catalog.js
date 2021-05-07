@@ -28,7 +28,6 @@ const productsAux = [
     },
 ]
 
-
 export default function Catalog() {
     const classes = useStyles();
     const searchResults = useSelector(state => state.productReducer?.searchResults)
