@@ -3,7 +3,8 @@ import { useSelector } from "react-redux";
 import { Grid } from '@material-ui/core/';
 import { useStyles } from './styles'
 import ProductCard from '../productCard/ProductCard'
-const products = [
+
+const productsAux = [
     {
         image: 'https://www.maxionline.ec/wp-content/uploads/2019/11/Revista-Maxi-lechon-navidenho-relleno.jpg',
         title: 'lechon',
@@ -28,29 +29,48 @@ const products = [
 ]
 
 
-export default function Catalog() {    
+export default function Catalog() {
     const classes = useStyles();
     const searchResults = useSelector(state => state.productReducer?.searchResults)
-    
+    const products = useSelector(state => state.productReducer?.products)
+
     return (
-        <Grid container spacing={2} className={classes.container}>
-            
-             {searchResults ?
-                   searchResults.map(food => {
-                    return <Grid item xs={12} sm={4}>
-                        <ProductCard
-                            image={food.image}
-                            name={food.name}
-                            description={food.description}
-                            price={food.price}
-                        />
-                    </Grid>
-                })
-                : ("no hay resutl")
-            }
-            {searchResults && searchResults.length===0 && (<h1>no se hallaron resultados</h1>)} */}
-
-
-        </Grid>
+        <div>
+            {(searchResults=='') ? (
+                <Grid container spacing={2} className={classes.container}>
+                    {(!products) ? productsAux.map(food => {
+                        return <Grid item xs={12} sm={4}>
+                            <ProductCard
+                                image={food.image}
+                                name={food.name}
+                                description={food.description}
+                                price={food.price}
+                            /> </Grid>
+                    }) : (products.map(food => {
+                        return <Grid item xs={12} sm={4}>
+                            <ProductCard
+                                image={food.image}
+                                name={food.name}
+                                description={food.description}
+                                price={food.price}
+                            /> </Grid>
+                    }))}
+                    {searchResults && searchResults.length === 0 && (<h1>no se hallaron resultados</h1>)}
+                </Grid>
+            ) : (
+                <Grid container spacing={2} className={classes.container}>
+                    {searchResults ? searchResults.map(food => {
+                        return <Grid item xs={12} sm={4}>
+                            <ProductCard
+                                image={food.image}
+                                name={food.name}
+                                description={food.description}
+                                price={food.price}
+                            /> </Grid>
+                    }) : ("no hay resutl")}
+                    {searchResults && searchResults.length === 0 && (<h1>no se hallaron resultados</h1>)}
+                </Grid>
+            )}
+        </div>
     );
 }

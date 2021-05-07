@@ -45,7 +45,8 @@ var p = new Promise(resolve => resolve(true))
 server.get("/", (req, res, next) => { 
   Product.findAll() 
     .then((products) => {
-      res.send(products);
+      res.send(products)
+      console.log('200 GET_PRODUCTS');
     })
     .catch(next);
 });
