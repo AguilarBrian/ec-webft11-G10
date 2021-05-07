@@ -1,32 +1,14 @@
 import axios from 'axios'
 
-export const POST_CATEGORY_SUCCESS = "POST_CATEGORY_SUCCESS";
-export const POST_CATEGORY_FAILURE = "POST_CATEGORY_FAILURE";
-const serverUrl="http://localhost:3001"
+export const GET_CATEGORY = "GET_CATEGORY";
 
-export const postCategory = () => {
-
-    return (dispatch) => {
-const serverUrl="http://localhost:3001"
-        axios.get(`${serverUrl}products/category/get`)
-            .then(category => {
-                dispatch(postCategorySuccess(category.data))
-            })
-            .catch(error => {
-                dispatch(postCategoryFailure(error))
-            })
-    }
+export const getCategory = () => dispatch => {
+    let URL = "http://localhost:3001/products/category/get"
+    axios.get(URL)
+        .then(res => {
+            dispatch({ type: 'GET_CATEGORY', payload: res.data })
+        }).catch(err => {
+            dispatch({ type: 'GET_CATEGORY', payload: err })
+        })
 }
 
-export const postCategorySuccess = (category) => {
-    return {
-        type: POST_CATEGORY_SUCCESS,
-        payload: category
-    }
-}
-export const postCategoryFailure = (error) => {
-    return {
-        type: POST_CATEGORY_FAILURE,
-        payload: error
-    }
-}
