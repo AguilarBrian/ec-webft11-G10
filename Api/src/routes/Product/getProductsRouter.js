@@ -1,6 +1,6 @@
+const { getProductsByLetterIncludeInTheName } =require('../../controllers/productController');
 const server = require("express").Router();
 const { Product } = require("../../db.js");
-
 const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
 
 const romanNumbers = ['I', 'II', 'III', 'IV', 'V']
@@ -31,7 +31,14 @@ var p = new Promise(resolve => resolve(true))
   })
 
 
-
+  server.get("/search/:query", (req, res, next) => {
+    let { query } = req.params;
+    return getProductsByLetterIncludeInTheName(query).then((product) => {
+      res.status(200).json(product);
+    }).catch((error) => {
+      res.status(400).json(error);
+    });
+  });
 
 // TRAE TODOS LOS PRODUCTOS |
 //---------------------------

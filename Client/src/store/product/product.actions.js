@@ -5,9 +5,58 @@ export const GET_PRODUCTS = "GET_PRODUCTS";
 export const POST_PRODUCTS_SUCCESS = "POST_PRODUCTS_SUCCESS";
 export const POST_PRODUCTS_FAILURE = "POST_PRODUCTS_FAILURE";
 
+export const GET_PRODUCTS = "GET_PRODUCTS";
+
+
 export const SET_PRODUCT_IMG = "SET_PRODUCT_IMG";
 
-const serverUrl="http://localhost:3001"
+export const SEARCH_PRODUCT_REQUEST = "SEARCH_PRODUCT_REQUEST";
+export const SEARCH_PRODUCT_SUCCESS = "SEARCH_PRODUCT_SUCCESS";
+export const SEARCH_PRODUCT_FAILURE = "SEARCH_PRODUCT_FAILURE";
+
+// PARA QUE TRAIGA PRODUCTOS POR NOMBRE
+export const searchProducts = (name) => {
+
+    console.log("asdasd")
+    return (dispatch) => {
+        dispatch(searchProductRequest())
+        axios.get(`${serverUrl}/products/search/${name}`)
+            .then(products => {
+                dispatch(searchProductSuccess(products.data))
+            })
+            .catch(error => {
+                dispatch(searchProductFailure(error))
+            })
+    }
+}
+
+export const searchProductRequest = () => {
+    return {
+        type: SEARCH_PRODUCT_REQUEST,
+    }
+}
+export const searchProductSuccess = (product) => {
+    return {
+        type: SEARCH_PRODUCT_SUCCESS,
+        payload: product
+    }
+}
+export const searchProductFailure = (error) => {
+    return {
+        type: SEARCH_PRODUCT_FAILURE,
+        payload: error
+    }
+}
+
+
+
+export const setImgUrl=(imgUrl)=>{
+    return {
+        type: SET_PRODUCT_IMG,
+        payload: imgUrl
+    }
+}
+
 
 
 export const setImgUrl=(imgUrl)=>{

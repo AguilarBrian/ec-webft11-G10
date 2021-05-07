@@ -67,10 +67,7 @@ function AddProduct() {
                   />
                 </Grid>
                 <Grid item xs={6}>
-                <img src={productImg} alt="Girl in a jacket" width="120" />
 
-                </Grid>
-                <Grid item xs={6}>
                 </Grid>
 
                 <Grid item xs={12}>
