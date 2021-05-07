@@ -42,11 +42,6 @@ export const searchProductFailure = (error) => {
     }
 }
 
-
-
-
-
-
 export const setImgUrl=(imgUrl)=>{
     return {
         type: SET_PRODUCT_IMG,

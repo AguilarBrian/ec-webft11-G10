@@ -1,13 +1,9 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import { TextField} from 'final-form-material-ui';
-import {Paper,Grid,Button,CssBaseline} from '@material-ui/core';
-
-const onSubmit = async values => {
-  const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-  await sleep(300);
-  window.alert(JSON.stringify(values, 0, 2));
-};
+import { TextField } from 'final-form-material-ui';
+import { Paper, Grid, Button, CssBaseline } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux'
+import {postAddCategory} from '../../store/category/category.actions'
 
 const validate = values => {
   const errors = {};
@@ -16,16 +12,28 @@ const validate = values => {
   }
   if (!values.description) {
     errors.description = 'Required';
-  }  
+  }
   return errors;
 };
 
 function AddCategory() {
-    
-    return (
-        <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
+  const dispatch = useDispatch()
+  const statusPost = useSelector(state => state.categoryReducer.postState)
+  
+  const addCategoryPost = (values) => {
+    onSubmit(values)  
+  }
+
+  const onSubmit = async values => {
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+    await sleep(300);
+    dispatch(postAddCategory(values))
+    console.log(statusPost)
+  };
+  return (
+    <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
       <CssBaseline />
-      
+
       <Form
         onSubmit={onSubmit}
         initialValues={{}}
@@ -38,25 +46,26 @@ function AddCategory() {
                   <Field
                     fullWidth
                     required
-                    name="productName"
+                    name="name"
                     component={TextField}
                     type="text"
-                    label="Nombre del Producto"
-                  />                
+                    label="Nombre de la categoria"
+                  />
                 </Grid>
-                
+
                 <Grid item xs={12}>
                   <Field
                     fullWidth
                     name="description"
                     component={TextField}
                     multiline
-                    label="Descripcion"
+                    label="description"
                   />
-                </Grid>            
-        
+                </Grid>
+
                 <Grid item style={{ marginTop: 16 }}>
                   <Button
+                    onClick={()=>addCategoryPost(values)}
                     variant="contained"
                     color="primary"
                     type="submit"

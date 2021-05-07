@@ -108,7 +108,7 @@ function AddProduct() {
                     formControlProps={{ fullWidth: true }}
                   >
                     {(!categoryList)?
-                    (<Typography >BadReques400</Typography>)
+                    (<Typography >No se encontraron categorias</Typography>)
                     :
                     (categoryList.map(category=>{
                       return (

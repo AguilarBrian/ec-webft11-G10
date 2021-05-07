@@ -1,4 +1,4 @@
-const { Product, Categories  } = require("../db");
+const { Product, Category  } = require("../db");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
@@ -13,5 +13,16 @@ module.exports = {
       },
      // include: [{ model: Categories, as: "categories" }],
     });
+  },
+  searchProductsByCategoryName(categoryName) {
+    console.log(categoryName)
+    return Category.findAll({
+      where: {
+        name: {
+          [Op.iLike]: categoryName
+        }
+      },
+      include: [{ model: Product, as: 'products' }]
+    })
   },
 }

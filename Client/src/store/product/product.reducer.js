@@ -1,10 +1,5 @@
-import { 
-  SET_PRODUCT_IMG, POST_PRODUCTS_SUCCESS, POST_PRODUCTS_FAILURE,
-  SEARCH_PRODUCT_FAILURE,SEARCH_PRODUCT_REQUEST,SEARCH_PRODUCT_SUCCESS,
-  GET_PRODUCTS, GET_ONE_PRODUCT
-
-} from './product.actions';
-
+import {SET_PRODUCT_IMG, POST_PRODUCTS_SUCCESS, POST_PRODUCTS_FAILURE,SEARCH_PRODUCT_FAILURE,SEARCH_PRODUCT_REQUEST,SEARCH_PRODUCT_SUCCESS, GET_PRODUCTS, GET_ONE_PRODUCT} from './product.actions';
+import {SEARCH_PRODUCT_REQUEST_CATEGORIES,SEARCH_PRODUCT_SUCCESS_CATEGORIES,SEARCH_PRODUCT_FAILURE_CATEGORIES} from '../category/category.actions' 
 
 const initialState = {
   products: [],
@@ -14,23 +9,45 @@ const initialState = {
   Error:"",
   Loading:"",
   searchResults:[]
-
 };
 
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SEARCH_PRODUCT_REQUEST:
+    case SEARCH_PRODUCT_REQUEST || SEARCH_PRODUCT_REQUEST_CATEGORIES:
       return {
         ...state,
         Loading: true
       }
-    case SEARCH_PRODUCT_SUCCESS:
+    case SEARCH_PRODUCT_SUCCESS || SEARCH_PRODUCT_SUCCESS_CATEGORIES:
       return {
         ...state,
         Loading: false,
         searchResults: action.payload
       }
-    case SEARCH_PRODUCT_FAILURE:
+    case SEARCH_PRODUCT_FAILURE || SEARCH_PRODUCT_FAILURE_CATEGORIES:
+      return {
+        ...state,
+        Error: 'error 404',
+        Loading: false
+      }
+    case SET_PRODUCT_IMG:
+      return {
+        ...state,
+        productImg: action.payload
+
+      }
+    case SEARCH_PRODUCT_REQUEST_CATEGORIES:
+      return {
+        ...state,
+        Loading: true
+      }
+    case SEARCH_PRODUCT_SUCCESS_CATEGORIES:
+      return {
+        ...state,
+        Loading: false,
+        searchResults: action.payload
+      }
+    case SEARCH_PRODUCT_FAILURE_CATEGORIES:
       return {
         ...state,
         Error: 'error 404',

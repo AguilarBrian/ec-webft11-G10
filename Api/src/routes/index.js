@@ -10,7 +10,7 @@ const categoryRouter = require("./Product/categoryRouter");
 const router = Router();
 
 router.use("/products", getProductsRouter);
-router.use("/products/category", categoryRouter);
+router.use("/category", categoryRouter);
 // router.use("/users", userRouter);
 // // router.use("/orders", ordersRouter);
 
