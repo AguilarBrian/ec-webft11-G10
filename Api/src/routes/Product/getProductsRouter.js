@@ -1,6 +1,6 @@
+const { getProductsByLetterIncludeInTheName } =require('../../controllers/productController');
 const server = require("express").Router();
 const { Product } = require("../../db.js");
-
 const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
 
 const romanNumbers = ['I', 'II', 'III', 'IV', 'V']
@@ -31,7 +31,14 @@ var p = new Promise(resolve => resolve(true))
   })
 
 
-
+  server.get("/search/:query", (req, res, next) => {
+    let { query } = req.params;
+    return getProductsByLetterIncludeInTheName(query).then((product) => {
+      res.status(200).json(product);
+    }).catch((error) => {
+      res.status(400).json(error);
+    });
+  });
 
 // TRAE TODOS LOS PRODUCTOS |
 //---------------------------
@@ -59,26 +66,22 @@ server.get("/:id", (req, res, next) => {
 
 // AGREGAR UN PRODUCTO |
 //----------------------
-server.post("/", (req, res) => {
+server.post("/", async(req, res, next) => {
+  console.log(req.body);
+  let { name, description, price, stock, img, category } = req.body;
+
   
-  const { name, description, price, stock, category, img } = req.body; 
-  if (!name || !price || !description ||!stock|| !category || !img) {
-    
-    return res.send("Es necesario completar todos los campos");
-  }
-  Product.create({
-    
-    name: name,
-    description: description,
-    price: price,
-    stock: stock,
-    img: img,
-  }).then((product) => {
-    return product.setCategories(category).then(
-      () => res.send(product),
-      () => res.send('se pudo agregar la categoria'))
-  }).catch((err) => res.send(err))
-})
+
+  let product = {
+    name, description, price, stock, img, category
+  };
+
+  return await Product.create(product).then((product) => {
+      res.status(200).json(product);
+    }).catch((error) => {
+      res.status(400).json(error);
+    });
+});
 
 // MODIFICA UN PRODUCTO |
 //-----------------------
