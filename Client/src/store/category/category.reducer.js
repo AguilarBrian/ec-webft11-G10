@@ -1,21 +1,15 @@
-import { POST_CATEGORY_SUCCESS, POST_CATEGORY_FAILURE } from './category.actions';
+import { GET_CATEGORY} from './category.actions';
 
 const initialState = {
-  category: [],
-  categoryError: "",
+  category:''
 };
 
 const categoryReducer = (state = initialState, action) => {
   switch (action.type) {
-    case POST_CATEGORY_SUCCESS:
+    case GET_CATEGORY:
       return {
         ...state,
-        category: [...state.category, action.payload],
-      };
-    case POST_CATEGORY_FAILURE:
-      return {
-        ...state,
-        categoryError: action.payload,
+        category: action.payload
       };
     default:
       return state;

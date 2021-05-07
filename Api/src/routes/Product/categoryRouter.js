@@ -23,6 +23,7 @@ server.get('/get', (req, res) => {
     Category.findAll()
         .then(category => {
             res.status(200)
+            console.log('200 GET_CATEGORIES')
             res.json(category);
         })
         .catch(err => res.send(err));
