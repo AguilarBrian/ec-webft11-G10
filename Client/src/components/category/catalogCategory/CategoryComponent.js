@@ -16,9 +16,9 @@ function CategoryComponent({title}) {
 
     const classes = useStyles();
     return (
-        <div >
+        <div className={classes.root}>
             <Tooltip disableFocusListener title="Categorias de producto">
-                <Button className={classes.banner}>{!title ? 'otra categoria' : title}</Button>
+                <Button >{!title ? 'otra categoria' : title}</Button>
             </Tooltip>
         </div>
     );
