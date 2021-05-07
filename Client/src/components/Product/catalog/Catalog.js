@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from "react-redux";
 import { Grid } from '@material-ui/core/';
 import { useStyles } from './styles'
 import ProductCard from '../productCard/ProductCard'
@@ -27,7 +28,9 @@ const products = [
     },
 ]
 
-export default function Catalog() {
+
+export default function Catalog() {    
+    const products = useSelector(state => state.productReducer.products)
     const classes = useStyles();
     const searchResults = useSelector(state => state.productsReducers.searchResults)
 
@@ -56,6 +59,7 @@ export default function Catalog() {
                 }))
             }
             {searchResults && searchResults.length===0 && (<h1>no se hallaron resultados</h1>)}
+
 
         </Grid>
     );
