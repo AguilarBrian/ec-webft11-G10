@@ -67,6 +67,7 @@ function AddProduct() {
                   />
                 </Grid>
                 <Grid item xs={6}>
+
                 </Grid>
 
                 <Grid item xs={12}>

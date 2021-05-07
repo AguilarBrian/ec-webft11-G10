@@ -1,6 +1,7 @@
 import axios from 'axios'
 const serverUrl="http://localhost:3001"
 
+export const GET_PRODUCTS = "GET_PRODUCTS";
 export const POST_PRODUCTS_SUCCESS = "POST_PRODUCTS_SUCCESS";
 export const POST_PRODUCTS_FAILURE = "POST_PRODUCTS_FAILURE";
 
@@ -44,6 +45,15 @@ export const searchProductFailure = (error) => {
     return {
         type: SEARCH_PRODUCT_FAILURE,
         payload: error
+    }
+}
+
+
+
+export const setImgUrl=(imgUrl)=>{
+    return {
+        type: SET_PRODUCT_IMG,
+        payload: imgUrl
     }
 }
 

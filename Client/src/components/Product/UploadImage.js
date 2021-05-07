@@ -6,11 +6,13 @@ import { setImgUrl } from '../../store/product/product.actions';
 import { Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux'
 
+
 const UploadImage = () => {
     const [image, setImage] = useState(null);//local image
     const [url, setUrl] = useState(null);
     const [progress, setProgress] = useState(0);
     const dispatch = useDispatch()
+
     const handleChange = e => {
         if (e.target.files[0]) {
             setImage(e.target.files[0]);

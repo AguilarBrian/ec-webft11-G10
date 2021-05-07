@@ -4,12 +4,14 @@ import {
 
 } from './product.actions';
 
+
 const initialState = {
   products: [],
   productError: "",
   productImg: "no tiene",
   Error:"",
   Loading:"",
+
 };
 
 const productReducer = (state = initialState, action) => {
@@ -35,6 +37,7 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         productImg: action.payload
+
       }
     case POST_PRODUCTS_SUCCESS:
       return {
