@@ -1,13 +1,14 @@
 import { 
   SET_PRODUCT_IMG, POST_PRODUCTS_SUCCESS, POST_PRODUCTS_FAILURE,
   SEARCH_PRODUCT_FAILURE,SEARCH_PRODUCT_REQUEST,SEARCH_PRODUCT_SUCCESS,
-  GET_PRODUCTS
+  GET_PRODUCTS, GET_ONE_PRODUCT
 
 } from './product.actions';
 
 
 const initialState = {
   products: [],
+  oneProduct: {},
   productError: "",
   productImg: "no tiene",
   Error:"",
@@ -55,6 +56,11 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload,
+      };
+    case GET_ONE_PRODUCT:
+      return {
+        ...state,
+        oneProduct: action.payload,
       };
     default:
       return state;
