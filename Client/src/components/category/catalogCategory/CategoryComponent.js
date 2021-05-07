@@ -18,7 +18,6 @@ function CategoryComponent({title}) {
     };
 
     const sendCategorySearch = (title) => {
-        console.log(title)
         dispatch(searchProducts(title))
     }
 

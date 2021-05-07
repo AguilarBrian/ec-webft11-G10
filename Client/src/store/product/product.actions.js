@@ -59,6 +59,7 @@ export const postProducts = (product) => {
             data: product
         };
         return axios.request(options).then(function (products) {
+            console.log(products.data)
             dispatch(postProductsSuccess(products.data))
         })
             .catch(error => {

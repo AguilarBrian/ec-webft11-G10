@@ -65,21 +65,19 @@ server.get("/:id", (req, res, next) => {
 //----------------------
 server.post("/", (req, res) => {
 
-  const { name, description, price, stock, category, img } = req.body;
-  if (!name || !price || !description || !stock || !category || !img) {
-
-    return res.send("Es necesario completar todos los campos");
-  }
-  Product.create({
-    name: name,
+  const { productName, description, productImg, priceInt, stockInt, category } = req.body;
+  const product = {
+    name: productName,
     description: description,
-    price: price,
-    stock: stock,
-    img: img,
-  }).then((product) => {
-    return product.setCategories(category).then(
-      () => res.send(product),
-      () => res.send('se pudo agregar la categoria'))
+    price: priceInt,
+    stock: stockInt,
+    img: productImg,
+    category: category
+  }
+  
+  Product.create(product).then((prod) => {
+    return prod.setCategories(category).then(
+      () => res.send(product))
   }).catch((err) => res.send(err))
 })
 
