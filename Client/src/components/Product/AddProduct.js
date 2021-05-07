@@ -32,12 +32,15 @@ const validate = values => {
 
 function AddProduct() {
   const dispatch = useDispatch()
-  const productImg = useSelector(state => state.productsReducers.productImg)
+  let productImg = useSelector(state => state.productReducer.productImg)
+  
 
   const onSubmit = async values => {
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await sleep(300);
-    let productData={...values,productImg}
+
+    let productData={...values, productImg}
+    
     window.alert(JSON.stringify(productData, 0, 2));
     dispatch(postProducts(JSON.stringify(productData, 0, 2)))
     

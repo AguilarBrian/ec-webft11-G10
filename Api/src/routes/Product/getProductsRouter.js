@@ -66,22 +66,26 @@ server.get("/:id", (req, res, next) => {
 
 // AGREGAR UN PRODUCTO |
 //----------------------
-server.post("/", async(req, res, next) => {
-  console.log(req.body);
-  let { name, description, price, stock, img, category } = req.body;
-
+server.post("/", (req, res) => {
   
-
-  let product = {
-    name, description, price, stock, img, category
-  };
-
-  return await Product.create(product).then((product) => {
-      res.status(200).json(product);
-    }).catch((error) => {
-      res.status(400).json(error);
-    });
-});
+  const { name, description, price, stock, category, img } = req.body; 
+  if (!name || !price || !description ||!stock|| !category || !img) {
+    
+    return res.send("Es necesario completar todos los campos");
+  }
+  Product.create({
+    
+    name: name,
+    description: description,
+    price: price,
+    stock: stock,
+    img: img,
+  }).then((product) => {
+    return product.setCategories(category).then(
+      () => res.send(product),
+      () => res.send('se pudo agregar la categoria'))
+  }).catch((err) => res.send(err))
+})
 
 // MODIFICA UN PRODUCTO |
 //-----------------------

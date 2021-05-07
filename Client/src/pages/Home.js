@@ -15,7 +15,7 @@ export const Home = () => {
         <div>
             <AppBar />
             <div>
-                <CategoryCatalog />
+                {/* <CategoryCatalog /> */}
                 <Catalog />
             </div>
         </div>

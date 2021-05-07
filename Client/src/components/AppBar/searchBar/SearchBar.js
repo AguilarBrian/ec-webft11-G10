@@ -10,13 +10,13 @@ export const SearchBar = () => {
     const [title, setTitle] = useState("")
     const handleChange = (event) => {
         setTitle(event.target.value);
+        dispatch(searchProducts(title))
     }
     const handleSubmit = (event) => {
+        event.preventDefault();
+        dispatch(searchProducts(title))
 
-     event.preventDefault();
-     dispatch(searchProducts(title))
     }
-
 
     return (
 

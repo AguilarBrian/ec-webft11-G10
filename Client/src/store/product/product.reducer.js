@@ -1,6 +1,7 @@
 import { 
   SET_PRODUCT_IMG, POST_PRODUCTS_SUCCESS, POST_PRODUCTS_FAILURE,
   SEARCH_PRODUCT_FAILURE,SEARCH_PRODUCT_REQUEST,SEARCH_PRODUCT_SUCCESS,
+  GET_PRODUCTS
 
 } from './product.actions';
 
@@ -11,6 +12,7 @@ const initialState = {
   productImg: "no tiene",
   Error:"",
   Loading:"",
+  searchResults:[]
 
 };
 
