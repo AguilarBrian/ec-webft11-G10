@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import CategoryComponent from './CategoryComponent'
 import { useDispatch, useSelector } from 'react-redux'
 import {getCategory}  from '../../../store/category/category.actions'
+import { useStyles } from './styleCategory'
 
 const category = [
     {
@@ -22,7 +23,7 @@ const category = [
 export default function CatatalogComponent() {
 
     const dispatch = useDispatch()
-    const categories = useSelector(state => state.categoryReducers.category)
+    const categories = useSelector(state => state.categoryReducer.category)
 
     const checkCategory = (categories) => {
         if(categories&&categories[0]){
@@ -41,21 +42,15 @@ export default function CatatalogComponent() {
     let categoryList=checkCategory(categories)
 
     useEffect(() => {
-        const interval = setInterval(() =>dispatch(getCategory()), 2500)        
-        return () => clearInterval(interval);
-    }, []);
-    useEffect(() => {
-        if(categories[0]){
-            const interval = setInterval(() =>console.log('categories------>',categoryList), 2500)
-            console.log()
-            return () => clearInterval(interval);
-        }
-    }, []);    
+        dispatch(getCategory())
+    }, []);  
+    
+    const classes = useStyles();
     
     return (
-        <div>
+        <div >
             {(!categories || !categories[0])?(
-            <Grid container justify="center">                
+            <Grid className={classes.container} container justify="center">                
                 {category.map(category => {
                         return <Grid item>
                             <CategoryComponent title={category.title} />
@@ -64,7 +59,7 @@ export default function CatatalogComponent() {
                 }                
             </Grid>
             ):(
-            <Grid container justify="center">                
+            <Grid className={classes.container} container justify="center">                
                 {categories && categories[0] &&
                     categoryList.map(categoryList => {
                         return <Grid item>
