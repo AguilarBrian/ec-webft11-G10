@@ -20,7 +20,7 @@ const category = [
     },
 ]
 
-export default function CatatalogComponent() {
+export default function CatalogComponent() {
 
     const dispatch = useDispatch()
     const categories = useSelector(state => state.categoryReducer.category)
