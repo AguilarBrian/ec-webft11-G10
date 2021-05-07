@@ -4,13 +4,13 @@ import { storage } from "../../firebase";
 import css from './upload.module.css';
 import { setImgUrl } from '../../store/product/product.actions';
 import { Button } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 const UploadImage = () => {
     const [image, setImage] = useState(null);//local image
     const [url, setUrl] = useState(null);
     const [progress, setProgress] = useState(0);
-const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const handleChange = e => {
         if (e.target.files[0]) {
             setImage(e.target.files[0]);
@@ -43,8 +43,8 @@ const dispatch = useDispatch()
                         });
                 }
 
-                );
-                setImage(null)
+            );
+            setImage(null)
         } catch (error) {
             window.alert("debe elegir una imagen")
         }
@@ -57,33 +57,33 @@ const dispatch = useDispatch()
             <label>Product Image</label>
             <progress className={css.chargeBar} value={progress} max="100" />
             <input className={css.buttonStyle} type="file" onChange={handleChange} />
-            {image ? 
-            (
-                <div>
+            {image ?
+                (
+                    <div>
 
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        type="submit"
-                        onClick={handleUpload}
-                    >
-                        Upload
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                            onClick={handleUpload}
+                        >
+                            Upload
                   </Button>
-                </div>
-            )
-            :
-            (
-
-                ""
-            
+                    </div>
                 )
-                
+                :
+                (
+
+                    ""
+
+                )
+
             }
             <p>
-            <img src={url} alt="" width="100" ></img>
+                <img src={url} alt="" width="100" ></img>
 
             </p>
-            
+
         </>
     );
 };

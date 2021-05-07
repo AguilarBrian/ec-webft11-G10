@@ -23,7 +23,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useStyles } from './styles'
 import { Link } from 'react-router-dom';
-
+import { SearchBar } from './searchBar/SearchBar';
 export default function PersistentDrawerLeft() {
     const classes = useStyles();
     const theme = useTheme();
@@ -63,14 +63,7 @@ export default function PersistentDrawerLeft() {
                         <div className={classes.searchIcon}>
                             <SearchIcon />
                         </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
+                        <SearchBar/>
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>

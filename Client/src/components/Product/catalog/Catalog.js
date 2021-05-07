@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core/';
 import { useStyles } from './styles'
 import ProductCard from '../productCard/ProductCard'
-
+import { useSelector } from "react-redux"
 const products = [
     {
         image: 'https://www.maxionline.ec/wp-content/uploads/2019/11/Revista-Maxi-lechon-navidenho-relleno.jpg',
@@ -29,19 +29,34 @@ const products = [
 
 export default function Catalog() {
     const classes = useStyles();
+    const searchResults = useSelector(state => state.productsReducers.searchResults)
 
     return (
         <Grid container spacing={2} className={classes.container}>
-            {products.map(food => {
-                return <Grid item xs={12} sm={4}>
-                    <ProductCard
-                        image={food.image}
-                        title={food.title}
-                        description={food.description}
-                        price={food.price}
-                    />
-                </Grid>
-            })}
+            {searchResults ?
+                   searchResults.map(food => {
+                    return <Grid item xs={12} sm={4}>
+                        <ProductCard
+                            image={food.image}
+                            title={food.name}
+                            description={food.description}
+                            price={food.price}
+                        />
+                    </Grid>
+                })
+                : (products.map(food => {
+                    return <Grid item xs={12} sm={4}>
+                        <ProductCard
+                            image={food.image}
+                            title={food.name}
+                            description={food.description}
+                            price={food.price}
+                        />
+                    </Grid>
+                }))
+            }
+            {searchResults && searchResults.length===0 && (<h1>no se hallaron resultados</h1>)}
+
         </Grid>
     );
 }
