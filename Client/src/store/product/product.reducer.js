@@ -36,6 +36,29 @@ const productReducer = (state = initialState, action) => {
         productImg: action.payload
 
       }
+    case SEARCH_PRODUCT_REQUEST_CATEGORIES:
+      return {
+        ...state,
+        Loading: true
+      }
+    case SEARCH_PRODUCT_SUCCESS_CATEGORIES:
+      return {
+        ...state,
+        Loading: false,
+        searchResults: action.payload
+      }
+    case SEARCH_PRODUCT_FAILURE_CATEGORIES:
+      return {
+        ...state,
+        Error: 'error 404',
+        Loading: false
+      }
+    case SET_PRODUCT_IMG:
+      return {
+        ...state,
+        productImg: action.payload
+
+      }
     case POST_PRODUCTS_SUCCESS:
       return {
         ...state,
