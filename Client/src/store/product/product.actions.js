@@ -4,6 +4,7 @@ const serverUrl="http://localhost:3001"
 export const POST_PRODUCTS_SUCCESS = "POST_PRODUCTS_SUCCESS";
 export const POST_PRODUCTS_FAILURE = "POST_PRODUCTS_FAILURE";
 export const GET_PRODUCTS = "GET_PRODUCTS";
+export const GET_ONE_PRODUCT = "GET_ONE_PRODUCT";
 export const SET_PRODUCT_IMG = "SET_PRODUCT_IMG";
 export const SEARCH_PRODUCT_REQUEST = "SEARCH_PRODUCT_REQUEST";
 export const SEARCH_PRODUCT_SUCCESS = "SEARCH_PRODUCT_SUCCESS";
@@ -72,6 +73,18 @@ export const getProducts = () => {
         return axios.get(`${serverUrl}/products/`).then(result => {
             dispatch({
                 type: GET_PRODUCTS,
+                payload: result.data
+            })
+        })
+        .catch(err => console.log({message: err.message}))
+    }
+}
+
+export const getOneProduct = (id) => {
+    return (dispatch) => {
+        return axios.get(`${serverUrl}/products/${id}`).then(result => {
+            dispatch({
+                type: GET_ONE_PRODUCT,
                 payload: result.data
             })
         })

@@ -6,10 +6,10 @@ export const useStyles = makeStyles({
         margin: '0 auto'
     },
     media: {
-        width: '100%'
+        width: '100%',
     },
     info: {
-        height: '100%'
+        height: '100%',
     },
     button: {
         marginTop: 'auto'

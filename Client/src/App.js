@@ -6,6 +6,7 @@ import PageAddProduct from './pages/addProduct/PageAddProduct'
 import PageAddCategory from './pages/addCategory/PageAddCategory'
 import LandingPage from './pages/landingPage/LandingPage'
 import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
+import Product from './components/product/Product'
 //import  UploadImage  from './components/UploadImage';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path='/createProduct' component={PageAddProduct} />
         <Route path='/createCategory' component={PageAddCategory} />
         <Route path='/OrdersView' component={PageCheckoutOrders} />
+        <Route path='/product/:id' component={Product} />
       </userContext.Provider>
     </React.Fragment>
   );
