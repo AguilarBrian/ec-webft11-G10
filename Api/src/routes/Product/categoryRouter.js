@@ -1,6 +1,6 @@
+const { searchProductsByCategoryName } =require ('../../controllers/productController');
 const server = require('express').Router();
 const { Category } = require('../../db.js');
-
 var p = new Promise(resolve => resolve(true))
 
 const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
@@ -24,6 +24,17 @@ server.get('/get', (req, res) => {
         })
         .catch(err => res.send(err));
 });
+//TRAE LOS PRODUCTOS DE LA CATEGORIA
+
+server.get("/productsbycategories/:categoryName", (req, res, next) => {
+    let { categoryName } = req.params;
+    return searchProductsByCategoryName(categoryName).then((product) => {
+      res.status(200).json(product);
+    }).catch((error) => {
+      res.status(400).json(error);
+    });
+  });
+
 
 // CREA UNA CATEGORIA |
 //---------------------
