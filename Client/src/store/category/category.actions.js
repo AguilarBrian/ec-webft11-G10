@@ -2,6 +2,9 @@ import axios from 'axios'
 
 export const GET_CATEGORY = "GET_CATEGORY";
 export const POST_ADD_CATEGORY = 'POST_ADD_CATEGORY'
+export const SEARCH_PRODUCT_REQUEST_CATEGOIES = "SEARCH_PRODUCT_REQUEST_CATEGOIES";
+export const SEARCH_PRODUCT_SUCCESS_CATEGOIES = "SEARCH_PRODUCT_SUCCESS_CATEGOIES";
+export const SEARCH_PRODUCT_FAILURE_CATEGOIES = "SEARCH_PRODUCT_FAILURE_CATEGOIES";
 
 export const getCategory = () => dispatch => {
     let URL = "http://localhost:3001/products/category/get"
@@ -21,4 +24,35 @@ export const postAddCategory = (category) => dispatch => {
     }).catch(err => {
         dispatch({ type: 'POST_ADD_CATEGORY', payload: err })
     })
+}
+
+export const searchProductRequest = () => {
+    return {
+        type: 'SEARCH_PRODUCT_REQUEST_CATEGOIES',
+    }
+}
+export const searchProductSuccess = (product) => {
+    return {
+        type: 'SEARCH_PRODUCT_SUCCESS_CATEGOIES',
+        payload: product
+    }
+}
+export const searchProductFailure = (error) => {
+    return {
+        type: 'SEARCH_PRODUCT_FAILURE_CATEGOIES',
+        payload: error
+    }
+}
+
+export const searchProducts = (name) => {
+    return (dispatch) => {
+        dispatch(searchProductRequest())
+        axios.get(`http://localhost:3001/category/productsbycategories/${name}`)
+            .then(products => {
+                dispatch(searchProductSuccess(products.data))
+            })
+            .catch(error => {
+                dispatch(searchProductFailure(error))
+            })
+    }
 }
