@@ -3,7 +3,7 @@ import { useStyles } from './styleCategory'
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import { useDispatch } from 'react-redux'
-import { searchProducts } from '../../../store/product/product.actions'
+import { searchProducts } from '../../../store/category/category.actions'
 
 function CategoryComponent({title}) {
     const dispatch = useDispatch()
