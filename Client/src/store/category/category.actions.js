@@ -7,7 +7,7 @@ export const SEARCH_PRODUCT_SUCCESS_CATEGOIES = "SEARCH_PRODUCT_SUCCESS_CATEGOIE
 export const SEARCH_PRODUCT_FAILURE_CATEGOIES = "SEARCH_PRODUCT_FAILURE_CATEGOIES";
 
 export const getCategory = () => dispatch => {
-    let URL = "http://localhost:3001/products/category/get"
+    let URL = "http://localhost:3001/category/get"
     axios.get(URL)
         .then(res => {
             dispatch({ type: 'GET_CATEGORY', payload: res.data })
