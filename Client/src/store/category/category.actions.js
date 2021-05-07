@@ -2,9 +2,9 @@ import axios from 'axios'
 
 export const GET_CATEGORY = "GET_CATEGORY";
 export const POST_ADD_CATEGORY = 'POST_ADD_CATEGORY'
-export const SEARCH_PRODUCT_REQUEST_CATEGOIES = "SEARCH_PRODUCT_REQUEST_CATEGOIES";
-export const SEARCH_PRODUCT_SUCCESS_CATEGOIES = "SEARCH_PRODUCT_SUCCESS_CATEGOIES";
-export const SEARCH_PRODUCT_FAILURE_CATEGOIES = "SEARCH_PRODUCT_FAILURE_CATEGOIES";
+export const SEARCH_PRODUCT_REQUEST_CATEGORIES = "SEARCH_PRODUCT_REQUEST_CATEGORIES";
+export const SEARCH_PRODUCT_SUCCESS_CATEGORIES = "SEARCH_PRODUCT_SUCCESS_CATEGORIES";
+export const SEARCH_PRODUCT_FAILURE_CATEGORIES = "SEARCH_PRODUCT_FAILURE_CATEGORIES";
 
 export const getCategory = () => dispatch => {
     let URL = "http://localhost:3001/category/get"
@@ -28,18 +28,18 @@ export const postAddCategory = (category) => dispatch => {
 
 export const searchProductRequest = () => {
     return {
-        type: 'SEARCH_PRODUCT_REQUEST_CATEGOIES',
+        type: 'SEARCH_PRODUCT_REQUEST_CATEGORIES',
     }
 }
 export const searchProductSuccess = (product) => {
     return {
-        type: 'SEARCH_PRODUCT_SUCCESS_CATEGOIES',
+        type: 'SEARCH_PRODUCT_SUCCESS_CATEGORIES',
         payload: product
     }
 }
 export const searchProductFailure = (error) => {
     return {
-        type: 'SEARCH_PRODUCT_FAILURE_CATEGOIES',
+        type: 'SEARCH_PRODUCT_FAILURE_CATEGORIES',
         payload: error
     }
 }
@@ -50,6 +50,7 @@ export const searchProducts = (name) => {
         axios.get(`http://localhost:3001/category/productsbycategories/${name}`)
             .then(products => {
                 dispatch(searchProductSuccess(products.data))
+                console.log(products.data)
             })
             .catch(error => {
                 dispatch(searchProductFailure(error))
