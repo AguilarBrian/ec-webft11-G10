@@ -39,16 +39,18 @@ export default function Catalog() {
             {(searchResults=='') ? (
                 <Grid container spacing={2} className={classes.container}>
                     {(!products) ? productsAux.map(food => {
-                        return <Grid item xs={12} sm={4}>
+                        return <Grid item xs={12} sm={4} md={3}>
                             <ProductCard
+                                id={food.id}
                                 image={food.image}
                                 name={food.name}
                                 description={food.description}
                                 price={food.price}
                             /> </Grid>
                     }) : (products.map(food => {
-                        return <Grid item xs={12} sm={4}>
+                        return <Grid item xs={12} sm={4} md={3}>
                             <ProductCard
+                                id={food.id}
                                 image={food.image}
                                 name={food.name}
                                 description={food.description}
@@ -60,8 +62,9 @@ export default function Catalog() {
             ) : (
                 <Grid container spacing={2} className={classes.container}>
                     {searchResults ? searchResults.map(food => {
-                        return <Grid item xs={12} sm={4}>
+                        return <Grid item xs={12} sm={4} md={3}>
                             <ProductCard
+                                id={food.id}
                                 image={food.image}
                                 name={food.name}
                                 description={food.description}

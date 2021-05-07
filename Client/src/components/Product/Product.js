@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom'
 import { Grid, Typography, Divider, Button, Box } from '@material-ui/core/';
 import { useStyles } from './styles'
-
+import AppBar from '../appBar/AppBar'
 
 import defaultImg from './default.png'
 import { getOneProduct } from '../../store/product/product.actions';
@@ -30,9 +30,11 @@ export default function Product() {
   const {img, name, description, price, stock} = product
 
   return (
+      <>
+    <AppBar />
     <Grid container spacing={1} className={classes.container} >
         <Grid item xs={12} sm={6}>
-            <img src={defaultImg} alt='Food' className={classes.media} />
+            <img src={!img && img.length > 10 ? img : defaultImg } alt='Food' className={classes.media} />
         </Grid>
         <Grid item xs={12} sm={6}>
             <Grid container direction='column' className={classes.info}>
@@ -47,5 +49,6 @@ export default function Product() {
             </Grid>
         </Grid>
     </Grid>
+    </>
   );
 }
