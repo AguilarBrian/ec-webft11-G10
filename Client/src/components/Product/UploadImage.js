@@ -2,12 +2,15 @@ import React, { useState } from "react";
 //import { render } from "react-dom";
 import { storage } from "../../firebase";
 import css from './upload.module.css';
+import { setImgUrl } from '../../store/product/product.actions';
 import { Button } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux'
+
 const UploadImage = () => {
-    const [image, setImage] = useState(null);
+    const [image, setImage] = useState(null);//local image
     const [url, setUrl] = useState(null);
     const [progress, setProgress] = useState(0);
-
+const dispatch = useDispatch()
     const handleChange = e => {
         if (e.target.files[0]) {
             setImage(e.target.files[0]);
@@ -36,6 +39,7 @@ const UploadImage = () => {
                         .getDownloadURL()
                         .then(url => {
                             setUrl(url);
+                            dispatch(setImgUrl(url))
                         });
                 }
 
@@ -75,10 +79,10 @@ const UploadImage = () => {
                 )
                 
             }
-            <p>
+            {/* <p>
             <img src={url} alt="" width="100" ></img>
 
-            </p>
+            </p> */}
             
         </>
     );
