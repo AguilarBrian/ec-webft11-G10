@@ -1,6 +1,6 @@
 import React from 'react';
-import AppBar from '../../components/AppBar/AppBar'
-import AddProduct from '../../components/Product/AddProduct'
+import AppBar from '../../components/appBar/AppBar'
+import AddProduct from '../../components/product/AddProduct'
 
 function PageAddProduct(props) {
     return (

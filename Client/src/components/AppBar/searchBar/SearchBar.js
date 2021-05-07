@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputBase from '@material-ui/core/InputBase';
 import { useStyles } from '../styles'
 import { useDispatch } from 'react-redux'
-import { searchProducts } from '../../../store/product/product.actions';
+import { searchProducts,getProducts } from '../../../store/product/product.actions';
 export const SearchBar = () => {
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getProducts())
+    }, []); 
 
     const classes = useStyles();
     const [title, setTitle] = useState("")

@@ -2,8 +2,8 @@ import React from 'react';
 import { Route } from "react-router-dom";
 import { userContext } from './components/userContext';
 import { Home } from './pages/Home';
-import PageAddProduct from './pages/AddProduct/PageAddProduct'
-import PageAddCategory from './pages/AddCategory/PageAddCategory'
+import PageAddProduct from './pages/addProduct/PageAddProduct'
+import PageAddCategory from './pages/addCategory/PageAddCategory'
 import LandingPage from './pages/landingPage/LandingPage'
 import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
 //import  UploadImage  from './components/UploadImage';
