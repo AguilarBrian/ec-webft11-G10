@@ -58,9 +58,17 @@ function AddProduct() {
   const onSubmit = async values => {
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await sleep(300);
-    let productData = { ...values, productImg }
-    window.alert(JSON.stringify(productData, 0, 2));
-    dispatch(postProducts(JSON.stringify(productData, 0, 2)))
+
+    console.log(values)
+    const{productName,description,price,stock,category}=values
+    let priceInt= parseInt(price)
+    let stockInt= parseInt(stock)
+    
+    let productData={productName,description,productImg, priceInt,stockInt,category}    
+    console.log(productData)
+     window.alert(JSON.stringify(productData, 0, 2));
+     dispatch(postProducts(productData))    
+
   };
   return (
     <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>

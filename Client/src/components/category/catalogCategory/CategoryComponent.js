@@ -8,7 +8,6 @@ function CategoryComponent({ title }) {
     const dispatch = useDispatch()
 
     const sendCategorySearch = (title) => {
-        console.log(title)
         dispatch(searchProducts(title))
     }
 
