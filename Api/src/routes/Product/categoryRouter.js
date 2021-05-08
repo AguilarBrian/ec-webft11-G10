@@ -41,7 +41,7 @@ server.get("/productsbycategories/:categoryName", (req, res, next) => {
 server.post('/', (req, res) => {
     //crear categoría
     const { name, description } = req.body;
-    if (!name) return res.send('no se puede agregar la categoría porque falta el "name"')
+    if (!name) return res.error()
     Category.create({
         name,
         description

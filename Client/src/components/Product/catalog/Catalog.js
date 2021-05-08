@@ -11,7 +11,7 @@ export default function Catalog() {
 
     return (
         <div>
-            ((<Grid container spacing={2} className={classes.container}>
+            <Grid container spacing={2} className={classes.container}>
                 {(products.length == 0) ? (
                     <div>SPINNER</div>
                 ) : ((searchResults.length == 0) ?
@@ -25,7 +25,7 @@ export default function Catalog() {
                             /> </Grid>
                     }))
                 )}
-            </Grid>))
+            </Grid>
         </div>
     );
 }
