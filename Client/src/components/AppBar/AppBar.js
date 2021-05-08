@@ -99,16 +99,16 @@ export default function PersistentDrawerLeft() {
                 </div>
                 <Divider />
                 <List>
+                <ListItem button to="/adminProduct" component={Link}>
+                        <ListItemText primary="Admin Productos"/>
+                    </ListItem>
                     <ListItem button to="/CreateProduct" component={Link}>
-                        <ListItemIcon><InboxIcon /></ListItemIcon>
                         <ListItemText primary="Crear Productos"/>
                     </ListItem>
                     <ListItem button to="/adminCategories" component={Link}>
-                        <ListItemIcon><InboxIcon /></ListItemIcon>
                         <ListItemText primary="Administrar Categorias" />
                     </ListItem>
                     <ListItem button to="/OrdersView" component={Link}>
-                        <ListItemIcon><InboxIcon /></ListItemIcon>
                         <ListItemText primary="Ver Ordenes" />
                     </ListItem>
                 </List>

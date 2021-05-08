@@ -1,12 +1,17 @@
-POST http://localhost:3001/products
-Content-Type: application/json
 
-{
-    "name":"asdf",
-    "description":"asdfasdf",
-    "price":21,
-    "stock":21,
-    "category":"postre",
-}
 
-GET http://localhost:3001/category/productsbycategories/pizza
+DELETE http://localhost:3001/products/4
+
+
+
+
+# POST http://localhost:3001/products
+# Content-Type: application/json
+
+# {
+#     "name":"asdf",
+#     "description":"asdfasdf",
+#     "price":21,
+#     "stock":21,
+#     "category":"postre",
+# }

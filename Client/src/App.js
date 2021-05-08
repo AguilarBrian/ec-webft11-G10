@@ -7,7 +7,8 @@ import PageAdminCategory from './pages/adminCategory/PageAdminCategory'
 import LandingPage from './pages/landingPage/LandingPage'
 import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
 import Product from './components/product/Product'
-//import  UploadImage  from './components/UploadImage';
+import { AdminProduct } from './components/admin/AdminProduct';
+
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <userContext.Provider value={{}}>
         <Route exact path='/' component={LandingPage} />
         <Route exact path='/home' component={Home} />
+        <Route  path='/adminProduct' component={AdminProduct} />
         <Route path='/createProduct' component={PageAddProduct} />
         <Route path='/adminCategories' component={PageAdminCategory} />
         <Route path='/ordersView' component={PageCheckoutOrders} />

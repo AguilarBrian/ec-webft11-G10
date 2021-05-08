@@ -9,6 +9,24 @@ export const SET_PRODUCT_IMG = "SET_PRODUCT_IMG";
 export const SEARCH_PRODUCT_REQUEST = "SEARCH_PRODUCT_REQUEST";
 export const SEARCH_PRODUCT_SUCCESS = "SEARCH_PRODUCT_SUCCESS";
 export const SEARCH_PRODUCT_FAILURE = "SEARCH_PRODUCT_FAILURE";
+export const DELETE_PRODUCT_BY_ID="DELETE_PRODUCT_BY_ID";
+//DELETE PRODUCT BY ID
+export const deleteProductById = (id) => {
+
+    return (dispatch) => {
+        axios.delete(`${serverUrl}/products/${id}`)
+            .then(products => {
+                dispatch (getProducts())
+                dispatch({
+                    type: DELETE_PRODUCT_BY_ID
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+}
+
 
 // PARA QUE TRAIGA PRODUCTOS POR NOMBRE
 export const searchProducts = (name) => {
