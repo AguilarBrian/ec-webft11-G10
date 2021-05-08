@@ -7,6 +7,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Badge from '@material-ui/core/Badge';
 import List from '@material-ui/core/List';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Button } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import Divider from '@material-ui/core/Divider';
@@ -23,6 +24,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { useStyles } from './styles'
 import { Link } from 'react-router-dom';
 import { SearchBar } from './searchBar/SearchBar';
+
 export default function PersistentDrawerLeft() {
     const classes = useStyles();
     const theme = useTheme();
@@ -66,9 +68,16 @@ export default function PersistentDrawerLeft() {
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="secondary">
+                        <IconButton aria-label="" color="inherit">
+                            <Badge badgeContent={5} color="secondary">
                                 <ShoppingCartIcon />
+                            </Badge>
+                        </IconButton>
+                    </div>
+                    <div className={classes.sectionDesktop}>
+                        <IconButton color="inherit">
+                            <Badge color="secondary">
+                                <AccountCircleIcon />
                             </Badge>
                         </IconButton>
                     </div>
