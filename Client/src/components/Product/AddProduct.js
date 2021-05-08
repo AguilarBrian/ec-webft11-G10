@@ -1,13 +1,13 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField, Select } from 'final-form-material-ui';
 import UploadImage from './UploadImage';
-import { Paper, Grid, Button, CssBaseline, MenuItem,Typography } from '@material-ui/core';
+import { Paper, Grid, Button, CssBaseline, MenuItem, Typography } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { useDispatch, useSelector } from 'react-redux'
 import { postProducts } from '../../store/product/product.actions';
-import {getCategory}  from '../../store/category/category.actions'
+import { getCategory } from '../../store/category/category.actions'
 
 const validate = values => {
   const errors = {};
@@ -36,31 +36,31 @@ function AddProduct() {
   let productImg = useSelector(state => state.productReducer.productImg)
 
   const checkCategory = (categories) => {
-    if(categories&&categories[0]){
-        let categoryList=[]
-        for (let i in categories){                
-            if(categoryList.find(e=>e==categories[i].name)){
-                continue
-            }else{
-                categoryList.push(categories[i].name)
-            }
-        }   
-        return categoryList
+    if (categories && categories[0]) {
+      let categoryList = []
+      for (let i in categories) {
+        if (categoryList.find(e => e === categories[i].name)) {
+          continue
+        } else {
+          categoryList.push(categories[i].name)
+        }
+      }
+      return categoryList
     }
   }
 
-  let categoryList=checkCategory(categories)
+  let categoryList = checkCategory(categories)
 
   useEffect(() => {
-      dispatch(getCategory())
-  }, []);  
+    dispatch(getCategory())
+  }, [dispatch]);
 
   const onSubmit = async values => {
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await sleep(300);
-    let productData={...values, productImg}    
+    let productData = { ...values, productImg }
     window.alert(JSON.stringify(productData, 0, 2));
-    dispatch(postProducts(JSON.stringify(productData, 0, 2)))    
+    dispatch(postProducts(JSON.stringify(productData, 0, 2)))
   };
   return (
     <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
@@ -107,14 +107,15 @@ function AddProduct() {
                     label="Selecciona la categoria"
                     formControlProps={{ fullWidth: true }}
                   >
-                    {(!categoryList)?
-                    (<Typography >No se encontraron categorias</Typography>)
-                    :
-                    (categoryList.map(category=>{
-                      return (
-                        <MenuItem value={category}>{category}</MenuItem>
-                      )})
-                    )}
+                    {(!categoryList) ?
+                      (<Typography >No se encontraron categorias</Typography>)
+                      :
+                      (categoryList.map(category => {
+                        return (
+                          <MenuItem value={category}>{category}</MenuItem>
+                        )
+                      })
+                      )}
                   </Field>
                 </Grid>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>

@@ -35,7 +35,7 @@ export default function Catalog() {
 
     return (
         <div>
-            {(searchResults=='') ? (
+            {(searchResults==='') ? (
                 <Grid container spacing={2} className={classes.container}>
                     {(!products) ? productsAux.map(food => {
                         return <Grid item xs={12} sm={4} md={3}>

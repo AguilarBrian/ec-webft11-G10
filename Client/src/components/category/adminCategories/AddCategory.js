@@ -3,7 +3,7 @@ import { Form, Field } from 'react-final-form';
 import { TextField } from 'final-form-material-ui';
 import { Paper, Grid, Button, CssBaseline, Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux'
-import {postAddCategory} from '../../store/category/category.actions'
+import {postAddCategory} from '../../../store/category/category.actions'
 import CheckIcon from '@material-ui/icons/Check';
 
 const validate = values => {
@@ -64,7 +64,7 @@ function AddCategory() {
                     name="description"
                     component={TextField}
                     multiline
-                    label="description"
+                    label="Descripción"
                   />
                 </Grid>
 
@@ -76,12 +76,12 @@ function AddCategory() {
                     type="submit"
                     disabled={submitting}
                   >
-                    Submit
+                    Agregar
                   </Button>
                   {
-                    (status && status.data)?(status.data=='no se puede agregar la categoría porque falta el "name"')?(
+                    (status && status.data)?(status.data==='no se puede agregar la categoría porque falta el "name"')?(
                       <Typography>no se puede agregar la categoría porque falta completar datos</Typography>
-                    ):((status=='')?(<Typography></Typography>):(<CheckIcon />)):(<Typography></Typography>)
+                    ):((status==='')?(<Typography></Typography>):(<CheckIcon />)):(<Typography></Typography>)
                   }
                 </Grid>
               </Grid>

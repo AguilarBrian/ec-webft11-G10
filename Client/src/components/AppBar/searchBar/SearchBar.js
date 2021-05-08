@@ -2,16 +2,12 @@ import React, { useState, useEffect } from "react";
 import InputBase from '@material-ui/core/InputBase';
 import { useStyles } from '../styles'
 import { useDispatch } from 'react-redux'
-import { searchProducts,getProducts } from '../../../store/product/product.actions';
+import { searchProducts, getProducts } from '../../../store/product/product.actions';
 
-export const SearchBar = () => {
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(getProducts())
-    }, []); 
-
+export const SearchBar = () => {    
+    
     const classes = useStyles();
+    const dispatch = useDispatch()
     const [title, setTitle] = useState("")
     const handleChange = (event) => {
         setTitle(event.target.value);
@@ -21,22 +17,14 @@ export const SearchBar = () => {
         event.preventDefault();
         dispatch(searchProducts(title))
     }
+    useEffect(() => {
+        dispatch(getProducts())
+    });
 
     return (
         <>
             <form onSubmit={(e) => handleSubmit(e)}>
-
-                <InputBase
-                    placeholder="Search…"
-                    classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                    }}
-                    inputProps={{ 'aria-label': 'search' }}
-                    type="text"
-                    id="title"
-                    value={title}
-                    onChange={(e) => handleChange(e)}
+                <InputBase placeholder="Search…" classes={{ root: classes.inputRoot, input: classes.inputInput, }} inputProps={{ 'aria-label': 'search' }} type="text" id="title" value={title} onChange={(e) => handleChange(e)}
                 />
             </form>
         </>
