@@ -26,11 +26,11 @@ categories.forEach((category, i) => {
       })
   }
 })
-// TRAE TODOS LOS PRODUCTOS |
+// TRAE TODOS LOS PRODUCTOS QUE INCLUYAN LAS LETRAS...|
 //---------------------------
-server.get("/search/:query", (req, res, next) => {
-  let { query } = req.params;
-  return getProductsByLetterIncludeInTheName(query).then((product) => {
+server.get("/search/:foodName", (req, res, next) => {
+  let { foodName } = req.params;
+  return getProductsByLetterIncludeInTheName(foodName).then((product) => {
     res.status(200).json(product);
   }).catch((error) => {
     res.status(400).json(error);

@@ -11,7 +11,7 @@ module.exports = {
           [Op.iLike]: '%' + inputValue + '%'
         }
       },
-     // include: [{ model: Categories, as: "categories" }],
+      include: [{ model: Category, as: "categories" }],
     });
   },
   searchProductsByCategoryName(categoryName) {

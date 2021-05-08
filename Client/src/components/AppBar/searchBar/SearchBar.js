@@ -14,8 +14,12 @@ export const SearchBar = () => {
     const classes = useStyles();
     const [title, setTitle] = useState("")
     const handleChange = (event) => {
+        event.preventDefault();
         setTitle(event.target.value);
-        dispatch(searchProducts(title))
+        if(title){
+            dispatch(searchProducts(title))
+        }
+
     }
     const handleSubmit = (event) => {
         event.preventDefault();
