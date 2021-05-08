@@ -1,25 +1,15 @@
 import React, { useEffect } from 'react';
-import Grid from '@material-ui/core/Grid';
+import 'swiper/swiper-bundle.min.css';
 import CategoryComponent from './CategoryComponent'
 import { useDispatch, useSelector } from 'react-redux'
-import {getCategory}  from '../../../store/category/category.actions'
+import { getCategory } from '../../../store/category/category.actions'
 import { useStyles } from './styleCategory'
-import GridList from '@material-ui/core/GridList';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Pagination, Navigation, EffectCoverflow, Autoplay } from 'swiper';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
-const category = [
-    {
-        title: 'Pizzas',
-        description: 'Comida para llevar y comer facil',
-    },
-    {
-        title: 'Pastas',
-        description: 'Comida al plato',
-    },
-    {
-        title: 'Postres',
-        description: 'Comidas dulces',
-    },
-]
+
+SwiperCore.use([Pagination, Navigation, EffectCoverflow, Autoplay]);
 
 export default function CatalogComponent() {
 
@@ -27,44 +17,48 @@ export default function CatalogComponent() {
     const categories = useSelector(state => state.categoryReducer.category)
 
     const checkCategory = (categories) => {
-        if(categories&&categories[0]){
-            let categoryList=[]
-            for (let i in categories){                
-                if(categoryList.find(e=>e===categories[i].name)){
+        if (categories && categories[0]) {
+            let categoryList = []
+            for (let i in categories) {
+                if (categoryList.find(e => e === categories[i].name)) {
                     continue
-                }else{
+                } else {
                     categoryList.push(categories[i].name)
                 }
-            }   
+            }
             return categoryList
         }
     }
 
-    let categoryList=checkCategory(categories)
-
+    let categoryList = checkCategory(categories)
     useEffect(() => {
         dispatch(getCategory())
-    }, [dispatch]);  
-    
+    }, [dispatch]);
+
     const classes = useStyles();
-    
+
     return (
         <div className={classes.root}>
-            {(!categories || !categories[0])?(
-            <GridList className={classes.gridList} cols={2.5}>                
-                {category.map(category => {
-                        return <CategoryComponent title={category.title} />
-                    })
-                }                
-            </GridList>
-            ):(
-            <GridList className={classes.gridList} cols={2.5}>                
-                {categories && categories[0] &&
-                    categoryList.map(categoryList => {
-                        return <CategoryComponent title={categoryList} />
-                    })                   
-                }                
-            </GridList>
+
+            {(!categories || !categories[0]) ? (
+                <div className={classes.loader}>
+                    <LinearProgress />
+                    <LinearProgress color="primary" />
+                </div>
+            ) : (
+                <Swiper className={classes.root}
+                    centeredSlides
+                    loop
+                    autoplay={{ delay: 5000 }}
+                    slidesPerView={9}
+                >
+                    {(categories) && (categories[0]) &&
+                        categoryList.map(categoryList => {
+                            return <SwiperSlide className={classes.root}>
+                                <CategoryComponent title={categoryList} />
+                            </SwiperSlide>
+                        })}
+                </Swiper>
             )}
         </div>
     );
