@@ -21,11 +21,11 @@ export default function Product() {
     
     useEffect(() => {
         dispatch(getOneProduct(id))
-    })
+    },[dispatch])
     const oneProduct = useSelector(state => state.productReducer.oneProduct)
     useEffect(() => {
         setProduct(oneProduct)
-    },[oneProduct])
+    },[setProduct])
     const { img, name, description, price, stock } = product
 
     return (

@@ -19,7 +19,7 @@ export const SearchBar = () => {
     }
     useEffect(() => {
         dispatch(getProducts())
-    });
+    },[dispatch]);
 
     return (
         <>
