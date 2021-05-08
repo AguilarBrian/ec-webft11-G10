@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import { searchProducts } from '../../../store/category/category.actions'
 
-
 function CategoryComponent({ title }) {
     const dispatch = useDispatch()
 

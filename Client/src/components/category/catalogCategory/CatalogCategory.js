@@ -8,7 +8,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Navigation, EffectCoverflow, Autoplay } from 'swiper';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-
 SwiperCore.use([Pagination, Navigation, EffectCoverflow, Autoplay]);
 
 export default function CatalogComponent() {

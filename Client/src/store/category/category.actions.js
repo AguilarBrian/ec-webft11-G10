@@ -49,7 +49,8 @@ export const searchProducts = (name) => {
         dispatch(searchProductRequest())
         axios.get(`http://localhost:3001/category/productsbycategories/${name}`)
             .then(products => {
-                dispatch(searchProductSuccess(products.data))
+                dispatch(searchProductSuccess(products.data[0].products))
+                console.log(products.data)
             })
             .catch(error => {
                 dispatch(searchProductFailure(error))
