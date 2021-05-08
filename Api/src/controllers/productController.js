@@ -15,7 +15,6 @@ module.exports = {
     });
   },
   searchProductsByCategoryName(categoryName) {
-    console.log(categoryName)
     return Category.findAll({
       where: {
         name: {
