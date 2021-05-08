@@ -4,6 +4,7 @@ import CategoryComponent from './CategoryComponent'
 import { useDispatch, useSelector } from 'react-redux'
 import {getCategory}  from '../../../store/category/category.actions'
 import { useStyles } from './styleCategory'
+import GridList from '@material-ui/core/GridList';
 
 const category = [
     {
@@ -29,7 +30,7 @@ export default function CatalogComponent() {
         if(categories&&categories[0]){
             let categoryList=[]
             for (let i in categories){                
-                if(categoryList.find(e=>e==categories[i].name)){
+                if(categoryList.find(e=>e===categories[i].name)){
                     continue
                 }else{
                     categoryList.push(categories[i].name)
@@ -43,31 +44,27 @@ export default function CatalogComponent() {
 
     useEffect(() => {
         dispatch(getCategory())
-    }, []);  
+    }, [dispatch]);  
     
     const classes = useStyles();
     
     return (
-        <div >
+        <div className={classes.root}>
             {(!categories || !categories[0])?(
-            <Grid className={classes.container} container justify="center">                
+            <GridList className={classes.gridList} cols={2.5}>                
                 {category.map(category => {
-                        return <Grid item>
-                            <CategoryComponent title={category.title} />
-                        </Grid>
+                        return <CategoryComponent title={category.title} />
                     })
                 }                
-            </Grid>
+            </GridList>
             ):(
-            <Grid className={classes.container} container justify="center">                
+            <GridList className={classes.gridList} cols={2.5}>                
                 {categories && categories[0] &&
                     categoryList.map(categoryList => {
-                        return <Grid item>
-                            <CategoryComponent title={categoryList} />
-                        </Grid>
+                        return <CategoryComponent title={categoryList} />
                     })                   
                 }                
-            </Grid>
+            </GridList>
             )}
         </div>
     );

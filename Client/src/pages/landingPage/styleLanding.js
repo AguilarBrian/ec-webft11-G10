@@ -5,6 +5,8 @@ export const useStyles = makeStyles((theme) => ({
         minHeight: '100vh',
         backgroundImage: `url(${process.env.PUBLIC_URL+'/C-.jpg'})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        display: "grid",
+        justifyContent: "center"
     },
 }))

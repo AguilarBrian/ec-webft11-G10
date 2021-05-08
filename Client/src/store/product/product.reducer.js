@@ -53,12 +53,6 @@ const productReducer = (state = initialState, action) => {
         Error: 'error 404',
         Loading: false
       }
-    case SET_PRODUCT_IMG:
-      return {
-        ...state,
-        productImg: action.payload
-
-      }
     case POST_PRODUCTS_SUCCESS:
       return {
         ...state,

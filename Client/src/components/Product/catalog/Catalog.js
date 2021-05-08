@@ -56,7 +56,7 @@ export default function Catalog() {
                                 price={food.price}
                             /> </Grid>
                     }))}
-                    {searchResults && searchResults.length === 0 && (<h1>no se hallaron resultados</h1>)}
+                    {searchResults && searchResults.length == 0 && (<h1>no se hallaron resultados</h1>)}
                 </Grid>
             ) : (
                 <Grid container spacing={2} className={classes.container}>
@@ -70,7 +70,7 @@ export default function Catalog() {
                                 price={food.price}
                             /> </Grid>
                     }) : ("no hay resutl")}
-                    {searchResults && searchResults.length === 0 && (<h1>no se hallaron resultados</h1>)}
+                    {searchResults && searchResults.length == 0 && (<h1>no se hallaron resultados</h1>)}
                 </Grid>
             )}
         </div>

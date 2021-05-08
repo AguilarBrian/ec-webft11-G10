@@ -8,7 +8,7 @@ function PageLogIn(props) {
     return (
         <div className={classes.root}>
             <CssBaseline/>
-            <LogIn/>
+            <LogIn className={classes.login}/>
         </div>
     );
 }

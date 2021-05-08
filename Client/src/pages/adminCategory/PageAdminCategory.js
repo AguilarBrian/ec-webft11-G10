@@ -1,12 +1,12 @@
 import React from 'react';
 import AppBar from '../../components/appBar/AppBar'
-import AddCategory from '../../components/category/AddCategory'
+import AdminCategories from '../../components/category/adminCategories/AdminCategories'
 
 function PageAddProduct(props) {
     return (
         <div>
             <AppBar/>
-            <AddCategory/>
+            <AdminCategories/>
         </div>
     );
 }

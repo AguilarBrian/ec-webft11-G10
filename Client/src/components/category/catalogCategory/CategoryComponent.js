@@ -1,21 +1,11 @@
 import React from 'react';
-import { useStyles } from './styleCategory'
+import { useStyles } from './styleButton'
 import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
 import { useDispatch } from 'react-redux'
 import { searchProducts } from '../../../store/category/category.actions'
 
-function CategoryComponent({title}) {
+function CategoryComponent({ title }) {
     const dispatch = useDispatch()
-    const [open, setOpen] = React.useState(false);
-
-    const handleTooltipClose = () => {
-        setOpen(false);
-    };
-
-    const handleTooltipOpen = () => {
-        setOpen(true);
-    };
 
     const sendCategorySearch = (title) => {
         dispatch(searchProducts(title))
@@ -23,11 +13,11 @@ function CategoryComponent({title}) {
 
     const classes = useStyles();
     return (
-        <div className={classes.root}>
-            <Tooltip disableFocusListener title="Categorias de producto">
-                <Button onClick={()=>sendCategorySearch(title)} >{!title ? 'otra categoria' : title}</Button>
-            </Tooltip>
-        </div>
+            <Button classes={{
+                root: classes.root, // class name, e.g. `classes-nesting-root-x`
+                label: classes.label, // class name, e.g. `classes-nesting-label-x`
+            }} disableFocusListener title={title} onClick={() => sendCategorySearch(title)} >{!title ? 'otra categoria' : title}
+            </Button>
     );
 }
 
