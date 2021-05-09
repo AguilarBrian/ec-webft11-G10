@@ -3,6 +3,7 @@ import { useSelector,useDispatch } from "react-redux";
 import MaterialTable from 'material-table'
 import { deleteProductById,getProducts } from '../../store/product/product.actions';
 import { useHistory } from "react-router-dom"
+import { Paper, Grid, Button, CssBaseline, MenuItem, Typography } from '@material-ui/core';
 export function AdminProduct() {
     const products = useSelector(state => state.productReducer.products)
     const dispatch = useDispatch()
@@ -16,6 +17,8 @@ export function AdminProduct() {
     }, [])
     return (
         <div style={{ maxWidth: "100%" }}>
+            <Paper>
+
             <MaterialTable
                 columns={[
                     { title: "ID", field: "id" },
@@ -31,20 +34,21 @@ export function AdminProduct() {
                         icon: 'edit',
                         tooltip: 'edita',
                         onClick: (event, rowData) => history.push ('/editProduct/'+ rowData.id)
-
+                        
                     },
                     {
                         icon: 'delete',
                         tooltip: 'delete',
                         onClick: (event, rowData) => {
-                    
+                            
                             dispatch(deleteProductById(rowData.id))
-                         
+                            
                         }
-
+                        
                     }
                 ]}
-            />
+                />
+                </Paper>
         </div>
     );
 }

@@ -67,7 +67,7 @@ Category.belongsToMany(Product, { through: 'Products_Categories' });
 
 
 
-sequelize.sync({  alter: true })
+sequelize.sync({  force: true })
   .then(() => {
     console.log(`Database & tables created!`)
   })
