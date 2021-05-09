@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import {useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -36,7 +36,7 @@ export default function PersistentDrawerLeft() {
 
     const handleDrawerClose = () => {
         setOpen(false);
-    };    
+    };
 
     return (
         <div className={classes.root}>
@@ -64,7 +64,7 @@ export default function PersistentDrawerLeft() {
                         <div className={classes.searchIcon}>
                             <SearchIcon />
                         </div>
-                        <SearchBar/>
+                        <SearchBar />
                     </div>
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
@@ -98,41 +98,22 @@ export default function PersistentDrawerLeft() {
                     </IconButton>
                 </div>
                 <Divider />
-                <List>
-                <ListItem button to="/adminProduct" component={Link}>
-                        <ListItemText primary="Admin Productos"/>
+                <List >
+                    <ListItem button to="/adminProduct" component={Link}>
+                        <ListItemText className={classes.barOptions} primary="Admin Productos" />
                     </ListItem>
                     <ListItem button to="/CreateProduct" component={Link}>
-                        <ListItemText primary="Crear Productos"/>
+                        <ListItemText className={classes.barOptions} primary="Crear Productos" />
                     </ListItem>
                     <ListItem button to="/adminCategories" component={Link}>
-                        <ListItemText primary="Administrar Categorias" />
+                        <ListItemText className={classes.barOptions} primary="Administrar Categorias" />
                     </ListItem>
                     <ListItem button to="/OrdersView" component={Link}>
-                        <ListItemText primary="Ver Ordenes" />
+                        <ListItemText className={classes.barOptions} primary="Ver Ordenes" />
                     </ListItem>
                 </List>
                 <Divider />
-                <List>
-                    <ListItem button>
-                        <ListItemIcon><InboxIcon /></ListItemIcon>
-                        <ListItemText primary="MisCompras" />
-                    </ListItem>
-                
-                    <ListItem button>
-                        <ListItemIcon><InboxIcon /></ListItemIcon>
-                        <ListItemText primary="Perfil" />
-                    </ListItem>
-                </List>
-                <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
+
             </Drawer>
             <main
                 className={clsx(classes.content, {

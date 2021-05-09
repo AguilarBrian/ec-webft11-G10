@@ -16,12 +16,13 @@ export default function Catalog() {
                     <div>SPINNER</div>
                 ) : ((searchResults.length == 0) ?
                     (products.map(food => {
+                        console.log(food)
                         return <Grid item xs={12} sm={4} md={3}>
-                            <ProductCard id={food.id} image={food.image} name={food.name} description={food.description} price={food.price}
+                            <ProductCard id={food.id} img={food.img} name={food.name} description={food.description} price={food.price}
                             /> </Grid>
                     })) : (searchResults.map(food => {
                         return <Grid item xs={12} sm={4} md={3}>
-                            <ProductCard id={food.id} image={food.image} name={food.name} description={food.description} price={food.price}
+                            <ProductCard id={food.id} img={food.img} name={food.name} description={food.description} price={food.price}
                             /> </Grid>
                     }))
                 )}
