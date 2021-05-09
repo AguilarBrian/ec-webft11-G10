@@ -7,6 +7,7 @@ export const POST_ADD_CATEGORY = 'POST_ADD_CATEGORY'
 export const SEARCH_PRODUCT_REQUEST_CATEGORIES = "SEARCH_PRODUCT_REQUEST_CATEGORIES";
 export const SEARCH_PRODUCT_SUCCESS_CATEGORIES = "SEARCH_PRODUCT_SUCCESS_CATEGORIES";
 export const SEARCH_PRODUCT_FAILURE_CATEGORIES = "SEARCH_PRODUCT_FAILURE_CATEGORIES";
+export const EDIT_CATEGORY_BY_ID = 'EDIT_CATEGORY_BY_ID'
 
 export const getCategory = () => dispatch => {
     let URL = "http://localhost:3001/category/get"
@@ -18,16 +19,35 @@ export const getCategory = () => dispatch => {
         })
 }
 
+export const putProduct = (id) => dispatch => {
+    const options = {method: 'PUT',url: `http://localhost:3001/category/${id}`,headers: {'Content-Type': 'application/json'}}
+    return axios.request(options).then(function (products) {
+        Swal.fire(
+            'Good job!',
+            'You updated the product succesfully!',
+            'success'
+        )
+        dispatch({
+            type: EDIT_CATEGORY_BY_ID
+        })
+    })
+    .catch(error => {
+        console.error(error)
+    })
+
+}
+
 export const putDeleteCategory = (id) => dispatch => {
     axios.delete(`http://localhost:3001/category/${id}`)
         .then(res => {
             dispatch({ type: DELETE_CATEGORY_BY_ID, payload: res })
             dispatch(getCategory())
-            Swal.fire( 'Good job!', 'You delete the product succesfully!', 'success')
+            Swal.fire('Good job!', 'You delete the product succesfully!', 'success')
         })
         .catch(error => {
             console.log(error)
-            Swal.fire({ icon: 'error', title: 'Oops...', text: 'Something went wrong!',
+            Swal.fire({
+                icon: 'error', title: 'Oops...', text: 'Something went wrong!',
             })
         })
 }
@@ -38,11 +58,12 @@ export const postAddCategory = (category) => dispatch => {
         .then(res => {
             dispatch({ type: 'POST_ADD_CATEGORY', payload: res })
             console.log(res)
-            Swal.fire('Good job!','You updated the product succesfully!','success'
+            Swal.fire('Good job!', 'You updated the product succesfully!', 'success'
             )
         }).catch(err => {
             dispatch({ type: 'POST_ADD_CATEGORY', payload: err })
-            Swal.fire({ icon: 'error', title: 'Oops...', text: 'Something went wrong!',
+            Swal.fire({
+                icon: 'error', title: 'Oops...', text: 'Something went wrong!',
             })
         })
 }

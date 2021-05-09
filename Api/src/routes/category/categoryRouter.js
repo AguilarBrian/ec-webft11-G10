@@ -1,4 +1,4 @@
-const { searchProductsByCategoryName } =require ('../../controllers/productController');
+const { searchProductsByCategoryName } = require('../../controllers/productController');
 const server = require('express').Router();
 const { Category } = require('../../db.js');
 var p = new Promise(resolve => resolve(true))
@@ -24,20 +24,18 @@ server.get('/get', (req, res) => {
         })
         .catch((error) => {
             res.status(400).json(error);
-          });
+        });
 });
 //TRAE LOS PRODUCTOS DE LA CATEGORIA
 
 server.get("/productsbycategories/:categoryName", (req, res, next) => {
     let { categoryName } = req.params;
     return searchProductsByCategoryName(categoryName).then((product) => {
-      res.status(200).json(product);
+        res.status(200).json(product);
     }).catch((error) => {
-      res.status(400).json(error);
+        res.status(400).json(error);
     });
-  });
-
-
+});
 // CREA UNA CATEGORIA |
 //---------------------
 server.post('/', (req, res) => {
@@ -51,7 +49,7 @@ server.post('/', (req, res) => {
         res.send(category)
     }).catch((error) => {
         res.status(400).json(error);
-      });
+    });
 })
 // MODIFICA UNA CATEGORIA |
 //-------------------------
@@ -70,12 +68,11 @@ server.put('/:id', (req, res) => {
         })
         .catch((error) => {
             res.status(400).json(error);
-          });
+        });
 })
 // ELIMINA UNA CATEGORIA |
 //------------------------
 server.delete('/:id', (req, res) => {
-
     const id = req.params.id;
     Category.destroy({
         where: { id }
@@ -86,7 +83,7 @@ server.delete('/:id', (req, res) => {
         })
         .catch((error) => {
             res.status(400).json(error);
-          });
+        });
 })
 
 module.exports = server;

@@ -45,7 +45,6 @@ function DeleteCategory() {
     const onSubmit = async values => {
         const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
         await sleep(300);
-        console.log(values.categoryId)
         dispatch(putDeleteCategory(values.categoryId))
         setStatusPost(statusPost)
     };
