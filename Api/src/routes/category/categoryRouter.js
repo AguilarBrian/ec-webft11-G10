@@ -3,7 +3,7 @@ const server = require('express').Router();
 const { Category } = require('../../db.js');
 var p = new Promise(resolve => resolve(true))
 
-// const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
+ const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
 
 categories.forEach((category) => (
     p = p.then(() => (
