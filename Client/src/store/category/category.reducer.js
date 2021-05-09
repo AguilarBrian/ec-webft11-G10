@@ -1,4 +1,4 @@
-import { GET_CATEGORY,POST_ADD_CATEGORY} from './category.actions';
+import { GET_CATEGORY,POST_ADD_CATEGORY, DELETE_CATEGORY_BY_ID} from './category.actions';
 
 const initialState = {
   category:'',
@@ -12,6 +12,10 @@ const categoryReducer = (state = initialState, action) => {
         category: action.payload
       };
     case POST_ADD_CATEGORY:
+      return {
+        postState: action.payload
+      };
+    case DELETE_CATEGORY_BY_ID:
       return {
         postState: action.payload
       };

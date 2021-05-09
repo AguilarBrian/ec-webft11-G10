@@ -23,18 +23,18 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state
       }
-    case SEARCH_PRODUCT_REQUEST || SEARCH_PRODUCT_REQUEST_CATEGORIES:
+    case SEARCH_PRODUCT_REQUEST:
       return {
         ...state,
         Loading: true
       }
-    case SEARCH_PRODUCT_SUCCESS || SEARCH_PRODUCT_SUCCESS_CATEGORIES:
+    case SEARCH_PRODUCT_SUCCESS:
       return {
         ...state,
         Loading: false,
         searchResults: action.payload
       }
-    case SEARCH_PRODUCT_FAILURE || SEARCH_PRODUCT_FAILURE_CATEGORIES:
+    case SEARCH_PRODUCT_FAILURE:
       return {
         ...state,
         Error: 'error 404',

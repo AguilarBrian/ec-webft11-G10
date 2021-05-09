@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
-import { TextField, Select } from 'final-form-material-ui';
+import { Select } from 'final-form-material-ui';
 import { Paper, Grid, MenuItem, Button, CssBaseline, Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux'
-import { postAddCategory } from '../../../store/category/category.actions'
+import { putDeleteCategory } from '../../../store/category/category.actions'
 import { getCategory } from '../../../store/category/category.actions'
 import CheckIcon from '@material-ui/icons/Check';
 
 const validate = values => {
     const errors = {};
-    if (!values.name) {
-        errors.name = 'Required';
-    }
-    if (!values.description) {
-        errors.description = 'Required';
+    if (!values.categoryId) {
+        errors.categoryId = 'Required';
     }
     return errors;
 };
@@ -32,7 +29,7 @@ function DeleteCategory() {
                 if (categoryList.find(e => e === categories[i].name)) {
                     continue
                 } else {
-                    categoryList.push(categories[i].name)
+                    categoryList.push(categories[i])
                 }
             }
             return categoryList
@@ -52,7 +49,7 @@ function DeleteCategory() {
     const onSubmit = async values => {
         const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
         await sleep(300);
-        //dispatch(postAddCategory(values))
+        dispatch(putDeleteCategory(values))
         setStatusPost(statusPost)
         console.log(status)
     };
@@ -60,7 +57,6 @@ function DeleteCategory() {
     return (
         <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
             <CssBaseline />
-
             <Form
                 onSubmit={onSubmit}
                 initialValues={{}}
@@ -72,7 +68,7 @@ function DeleteCategory() {
                                 <Grid item xs={12}>
                                     <Field
                                         fullWidth
-                                        name="category"
+                                        name="categoryId"
                                         component={Select}
                                         label="Selecciona la categoria"
                                         formControlProps={{ fullWidth: true }}
@@ -82,14 +78,14 @@ function DeleteCategory() {
                                             :
                                             (categoryList.map(category => {
                                                 return (
-                                                    <MenuItem value={category}>{category}</MenuItem>
+                                                    <MenuItem value={category.id}>{category.name}</MenuItem>
                                                 )
                                             })
                                             )}
                                     </Field>
                                 </Grid>
                                 <Grid item style={{ marginTop: 16 }}>
-                                    <Button onClick={() => deleteCategoryPost(values)} variant="contained" color="primary" type="submit" disabled={submitting}>
+                                    <Button onClick={() => deleteCategoryPost(values.categoryId)} variant="contained" color="primary" type="submit" disabled={submitting}>
                                         Eliminar
                                     </Button>
                                     {(status && status.data) ? (status.data === 'no se puede agregar la categoría porque falta el "name"') ? (

@@ -43,15 +43,13 @@ export const putProduct = (product,idProduct) => {
     }
 }
 
-
-
 //DELETE PRODUCT BY ID
 export const deleteProductById = (id) => {
 
     return (dispatch) => {
         axios.delete(`${serverUrl}/products/${id}`)
             .then(products => {
-                dispatch(getProducts())
+                getProducts()
                 Swal.fire(
                     'Good job!',
                     'You delete the product succesfully!',
@@ -66,7 +64,6 @@ export const deleteProductById = (id) => {
             })
     }
 }
-
 
 // PARA QUE TRAIGA PRODUCTOS POR NOMBRE
 export const searchProducts = (name) => {
