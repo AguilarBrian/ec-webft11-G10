@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
     },
     appBar: {
-        background: 'linear-gradient(45deg, #0058ff4f 50%, #2326299c 250%)',
+        // background: 'linear-gradient(45deg, #0058ff4f 50%, #2326299c 250%)',
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
@@ -37,13 +37,18 @@ export const useStyles = makeStyles((theme) => ({
     drawerPaper: {
         width: drawerWidth,
     },
+    barOptions:{
+        textAlign: 'center',
+
+    },
     drawerHeader: {
         display: 'flex',
         alignItems: 'center',
-        padding: theme.spacing(0, 1),
+        padding: theme.spacing(0,2),
         // necessary for content to be below app bar
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end',
+        backgroundColor:"#e41515"
     },
     content: {
         flexGrow: 1,

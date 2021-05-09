@@ -3,16 +3,16 @@ const server = require('express').Router();
 const { Category } = require('../../db.js');
 var p = new Promise(resolve => resolve(true))
 
-const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
+// const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
 
-categories.forEach(category => (
-    p = p.then(() => (
-        Category.create({
-            name: category,
-            description: "Platos de " + category
-        })
-    ))
-))
+// categories.forEach(category => (
+//     p = p.then(() => (
+//         Category.create({
+//             name: category,
+//             description: "Platos de " + category
+//         })
+//     ))
+// ))
 // TRAE TODAS LAS CATEGORIAS |
 //----------------------------
 server.get('/get', (req, res) => {
@@ -41,7 +41,7 @@ server.get("/productsbycategories/:categoryName", (req, res, next) => {
 server.post('/', (req, res) => {
     //crear categoría
     const { name, description } = req.body;
-    if (!name) return res.send('no se puede agregar la categoría porque falta el "name"')
+    if (!name) return res.error()
     Category.create({
         name,
         description

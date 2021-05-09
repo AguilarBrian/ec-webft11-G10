@@ -1,7 +1,7 @@
 import React from 'react';
 import { useStyles } from './styleButton'
-import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux'
+import Button from '@material-ui/core/Button';
 import { searchProducts } from '../../../store/category/category.actions'
 
 function CategoryComponent({ title }) {
@@ -13,11 +13,13 @@ function CategoryComponent({ title }) {
 
     const classes = useStyles();
     return (
-            <Button classes={{
+        <div className={classes.container}>
+            <Button className={classes.button} classes={{
                 root: classes.root, // class name, e.g. `classes-nesting-root-x`
                 label: classes.label, // class name, e.g. `classes-nesting-label-x`
-            }} disableFocusListener title={title} onClick={() => sendCategorySearch(title)} >{!title ? 'otra categoria' : title}
+            }} title={title} onClick={() => sendCategorySearch(title)} >{!title ? 'otra categoria' : title}
             </Button>
+        </div>
     );
 }
 
