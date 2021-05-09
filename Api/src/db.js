@@ -65,6 +65,13 @@ Category.belongsToMany(Product, { through: 'Products_Categories' });
 // User.hasMany(Order, { foreignKey: "userId" });
 // Order.belongsTo(User);
 
+
+
+sequelize.sync({  alter: true })
+  .then(() => {
+    console.log(`Database & tables created!`)
+  })
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');
