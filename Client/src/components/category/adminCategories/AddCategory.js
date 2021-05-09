@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField } from 'final-form-material-ui';
 import { Paper, Grid, Button, CssBaseline, Typography } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import {postAddCategory} from '../../../store/category/category.actions'
-import CheckIcon from '@material-ui/icons/Check';
 
 const validate = values => {
   const errors = {};
@@ -18,11 +17,9 @@ const validate = values => {
 };
 
 function AddCategory() {
-  const dispatch = useDispatch()
-  const statusPost = useSelector(state => state.categoryReducer.postState)
-  
-  const [status, setStatusPost]=useState('')
 
+  const dispatch = useDispatch()
+  
   const addCategoryPost = (values) => {
     onSubmit(values)  
   }
@@ -31,14 +28,14 @@ function AddCategory() {
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await sleep(300);
     dispatch(postAddCategory(values))
-    setStatusPost(statusPost)
-    console.log(status)
+    values.name = ''
+    values.description = ''
   };
 
   return (
     <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
       <CssBaseline />
-
+      <h4>Agregar categoria</h4>
       <Form
         onSubmit={onSubmit}
         initialValues={{}}
@@ -78,11 +75,6 @@ function AddCategory() {
                   >
                     Agregar
                   </Button>
-                  {
-                    (status && status.data)?(status.data==='no se puede agregar la categoría porque falta el "name"')?(
-                      <Typography>no se puede agregar la categoría porque falta completar datos</Typography>
-                    ):((status==='')?(<Typography></Typography>):(<CheckIcon />)):(<Typography></Typography>)
-                  }
                 </Grid>
               </Grid>
             </Paper>
