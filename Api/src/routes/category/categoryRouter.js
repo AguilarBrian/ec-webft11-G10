@@ -5,14 +5,19 @@ var p = new Promise(resolve => resolve(true))
 
 const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
 
-categories.forEach(category => (
+categories.forEach((category) => (
     p = p.then(() => (
-        Category.create({
-            name: category,
-            description: "Platos de " + category
-        })
+        Category.findOrCreate({
+            where: { name: category },
+            defaults: {
+                name: category,
+                description: "Platos de " + category
+            }
+          }).catch((err)=>console.log(err))        
     ))
 ))
+
+
 // TRAE TODAS LAS CATEGORIAS |
 //----------------------------
 server.get('/get', (req, res) => {
