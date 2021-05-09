@@ -9,11 +9,14 @@ import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
 import Product from './components/product/Product'
 import { AdminProduct } from './components/admin/AdminProduct';
 import EditProduct from './pages/adminProduct/EditProduct';
+import {ThemeProvider} from '@material-ui/core/styles'
+import theme from './theme'
 
 function App() {
   return (
     <React.Fragment>
       <userContext.Provider value={{}}>
+      <ThemeProvider theme={theme}>
         <Route exact path='/' component={LandingPage} />
         <Route exact path='/home' component={Home} />
         <Route  path='/editProduct/:id' component={EditProduct} />
@@ -22,6 +25,7 @@ function App() {
         <Route path='/adminCategories' component={PageAdminCategory} />
         <Route path='/ordersView' component={PageCheckoutOrders} />
         <Route path='/product/:id' component={Product} />
+        </ThemeProvider>
       </userContext.Provider>
     </React.Fragment>
   );

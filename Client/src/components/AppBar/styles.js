@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
     },
     appBar: {
-        background: 'linear-gradient(45deg, #0058ff4f 50%, #2326299c 250%)',
+        // background: 'linear-gradient(45deg, #0058ff4f 50%, #2326299c 250%)',
         transition: theme.transitions.create(['margin', 'width'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
