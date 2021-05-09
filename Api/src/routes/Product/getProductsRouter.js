@@ -73,7 +73,7 @@ const products = [
 var p = new Promise(resolve => resolve(true))
 
 
-categories.forEach((category, i) => {
+products.forEach((category, i) => {
     p = p.then(() => (
       Product.findOrCreate({
         where: { name: category.name},
