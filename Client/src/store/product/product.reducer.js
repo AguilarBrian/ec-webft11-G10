@@ -1,20 +1,26 @@
-import {SET_PRODUCT_IMG, POST_PRODUCTS_SUCCESS, POST_PRODUCTS_FAILURE,SEARCH_PRODUCT_FAILURE,SEARCH_PRODUCT_REQUEST,SEARCH_PRODUCT_SUCCESS, GET_PRODUCTS, GET_ONE_PRODUCT,DELETE_PRODUCT_BY_ID} from './product.actions';
-import {SEARCH_PRODUCT_REQUEST_CATEGORIES,SEARCH_PRODUCT_SUCCESS_CATEGORIES,SEARCH_PRODUCT_FAILURE_CATEGORIES} from '../category/category.actions' 
+import {
+  SET_PRODUCT_IMG, POST_PRODUCTS_SUCCESS, POST_PRODUCTS_FAILURE, SEARCH_PRODUCT_FAILURE, SEARCH_PRODUCT_REQUEST, SEARCH_PRODUCT_SUCCESS, GET_PRODUCTS, GET_ONE_PRODUCT, DELETE_PRODUCT_BY_ID, PUT_PRODUCT_BY_ID
+} from './product.actions';
+import {
+  SEARCH_PRODUCT_REQUEST_CATEGORIES, SEARCH_PRODUCT_SUCCESS_CATEGORIES, SEARCH_PRODUCT_FAILURE_CATEGORIES
+} from '../category/category.actions'
 
 const initialState = {
   products: [],
   oneProduct: {},
   productError: "",
   productImg: "no tiene",
-  Error:"",
-  Loading:"",
-  searchResults:[]
+  Error: "",
+  Loading: "",
+  searchResults: []
 };
 
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
+    case PUT_PRODUCT_BY_ID:
+    return { ...state }
     case DELETE_PRODUCT_BY_ID:
-      return{
+      return {
         ...state
       }
     case SEARCH_PRODUCT_REQUEST || SEARCH_PRODUCT_REQUEST_CATEGORIES:

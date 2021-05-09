@@ -2,9 +2,12 @@ import  React,{useEffect} from 'react';
 import { useSelector,useDispatch } from "react-redux";
 import MaterialTable from 'material-table'
 import { deleteProductById,getProducts } from '../../store/product/product.actions';
+import { useHistory } from "react-router-dom"
 export function AdminProduct() {
     const products = useSelector(state => state.productReducer.products)
     const dispatch = useDispatch()
+    const history = useHistory ();
+
   
     useEffect(() => {
         dispatch(getProducts())
@@ -27,7 +30,7 @@ export function AdminProduct() {
                     {
                         icon: 'edit',
                         tooltip: 'edita',
-                        onClick: (event, rowData) => alert('has presionado para editar' + rowData.name)
+                        onClick: (event, rowData) => history.push ('/editProduct/'+ rowData.id)
 
                     },
                     {
