@@ -9,6 +9,9 @@ import { getCategory } from '../../../store/category/category.actions'
 
 const validate = values => {
     const errors = {};
+    if (!values.category) {
+        errors.category = 'Required';
+    }
     if (!values.name) {
         errors.name = 'Required';
     }

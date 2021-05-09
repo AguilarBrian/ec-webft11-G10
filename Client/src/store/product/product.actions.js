@@ -43,8 +43,6 @@ export const putProduct = (product,idProduct) => {
     }
 }
 
-
-
 //DELETE PRODUCT BY ID
 export const deleteProductById = (id) => {
 
@@ -66,7 +64,6 @@ export const deleteProductById = (id) => {
             })
     }
 }
-
 
 // PARA QUE TRAIGA PRODUCTOS POR NOMBRE
 export const searchProducts = (name) => {
