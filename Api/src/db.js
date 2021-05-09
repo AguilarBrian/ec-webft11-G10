@@ -67,10 +67,6 @@ Category.belongsToMany(Product, { through: 'Products_Categories' });
 
 
 
-sequelize.sync({  force: true })
-  .then(() => {
-    console.log(`Database & tables created!`)
-  })
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

@@ -1,13 +1,8 @@
 const { getProductsByLetterIncludeInTheName } = require('../../controllers/productController');
 const server = require("express").Router();
 const { Product } = require("../../db.js");
-
-
-// const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
-// const romanNumbers = ['I', 'II', 'III', 'IV', 'V']
 const randomNumber = (min, max) => (Math.random() * (max - min) + (min + 0.5)) | 0
-// const randomMessage = (val) => lorem.slice(0, (Math.random() * (val - 1) + 1.5) | 0)
-// const lorem = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+
 
 const products = [
   {
@@ -74,53 +69,26 @@ const products = [
     img: "https://webdelmaestro.com/wp-content/uploads/2017/03/DIBUJOS-DE-FRUTAS-Y-VERDURAS.jpg"
   }];
 
-// const romanNumbers = ['I', 'II', 'III', 'IV', 'V']
-// const randomNumber = (min, max) => (Math.random() * (max - min) + (min + 0.5)) | 0
-// const randomMessage = (val) => lorem.slice(0, (Math.random() * (val - 1) + 1.5) | 0)
-// const lorem = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-server.post("/preload",  (req, res, next) => {
 
-     products.forEach (async p => {
+var p = new Promise(resolve => resolve(true))
 
-    const { name, deescripcion, price, stock,img } = p;
-    const product = {
-      name: p.name,
-      description: p.deescripcion,
-      price: p.price,
-      stock: p.stock,
-      img: p.img,
-      category:"helado"
-    }
-    await Product.create(product).then((prod) => {
-     return res.send(prod)
-    }).catch((error) => {
-      return res.status(400).json(error);
-    });
-  })
+
+categories.forEach((category, i) => {
+    p = p.then(() => (
+      Product.findOrCreate({
+        where: { name: category.name},
+            defaults: {
+              name: category.name,
+              description: category.deescripcion,
+              price: category.price,
+              stock: category.stock,
+              img: category.img
+            }
+      })   
+    )).catch((err)=>console.log(err)) 
+     
 })
 
-// var p = new Promise(resolve => resolve(true))
-
-
-// categories.forEach((category, i) => {
-//   for (const category of categories) {
-
-//   } {
-//     p = p.then(() => (
-//       Product.create({
-//         name: category.name,
-//         description: category.deescripcion,
-//         price: category.price,
-//         stock: category.stock,
-//         img: category.img
-//       })
-//     ))
-//       .then(product => {
-//         product.setCategories([i + 1]);
-//         return product.setImages([i + 1]);
-//       })
-//   }
-// })
 // TRAE TODOS LOS PRODUCTOS QUE INCLUYAN LAS LETRAS...|
 //---------------------------
 server.get("/search/:foodName", (req, res, next) => {
