@@ -86,20 +86,20 @@ server.post("/", (req, res) => {
 server.put("/:id", (req, res) => {
 
   const id = req.params.id;
-  const { name, description, price, stock, category, img } = req.body;
-
+  const { productName, description, productImg, priceInt, stockInt, category } = req.body;
   Product.findOne({ where: { id } })
     .then((product) => {
       if (!product) {
         res.send("product not found");
       } else {
         product.update({
-          name,
-          description,
-          price,
-          stock,
-          category,
-          img,
+            name: productName,
+            description: description,
+            price: priceInt,
+            stock: stockInt,
+            img: productImg,
+            category: category
+          
         });
         res.send(product);
       }
