@@ -42,21 +42,18 @@ function DeleteCategory() {
         dispatch(getCategory())
     }, [dispatch]);
 
-    const deleteCategoryPost = (values) => {
-        onSubmit(values)
-    }
-
     const onSubmit = async values => {
         const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
         await sleep(300);
-        dispatch(putDeleteCategory(values))
+        console.log(values.categoryId)
+        dispatch(putDeleteCategory(values.categoryId))
         setStatusPost(statusPost)
-        console.log(status)
     };
 
     return (
         <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
             <CssBaseline />
+            <h4>Agregar categoria</h4>
             <Form
                 onSubmit={onSubmit}
                 initialValues={{}}
@@ -85,7 +82,7 @@ function DeleteCategory() {
                                     </Field>
                                 </Grid>
                                 <Grid item style={{ marginTop: 16 }}>
-                                    <Button onClick={() => deleteCategoryPost(values.categoryId)} variant="contained" color="primary" type="submit" disabled={submitting}>
+                                    <Button variant="contained" color="primary" type="submit" disabled={submitting}>
                                         Eliminar
                                     </Button>
                                     {(status && status.data) ? (status.data === 'no se puede agregar la categoría porque falta el "name"') ? (

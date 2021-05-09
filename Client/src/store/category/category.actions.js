@@ -22,7 +22,7 @@ export const putDeleteCategory = (id) => dispatch => {
     axios.delete(`http://localhost:3001/category/${id}`)
         .then(res => {
             dispatch({ type: DELETE_CATEGORY_BY_ID, payload: res })
-            getCategory()
+            dispatch(getCategory())
             Swal.fire( 'Good job!', 'You delete the product succesfully!', 'success')
         })
         .catch(error => {

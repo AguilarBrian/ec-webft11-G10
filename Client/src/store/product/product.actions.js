@@ -49,7 +49,7 @@ export const deleteProductById = (id) => {
     return (dispatch) => {
         axios.delete(`${serverUrl}/products/${id}`)
             .then(products => {
-                getProducts()
+                dispatch(getProducts())
                 Swal.fire(
                     'Good job!',
                     'You delete the product succesfully!',
