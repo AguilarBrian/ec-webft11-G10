@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField } from 'final-form-material-ui';
 import { Paper, Grid, Button, CssBaseline, Typography } from '@material-ui/core';
-import { useDispatch} from 'react-redux'
-import {postAddCategory} from '../../../store/category/category.actions'
+import { useDispatch } from 'react-redux'
+import { postAddCategory } from '../../../store/category/category.actions'
+import { getCategory } from '../../../store/category/category.actions'
 
 const validate = values => {
   const errors = {};
@@ -19,10 +20,14 @@ const validate = values => {
 function AddCategory() {
 
   const dispatch = useDispatch()
-  
+
   const addCategoryPost = (values) => {
-    onSubmit(values)  
+    onSubmit(values)
   }
+  
+  useEffect(() => {
+    dispatch(getCategory())
+  }, [dispatch]);
 
   const onSubmit = async values => {
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -67,7 +72,7 @@ function AddCategory() {
 
                 <Grid item style={{ marginTop: 16 }}>
                   <Button
-                    onClick={()=>addCategoryPost(values)}
+                    onClick={() => addCategoryPost(values)}
                     variant="contained"
                     color="primary"
                     type="submit"

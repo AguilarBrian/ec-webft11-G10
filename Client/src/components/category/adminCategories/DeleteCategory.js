@@ -5,7 +5,6 @@ import { Paper, Grid, MenuItem, Button, CssBaseline, Typography } from '@materia
 import { useDispatch, useSelector } from 'react-redux'
 import { putDeleteCategory } from '../../../store/category/category.actions'
 import { getCategory } from '../../../store/category/category.actions'
-import CheckIcon from '@material-ui/icons/Check';
 
 const validate = values => {
     const errors = {};
@@ -84,10 +83,6 @@ function DeleteCategory() {
                                     <Button variant="contained" color="primary" type="submit" disabled={submitting}>
                                         Eliminar
                                     </Button>
-                                    {(status && status.data) ? (status.data === 'no se puede agregar la categoría porque falta el "name"') ? (
-                                        <Typography>no se puede agregar la categoría porque falta completar datos</Typography>
-                                    ) : ((status === '') ? (<Typography></Typography>) : (<CheckIcon />)) : (<Typography></Typography>)
-                                    }
                                 </Grid>
                             </Grid>
                         </Paper>
