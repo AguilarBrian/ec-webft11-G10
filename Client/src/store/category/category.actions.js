@@ -19,22 +19,32 @@ export const getCategory = () => dispatch => {
         })
 }
 
-export const putProduct = (id) => dispatch => {
-    const options = {method: 'PUT',url: `http://localhost:3001/category/${id}`,headers: {'Content-Type': 'application/json'}}
-    return axios.request(options).then(function (products) {
-        Swal.fire(
-            'Good job!',
-            'You updated the product succesfully!',
-            'success'
-        )
-        dispatch({
-            type: EDIT_CATEGORY_BY_ID
+export const putEditCategory = (values, categoryId) => {
+    return (dispatch) => {
+        const options = {
+            method: 'PUT',
+            url: `http://localhost:3001/category/${categoryId}`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: values
+        };
+        return axios.request(options).then(function (values) {
+            console.log(values.data)
+            Swal.fire(
+                'Good job!',
+                'You updated the product succesfully!',
+                'success'
+            )
+            dispatch({type: EDIT_CATEGORY_BY_ID})
         })
-    })
-    .catch(error => {
-        console.error(error)
-    })
-
+            .catch(error => {
+                console.error(error)
+                Swal.fire({
+                    icon: 'error', title: 'Oops...', text: 'Something went wrong!',
+                })
+            })
+    }
 }
 
 export const putDeleteCategory = (id) => dispatch => {
@@ -58,13 +68,10 @@ export const postAddCategory = (category) => dispatch => {
         .then(res => {
             dispatch({ type: 'POST_ADD_CATEGORY', payload: res })
             console.log(res)
-            Swal.fire('Good job!', 'You updated the product succesfully!', 'success'
-            )
+            Swal.fire('Good job!', 'You updated the product succesfully!', 'success')
         }).catch(err => {
             dispatch({ type: 'POST_ADD_CATEGORY', payload: err })
-            Swal.fire({
-                icon: 'error', title: 'Oops...', text: 'Something went wrong!',
-            })
+            Swal.fire({ icon: 'error', title: 'Oops...', text: 'Something went wrong!', })
         })
 }
 

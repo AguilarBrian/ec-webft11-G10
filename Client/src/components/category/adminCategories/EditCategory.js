@@ -3,14 +3,14 @@ import { Form, Field } from 'react-final-form';
 import { TextField, Select } from 'final-form-material-ui';
 import { Paper, Grid, Button, MenuItem, CssBaseline, Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux'
-import { postAddCategory } from '../../../store/category/category.actions'
 import CheckIcon from '@material-ui/icons/Check';
+import { putEditCategory } from '../../../store/category/category.actions'
 import { getCategory } from '../../../store/category/category.actions'
 
 const validate = values => {
     const errors = {};
-    if (!values.category) {
-        errors.category = 'Required';
+    if (!values.categoryId) {
+        errors.categoryId = 'Required';
     }
     if (!values.name) {
         errors.name = 'Required';
@@ -35,7 +35,7 @@ function EditCategory() {
                 if (categoryList.find(e => e === categories[i].name)) {
                     continue
                 } else {
-                    categoryList.push(categories[i].name)
+                    categoryList.push(categories[i])
                 }
             }
             return categoryList
@@ -48,14 +48,10 @@ function EditCategory() {
         dispatch(getCategory())
     }, [dispatch]);
 
-    const editCategoryPost = (values) => {
-        onSubmit(values)
-    }
-
     const onSubmit = async values => {
         const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
         await sleep(300);
-        dispatch(postAddCategory(values))
+        dispatch(putEditCategory(values, values.categoryId))
         setStatusPost(statusPost)
         console.log(status)
     };
@@ -63,6 +59,7 @@ function EditCategory() {
     return (
         <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
             <CssBaseline />
+            <h4>Editar categoria</h4>
             <Form
                 onSubmit={onSubmit}
                 initialValues={{}}
@@ -74,7 +71,7 @@ function EditCategory() {
                                 <Grid item xs={12}>
                                     <Field
                                         fullWidth
-                                        name="category"
+                                        name="categoryId"
                                         component={Select}
                                         label="Selecciona la categoria"
                                         formControlProps={{ fullWidth: true }}
@@ -84,7 +81,7 @@ function EditCategory() {
                                             :
                                             (categoryList.map(category => {
                                                 return (
-                                                    <MenuItem value={category}>{category}</MenuItem>
+                                                    <MenuItem value={category.id}>{category.name}</MenuItem>
                                                 )
                                             })
                                             )}
@@ -113,7 +110,7 @@ function EditCategory() {
                                 </Grid>
 
                                 <Grid item style={{ marginTop: 16 }}>
-                                    <Button onClick={() => editCategoryPost(values)} variant="contained" color="primary" type="submit" disabled={submitting} >
+                                    <Button variant="contained" color="primary" type="submit" disabled={submitting} >
                                         Editar
                                     </Button>
                                     {(status && status.data) ? (status.data === 'no se puede agregar la categoría porque falta el "name"') ? (
