@@ -42,7 +42,7 @@ function AddProduct() {
         if (categoryList.find(e => e === categories[i].name)) {
           continue
         } else {
-          categoryList.push(categories[i].name)
+          categoryList.push(categories[i])
         }
       }
       return categoryList
@@ -61,8 +61,8 @@ function AddProduct() {
     const{productName,description,price,stock,category}=values
     let priceInt= parseInt(price)
     let stockInt= parseInt(stock)
-    let productData={productName,description,productImg, priceInt,stockInt,category}    
-     dispatch(postProducts(productData))    
+    let productData={productName,description,productImg, priceInt,stockInt,category}  
+     dispatch(postProducts(productData,category))    
 
   };
   return (
@@ -115,7 +115,7 @@ function AddProduct() {
                       :
                       (categoryList.map(category => {
                         return (
-                          <MenuItem value={category}>{category}</MenuItem>
+                          <MenuItem value={category.id}>{category.name}</MenuItem>
                         )
                       })
                       )}

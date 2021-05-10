@@ -10,12 +10,12 @@ export const SEARCH_PRODUCT_REQUEST = "SEARCH_PRODUCT_REQUEST";
 export const SEARCH_PRODUCT_SUCCESS = "SEARCH_PRODUCT_SUCCESS";
 export const SEARCH_PRODUCT_FAILURE = "SEARCH_PRODUCT_FAILURE";
 export const DELETE_PRODUCT_BY_ID = "DELETE_PRODUCT_BY_ID";
-export const PUT_PRODUCT_BY_ID="PUT_PRODUCT_BY_ID";
+export const PUT_PRODUCT_BY_ID = "PUT_PRODUCT_BY_ID";
 const serverUrl = "http://localhost:3001"
 
 //EDIT PRODUCT BY ID
 
-export const putProduct = (product,idProduct) => {
+export const putProduct = (product, idProduct) => {
     return (dispatch) => {
         const options = {
             method: 'PUT',
@@ -106,7 +106,7 @@ export const setImgUrl = (imgUrl) => {
     }
 }
 
-export const postProducts = (product) => {
+export const postProducts = (product, categoryId) => {
     return (dispatch) => {
         const options = {
             method: 'POST',
@@ -116,9 +116,9 @@ export const postProducts = (product) => {
             },
             data: product
         };
-        return axios.request(options).then(function (products) {
-            console.log(products.data)
-            dispatch(postProductsSuccess(products.data))
+        return axios.request(options).then(function (product) {
+             dispatch(addCategoryToProducts(product.data.id, categoryId))
+            dispatch(postProductsSuccess(product.data))
 
         })
             .catch(error => {
@@ -127,6 +127,16 @@ export const postProducts = (product) => {
     }
 }
 
+export const addCategoryToProducts = (idProduct, idCategory) => {
+   // console.log(idProduct)
+    return (dispatch) => {
+
+        return axios.post(`${serverUrl}/products/${idProduct}/category/${idCategory}`).then(result => {
+            console.log(result)
+        })
+            .catch(err => console.log({ message: err.message }))
+    }
+}
 export const getProducts = () => {
     return (dispatch) => {
         return axios.get(`${serverUrl}/products/`).then(result => {
