@@ -1,26 +1,25 @@
-import React from 'react';
-import { useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
 import { Grid } from '@material-ui/core/';
 import { useStyles } from './styles'
 import ProductCard from '../productCard/ProductCard'
-
+import axios from "axios";
+import { searchProductSuccess } from '../../../store/product/product.actions';
 export default function Catalog() {
+    const dispatch = useDispatch()
     const classes = useStyles();
     const searchResults = useSelector(state => state.productReducer?.searchResults)
     const products = useSelector(state => state.productReducer?.products)
-
+    useEffect(() => {
+        axios.get(`http://localhost:3001/products/`).then(result => {
+            dispatch(searchProductSuccess(result.data))
+        })
+    }, [])
     return (
         <div>
             <Grid container spacing={2} className={classes.container}>
-                {(products.length == 0) ? (
-                    <div>SPINNER</div>
-                ) : ((searchResults.length == 0) ?
-                    (products.map(food => {
-                        console.log(food)
-                        return <Grid item xs={12} sm={4} md={3}>
-                            <ProductCard id={food.id} img={food.img} name={food.name} description={food.description} price={food.price}
-                            /> </Grid>
-                    })) : (searchResults.map(food => {
+                {((searchResults.length === 0) ?
+                    (<h1>no hay resultados</h1>) : (searchResults.map(food => {
                         return <Grid item xs={12} sm={4} md={3}>
                             <ProductCard id={food.id} img={food.img} name={food.name} description={food.description} price={food.price}
                             /> </Grid>

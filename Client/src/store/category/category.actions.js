@@ -73,10 +73,10 @@ export const searchProductRequest = () => {
         type: 'SEARCH_PRODUCT_REQUEST_CATEGORIES',
     }
 }
-export const searchProductSuccess = (product) => {
+export const searchProductSuccess = (products) => {
     return {
         type: 'SEARCH_PRODUCT_SUCCESS_CATEGORIES',
-        payload: product
+        payload: products
     }
 }
 export const searchProductFailure = (error) => {
@@ -91,8 +91,8 @@ export const searchProducts = (name) => {
         dispatch(searchProductRequest())
         axios.get(`http://localhost:3001/category/productsbycategories/${name}`)
             .then(products => {
+                console.log(products.data[0].products)
                 dispatch(searchProductSuccess(products.data[0].products))
-                console.log(products.data)
             })
             .catch(error => {
                 dispatch(searchProductFailure(error))
