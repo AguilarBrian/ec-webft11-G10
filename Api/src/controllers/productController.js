@@ -14,6 +14,15 @@ module.exports = {
       include: [{ model: Category, as: "categories" }],
     });
   },
+  addCategoryToProduct: async (idProducto, idCategoria) => {
+    return await Product.findByPk(idProducto).then( async (oneProduct) => {
+      return await Category.findByPk(idCategoria)
+        .then((newcategory) => {
+          oneProduct.addCategory(newcategory);
+          return newcategory;
+        });
+     });
+ },
   searchProductsByCategoryName(categoryName) {
     return Category.findAll({
       where: {

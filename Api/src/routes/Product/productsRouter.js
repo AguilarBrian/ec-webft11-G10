@@ -1,4 +1,4 @@
-const { getProductsByLetterIncludeInTheName } = require('../../controllers/productController');
+const { getProductsByLetterIncludeInTheName,addCategoryToProduct } = require('../../controllers/productController');
 const server = require("express").Router();
 const { Product } = require("../../db.js");
 const randomNumber = (min, max) => (Math.random() * (max - min) + (min + 0.5)) | 0
@@ -139,16 +139,25 @@ server.post("/", (req, res) => {
     price: priceInt,
     stock: stockInt,
     img: productImg,
-    category: category
+    
   }
 
-  Product.create(product).then((prod) => {
-    return prod.setCategories(category).then(
-      () => res.send(product))
+  return Product.create(product).then((product) => {
+    res.status(200).json(product);
   }).catch((error) => {
     res.status(400).json(error);
   });
 })
+// AGREGAR CATEGORIAS A PRODUCTOS
+server.post("/:idProducto/category/:idCategoria", async (req, res) => {
+  let { idProducto, idCategoria } = req.params;
+
+  return addCategoryToProduct(idProducto, idCategoria ).then((data)=>{
+    return res.status(201).send("Category added!");
+  }).catch(error => {
+    return res.status(400).send({ data: error });
+  });   
+});
 
 // MODIFICA UN PRODUCTO |
 //-----------------------

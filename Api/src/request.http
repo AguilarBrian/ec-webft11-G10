@@ -1,1 +1,1 @@
-POST http://localhost:3001/products/preload
+POST http://localhost:3001/category/get
