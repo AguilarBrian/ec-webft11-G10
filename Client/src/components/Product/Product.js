@@ -4,36 +4,37 @@ import { useParams } from 'react-router-dom'
 import { Grid, Typography, Divider, Button, Box } from '@material-ui/core/';
 import { useStyles } from './styles'
 import AppBar from '../appBar/AppBar'
-import defaultImg from './default.png'
+// import defaultImg from './default.png'
 import { getOneProduct } from '../../store/product/product.actions';
 
 export default function Product() {
-    const [product, setProduct] = useState({
-        img: defaultImg,
-        name: 'Loading',
-        description: 'Fetching your favourite snack!',
-        price: 150,
-        stock: 13
-    })
+    // const [product, setProduct] = useState({
+    //     img: defaultImg,
+    //     name: 'Loading',
+    //     description: 'Fetching your favourite snack!',
+    //     price: 150,
+    //     stock: 13
+    // })
     const classes = useStyles();
     const dispatch = useDispatch();
     const { id } = useParams()
+    const product = useSelector(state => state.productReducer?.oneProduct)
     
-    useEffect(() => {
+    useEffect( () => {
         dispatch(getOneProduct(id))
     },[dispatch])
-    const oneProduct = useSelector(state => state.productReducer.oneProduct)
-    useEffect(() => {
-        setProduct(oneProduct)
-    },[setProduct])
-    const { img, name, description, price, stock } = product
+    // useEffect( () => {
+    //     setProduct(oneProduct)
+    // },[setProduct])
+    const { name, description, price, stock, img  } = product
 
     return (
         <>
             <AppBar />
+            { name && name.length === 0 ? <h1>Cargando...</h1> :
             <Grid container spacing={1} className={classes.container} >
                 <Grid item xs={12} sm={6}>
-                    <img src={!img && img.length > 10 ? img : defaultImg} alt='Food' className={classes.media} />
+                    <img src={img} alt='Food' className={classes.media} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Grid container direction='column' className={classes.info}>
@@ -48,6 +49,7 @@ export default function Product() {
                     </Grid>
                 </Grid>
             </Grid>
+            }
         </>
     );
 }

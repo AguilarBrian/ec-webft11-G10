@@ -6,13 +6,13 @@ import { useStyles } from './styles'
 import defaultImg from './default.png'
 
 
-export default function ImgMediaCard({ id, img, name, description, price }) {
+export default function ProductCard({ id, img, name, description, price }) {
   const classes = useStyles();
   const history = useHistory();
 
   return (
     <Card className={classes.root}>
-        <CardActionArea onClick={() => history.push(`/product/${id}`)}>
+        <CardActionArea onClick={() => history.push(`/products/${id}`)}>
           <CardMedia
             component="img"
             alt="Food"

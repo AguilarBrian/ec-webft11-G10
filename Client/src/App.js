@@ -24,7 +24,7 @@ function App() {
         <Route path='/createProduct' component={PageAddProduct} />
         <Route path='/adminCategories' component={PageAdminCategory} />
         <Route path='/ordersView' component={PageCheckoutOrders} />
-        <Route path='/product/:id' component={Product} />
+        <Route path='/products/:id' component={Product} />
         </ThemeProvider>
       </userContext.Provider>
     </React.Fragment>
