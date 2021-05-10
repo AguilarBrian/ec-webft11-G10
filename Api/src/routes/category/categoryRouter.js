@@ -16,8 +16,6 @@ categories.forEach((category) => (
           }).catch((err)=>console.log(err))        
     ))
 ))
-
-
 // TRAE TODAS LAS CATEGORIAS |
 //----------------------------
 server.get('/get', (req, res) => {
@@ -32,7 +30,6 @@ server.get('/get', (req, res) => {
         });
 });
 //TRAE LOS PRODUCTOS DE LA CATEGORIA
-
 server.get("/productsbycategories/:categoryName", (req, res, next) => {
     let { categoryName } = req.params;
     return searchProductsByCategoryName(categoryName).then((product) => {
@@ -59,7 +56,6 @@ server.post('/', (req, res) => {
 // MODIFICA UNA CATEGORIA |
 //-------------------------
 server.put('/:id', (req, res) => {
-
     const id = req.params.id;
     const { name, description } = req.body;
 

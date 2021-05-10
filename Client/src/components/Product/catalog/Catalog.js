@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
 import { Grid } from '@material-ui/core/';
 import { useStyles } from './styles'
 import ProductCard from '../productCard/ProductCard'

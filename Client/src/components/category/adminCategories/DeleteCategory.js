@@ -52,7 +52,7 @@ function DeleteCategory() {
     return (
         <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
             <CssBaseline />
-            <h4>Agregar categoria</h4>
+            <h4>Eliminar categoria</h4>
             <Form
                 onSubmit={onSubmit}
                 initialValues={{}}
