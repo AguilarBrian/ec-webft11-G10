@@ -9,7 +9,8 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   root: {
-    height: "13vh"
+    position: 'fixed',
+    display: 'contents',
   },
   gridList: {
     justifyContent: "center",

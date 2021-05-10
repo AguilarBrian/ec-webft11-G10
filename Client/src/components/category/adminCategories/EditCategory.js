@@ -3,7 +3,6 @@ import { Form, Field } from 'react-final-form';
 import { TextField, Select } from 'final-form-material-ui';
 import { Paper, Grid, Button, MenuItem, CssBaseline, Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux'
-import CheckIcon from '@material-ui/icons/Check';
 import { putEditCategory } from '../../../store/category/category.actions'
 import { getCategory } from '../../../store/category/category.actions'
 
@@ -53,7 +52,8 @@ function EditCategory() {
         await sleep(300);
         dispatch(putEditCategory(values, values.categoryId))
         setStatusPost(statusPost)
-        console.log(status)
+        values.name=''
+        values.description=''
     };
 
     return (
@@ -113,10 +113,6 @@ function EditCategory() {
                                     <Button variant="contained" color="primary" type="submit" disabled={submitting} >
                                         Editar
                                     </Button>
-                                    {(status && status.data) ? (status.data === 'no se puede agregar la categoría porque falta el "name"') ? (
-                                        <Typography>no se puede agregar la categoría porque falta completar datos</Typography>
-                                    ) : ((status === '') ? (<Typography></Typography>) : (<CheckIcon />)) : (<Typography></Typography>)
-                                    }
                                 </Grid>
                             </Grid>
                         </Paper>

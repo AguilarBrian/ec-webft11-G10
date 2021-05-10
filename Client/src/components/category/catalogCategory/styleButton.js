@@ -17,9 +17,9 @@ export const useStyles = makeStyles((theme)=>({
       },
       container:{
         position: "relative",
-        maxWidth: "30vh",
+        maxWidth: "20vh",
         width: "10%",
-        height: "15vh",
+        height: "10vh",
         color: "#ffffff",
         display: "flex",
         flexDirection: "column",
@@ -33,12 +33,12 @@ export const useStyles = makeStyles((theme)=>({
         WebkitBoxReflect: "below 0 linear-gradient(transparent 95%, white)",
         marginBottom: "0px"
     },
-    button:{
+    button:{      
       position: "relative",
       bottom: "20%",
       right: "5%",
       cursor: "pointer",
-      height: "60px",
+      height: "40px",
       width: "140px",
       borderRadius: "5px",
       border: "none",
