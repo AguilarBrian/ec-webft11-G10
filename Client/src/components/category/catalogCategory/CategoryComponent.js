@@ -3,6 +3,7 @@ import { useStyles } from './styleButton'
 import { useDispatch } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import { searchProducts } from '../../../store/category/category.actions'
+import { Grid, Typography, Divider, Box } from '@material-ui/core/';
 
 function CategoryComponent({ title }) {
     const dispatch = useDispatch()
@@ -13,13 +14,15 @@ function CategoryComponent({ title }) {
 
     const classes = useStyles();
     return (
-        <div className={classes.container}>
-            <Button className={classes.button} classes={{
-                root: classes.root, // class name, e.g. `classes-nesting-root-x`
-                label: classes.label, // class name, e.g. `classes-nesting-label-x`
-            }} title={title} onClick={() => sendCategorySearch(title)} >{!title ? 'otra categoria' : title}
-            </Button>
-        </div>
+        <Grid>
+            <div className={classes.container}>
+                <Button className={classes.button} classes={{
+                    root: classes.root, // class name, e.g. `classes-nesting-root-x`
+                    label: classes.label, // class name, e.g. `classes-nesting-label-x`
+                }} title={title} onClick={() => sendCategorySearch(title)} >{!title ? 'otra categoria' : title}
+                </Button>
+            </div>
+        </Grid>
     );
 }
 
