@@ -3,6 +3,42 @@ const { Order, Product, User } = require("../db");
 
 
 
+
+server.post("/ols", (req, res) => {
+  const {price,quantity,state,userId} = req.body
+  console.log("jhiugiug",state)
+  Order.create({
+    price: price,
+    quantity: quantity,
+    state:state,
+    userId:userId
+  })
+    .then((order) => {
+      res.send(order);
+    })
+    .catch((err) => res.send(err));
+});
+
+
+// VER ITEMS DEL USUARIO |
+//------------------------
+server.get("/userid/:id", (req, res) => {
+  //Muestra todos los items del carrito
+  const { id } = req.params;
+  console.log("iufhgsdhf",id)
+  Order.findAll({
+    include: {
+      model: Product,
+    },
+    where: { userId: parseInt(id) },
+  }) //busca todos los items
+    .then((items) => {
+      res.send(items);
+    })
+    .catch((err) => res.send(err));
+});
+
+
 // TRAE TODAS LAS ORDENES |
 //-------------------------
 server.get("/", (req, res) => {

@@ -1,38 +1,41 @@
-// const admin = require('firebase-admin')
 
-// var serviceAccount = require("C:\Users\lucianogabriel\Desktop\proyecto orignal final\ec-webft11-G10\Api\grupo10-node-autenticacion-firebase-adminsdk-mysnm-fe139dfe93.json");
+const server = require("express").Router();
+const { Order, Product, User } = require("../db");
 
-// admin.initializeApp({
-//     credential: admin.credential.cert(serviceAccount),
-//     databaseURL: 'https://grupo10-node-autenticacion-default-rtdb.firebaseio.com/'
-// });
 
-// const db = admin.database();
 
-// const { Router}= require('express');
-// const router = Router();
 
-// router.get('/', (req, res) => {
-//     db.ref('contacts').once('value', (snapshot) => {
-//        data = snapshot.val();
-//        res.render( {contacts: data}) // te vca mandar la lista de atributos que haya en fierbase (firstname,lastname,email,phone)
-//     });
-// })
-
-// router.post('/new-contact', (req, res) => {
-//     const newContact = {
-//         firstname: req.body.firstname,
-//         lastname: req.body.lastname,
-//         email: req.body.email,
-//         phone: req.body.phone
-//     }
-//     db.ref('contacts').push(newContact);
-//     res.redirect('/');
-// });
-
-// router.get('/delete-contact/:id', (req, res) => {
-//     db.ref('contacts/' + req.params.id).remove();
-//     res.redirect('/');
-// });
-
-// module.exports = router;
+// TRAE UN USUARIO POR ID |
+//------------------------
+server.get("/:id", (req, res) => {
+    const { id } = req.params;
+    User.findByPk(id)
+      .then((user) =>
+        res.send(
+          user? user: "el usuario no existe" 
+        )
+      )
+      .catch((err) => res.send(err));
+  });
+  
+  
+  // CREAR USUARIO |
+  //----------------
+  server.post("/register", (req, res) => {
+    const { name, surname, email, password, access } = req.body; 
+  
+        User.create({
+          
+          name: name,
+          surname: surname,
+          email: email,
+          password: password,
+          access: access,
+        })
+          .then((user) => {
+            res.send(user); 
+          })
+          .catch((err) => res.send("El email debe ser unico"));
+  });
+  
+  module.exports = server;
