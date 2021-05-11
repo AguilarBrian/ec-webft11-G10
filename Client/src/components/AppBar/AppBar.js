@@ -26,7 +26,9 @@ import { Link } from 'react-router-dom';
 import { SearchBar } from './searchBar/SearchBar';
 import { useSelector } from "react-redux";
 import { Cart } from '../product/cart/Cart';
+
 export default function PersistentDrawerLeft() {
+  
     const cart = useSelector(state => state.userReducer.cart)
 
     const classes = useStyles();
@@ -63,7 +65,7 @@ export default function PersistentDrawerLeft() {
                     <Button variant="h6" color='inherit' to="/Home" component={Link}>
                         FastFoodBest! or whatever
                     </Button>
-                    <Cart className={classes.cart} />
+                    <Cart  />
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
@@ -71,20 +73,20 @@ export default function PersistentDrawerLeft() {
                         <SearchBar />
                     </div>
                     <div className={classes.grow} />
-                    <div className={classes.sectionDesktop}>
-                        <IconButton aria-label="" color="inherit">
-                            {console.log(cart)}
-                           
-                                <Badge badgeContent={cart.length} color="secondary">
-                                    <ShoppingCartIcon />
-                                </Badge>
+                    <div  className={classes.sectionDesktop}>
+                        <IconButton to="/cart" component={Link}
+                            aria-label="" color="inherit">
+
+                            <Badge badgeContent={cart.length} color="secondary">
+                                <ShoppingCartIcon fontSize="large" />
+                            </Badge>
 
                         </IconButton>
                     </div>
                     <div className={classes.sectionDesktop}>
                         <IconButton color="inherit">
                             <Badge color="secondary">
-                                <AccountCircleIcon />
+                                <AccountCircleIcon fontSize="large" />
                             </Badge>
                         </IconButton>
                     </div>
