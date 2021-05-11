@@ -19,7 +19,7 @@ export default function ProductCard({ id, img, name, description, price }) {
           component="img"
           alt="Food"
           height="140"
-          image={!img ? defaultImg : img}
+          image={img==="no tiene" ? defaultImg : img}
           title="Contemplative Reptile"
         />
         <CardContent>

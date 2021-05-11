@@ -106,6 +106,7 @@ export const useStyles = makeStyles((theme) => ({
         },
     },
     sectionDesktop: {
+        fontSize:"large",
         display: 'none',
         [theme.breakpoints.up('sm')]: {
             display: 'flex',

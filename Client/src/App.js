@@ -11,12 +11,14 @@ import { AdminProduct } from './components/admin/AdminProduct';
 import EditProduct from './pages/adminProduct/EditProduct';
 import {ThemeProvider} from '@material-ui/core/styles'
 import theme from './theme'
-
+import CartProducts  from './pages/CartProducts';
 function App() {
   return (
     <React.Fragment>
       <userContext.Provider value={{}}>
       <ThemeProvider theme={theme}>
+      <Route exact path='/cart' component={CartProducts} />
+
         <Route exact path='/' component={LandingPage} />
         <Route exact path='/home' component={Home} />
         <Route  path='/editProduct/:id' component={EditProduct} />
