@@ -31,6 +31,7 @@ server.get('/get', (req, res) => {
 });
 //TRAE LOS PRODUCTOS DE LA CATEGORIA
 server.get("/productsbycategories/:categoryName", (req, res, next) => {
+    console.log("gjdshfhsf",req.params);
     let { categoryName } = req.params;
     return searchProductsByCategoryName(categoryName).then((product) => {
         res.status(200).json(product);

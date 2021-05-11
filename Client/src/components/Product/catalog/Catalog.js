@@ -5,6 +5,8 @@ import { useStyles } from './styles'
 import ProductCard from '../productCard/ProductCard'
 import axios from "axios";
 import { searchProductSuccess } from '../../../store/product/product.actions';
+
+
 export default function Catalog() {
     const dispatch = useDispatch()
     const classes = useStyles();

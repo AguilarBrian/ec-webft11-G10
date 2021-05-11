@@ -41,8 +41,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 const {
   Product,
   Category,
-  // User,
-  // Order,
+  User,
+  Order,
   // Review,
 } = sequelize.models;
 
@@ -52,8 +52,8 @@ const {
 Product.belongsToMany(Category, { through: 'Products_Categories' });
 Category.belongsToMany(Product, { through: 'Products_Categories' });
 
-// Product.belongsToMany(Order, { through: 'Products_Order'  });
-// Order.belongsToMany(Product, { through: 'Products_Order' });
+Product.belongsToMany(Order, { through: 'Products_Order'  });
+Order.belongsToMany(Product, { through: 'Products_Order' });
 
 // PRODUCTS COMMENTS
 // Product.hasMany(Review, { foreignKey: "productId" });
@@ -62,8 +62,8 @@ Category.belongsToMany(Product, { through: 'Products_Categories' });
 // User.hasMany(Review, { foreignKey: "userId" });
 // Review.belongsTo(User)
 
-// User.hasMany(Order, { foreignKey: "userId" });
-// Order.belongsTo(User);
+User.hasMany(Order);
+Order.belongsTo(User);
 
 
 

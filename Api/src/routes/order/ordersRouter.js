@@ -3,6 +3,23 @@ const { Order, Product, User } = require("../../db");
 
 
 
+
+server.post("/", (req, res) => {
+  const {price,quantity,state} = req.body
+  console.log("jhiugiug",state)
+  Order.create({
+    price: price,
+    quantity: quantity,
+    state:state,
+  })
+    .then((order) => {
+      res.send(order);
+    })
+    .catch((err) => res.send(err));
+});
+
+
+
 // TRAE TODAS LAS ORDENES |
 //-------------------------
 server.get("/", (req, res) => {

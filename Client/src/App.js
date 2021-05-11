@@ -5,12 +5,14 @@ import { Home } from './pages/Home';
 import PageAddProduct from './pages/adminProduct/PageAddProduct'
 import PageAdminCategory from './pages/adminCategory/PageAdminCategory'
 import LandingPage from './pages/landingPage/LandingPage'
-import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
-import Product from './components/product/Product'
+// import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
+import Product from './components/Product/Product'
 import { AdminProduct } from './components/admin/AdminProduct';
 import EditProduct from './pages/adminProduct/EditProduct';
 import {ThemeProvider} from '@material-ui/core/styles'
 import theme from './theme'
+import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
+import ViewOrder from './components/admin/ViewOrder'
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
         <Route  path='/adminProduct' component={AdminProduct} />
         <Route path='/createProduct' component={PageAddProduct} />
         <Route path='/adminCategories' component={PageAdminCategory} />
-        <Route path='/ordersView' component={PageCheckoutOrders} />
+        {/* <Route path='/ordersView' component={PageCheckoutOrders} /> */}
+        <Route path='/PageCheckoutOrders' component={PageCheckoutOrders} />
+        <Route path='/ViewOrder' component={ViewOrder} />
         <Route path='/product/:id' component={Product} />
         </ThemeProvider>
       </userContext.Provider>

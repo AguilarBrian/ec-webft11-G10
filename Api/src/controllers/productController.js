@@ -30,7 +30,7 @@ module.exports = {
           [Op.iLike]: categoryName
         }
       },
-      include: [{ model: Product, as: 'products' }]
+      include: [{ model: Product}]
     })
   },
 }
