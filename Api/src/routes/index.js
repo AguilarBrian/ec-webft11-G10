@@ -1,19 +1,16 @@
 const { Router } = require('express');
-
-
-const getProductsRouter = require("./Product/productsRouter");
-const categoryRouter = require("./category/categoryRouter");
-// const userRouter= require("./Product/userRouter");
-// const ordersRouter= require("./Product/ordersRouter");
-
-
 const router = Router();
 
-router.use("/products", getProductsRouter);
-router.use("/category", categoryRouter);
-// router.use("/users", userRouter);
-// // router.use("/orders", ordersRouter);
+const productsRouter = require('./products');
+const categoryRouter = require('./category');
+// const userRouter = require('./user');
+// const ordersRouter = require('./orders');
 
+router.use('/products', productsRouter);
+router.use('/category', categoryRouter);
+// router.use('/users', userRouter);
+// router.use('/orders', ordersRouter);
 
+// router.use('/cart', require('./cart.js'));
 
 module.exports = router;
