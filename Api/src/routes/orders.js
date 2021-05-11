@@ -1,9 +1,6 @@
 const server = require("express").Router();
 const { Order, Product, User } = require("../db");
 
-
-
-
 server.post("/ols", (req, res) => {
   const {price,quantity,state,userId} = req.body
   console.log("jhiugiug",state)
@@ -18,7 +15,6 @@ server.post("/ols", (req, res) => {
     })
     .catch((err) => res.send(err));
 });
-
 
 // VER ITEMS DEL USUARIO |
 //------------------------
@@ -37,8 +33,6 @@ server.get("/userid/:id", (req, res) => {
     })
     .catch((err) => res.send(err));
 });
-
-
 // TRAE TODAS LAS ORDENES |
 //-------------------------
 server.get("/", (req, res) => {
@@ -49,7 +43,6 @@ server.get("/", (req, res) => {
     })
     .catch((err) => res.send(err));
 });
-
 // TRAE UNA ORDEN POR ID |
 //------------------------
 server.get("/:id", (req, res) => {
@@ -62,7 +55,6 @@ server.get("/:id", (req, res) => {
     )
     .catch((err) => res.send(err));
 });
-
 // TRAE ORDENES POR UserID |
 //----------------------------
 server.get('/user/:id', (req, res) => {
