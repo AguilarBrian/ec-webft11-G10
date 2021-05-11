@@ -1,5 +1,5 @@
 import React from 'react';
-import AppBar from '../../components/AppBar/AppBar'
+import AppBar from '../../components/appBar/AppBar'
 // import OrderView from '../../components/admin/OrderView'
 // import Orders from '../../components/admin/Orders';
 // import Dashboard from '../../components/admin/Dashboard';

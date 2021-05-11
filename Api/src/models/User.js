@@ -22,8 +22,8 @@ module.exports = (sequelize) => {
     },
     access: {
       type: DataTypes.ENUM,
-      values: ['Guest', 'User', 'Admin'],
-      defaultValue: 'Guest'
+      values: ['User', 'Admin'],
+      defaultValue: 'User'
     }
   });
 };

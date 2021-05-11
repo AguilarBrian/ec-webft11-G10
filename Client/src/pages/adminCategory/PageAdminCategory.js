@@ -1,5 +1,5 @@
 import React from 'react';
-import AppBar from '../../components/AppBar/AppBar'
+import AppBar from '../../components/appBar/AppBar'
 import AdminCategories from '../../components/category/adminCategories/AdminCategories'
 
 function PageAddProduct(props) {

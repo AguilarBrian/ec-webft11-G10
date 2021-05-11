@@ -25,7 +25,6 @@ function App() {
         <Route  path='/adminProduct' component={AdminProduct} />
         <Route path='/createProduct' component={PageAddProduct} />
         <Route path='/adminCategories' component={PageAdminCategory} />
-        {/* <Route path='/ordersView' component={PageCheckoutOrders} /> */}
         <Route path='/PageCheckoutOrders' component={PageCheckoutOrders} />
         <Route path='/ViewOrder' component={ViewOrder} />
         <Route path='/product/:id' component={Product} />
