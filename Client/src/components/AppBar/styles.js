@@ -48,7 +48,6 @@ export const useStyles = makeStyles((theme) => ({
         // necessary for content to be below app bar
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end',
-        backgroundColor:"#e41515"
     },
     content: {
         flexGrow: 1,
@@ -89,6 +88,9 @@ export const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    cart:{
+        display:"none",
     },
     inputRoot: {
         color: 'inherit',

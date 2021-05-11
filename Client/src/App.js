@@ -6,7 +6,7 @@ import PageAddProduct from './pages/adminProduct/PageAddProduct'
 import PageAdminCategory from './pages/adminCategory/PageAdminCategory'
 import LandingPage from './pages/landingPage/LandingPage'
 import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
-import Product from './components/product/Product'
+import Product from './pages/ProductDetail'
 import { AdminProduct } from './components/admin/AdminProduct';
 import EditProduct from './pages/adminProduct/EditProduct';
 import {ThemeProvider} from '@material-ui/core/styles'
