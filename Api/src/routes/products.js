@@ -1,8 +1,7 @@
-const { getProductsByLetterIncludeInTheName,addCategoryToProduct } = require('../controllers/productController');
+const { getProductsByLetterIncludeInTheName, addCategoryToProduct } = require('../controllers/product');
 const server = require("express").Router();
 const { Product } = require("../db.js");
 const randomNumber = (min, max) => (Math.random() * (max - min) + (min + 0.5)) | 0
-
 
 const products = [
   {
@@ -69,26 +68,22 @@ const products = [
     img: "https://webdelmaestro.com/wp-content/uploads/2017/03/DIBUJOS-DE-FRUTAS-Y-VERDURAS.jpg"
   }];
 
-
 var p = new Promise(resolve => resolve(true))
 
-
 products.forEach((category, i) => {
-    p = p.then(() => (
-      Product.findOrCreate({
-        where: { name: category.name},
-            defaults: {
-              name: category.name,
-              description: category.deescripcion,
-              price: category.price,
-              stock: category.stock,
-              img: category.img
-            }
-      })   
-    )).catch((err)=>console.log(err)) 
-     
+  p = p.then(() => (
+    Product.findOrCreate({
+      where: { name: category.name },
+      defaults: {
+        name: category.name,
+        description: category.deescripcion,
+        price: category.price,
+        stock: category.stock,
+        img: category.img
+      }
+    })
+  )).catch((err) => console.log(err))
 })
-
 // TRAE TODOS LOS PRODUCTOS QUE INCLUYAN LAS LETRAS...|
 //---------------------------
 server.get("/search/:foodName", (req, res, next) => {
@@ -105,7 +100,6 @@ server.get("/", (req, res, next) => {
   Product.findAll()
     .then((products) => {
       res.send(products)
-      console.log('200 GET_PRODUCTS');
     })
     .catch((error) => {
       res.status(400).json(error);
@@ -139,7 +133,7 @@ server.post("/", (req, res) => {
     price: priceInt,
     stock: stockInt,
     img: productImg,
-    
+
   }
 
   return Product.create(product).then((product) => {
@@ -152,11 +146,11 @@ server.post("/", (req, res) => {
 server.post("/:idProducto/category/:idCategoria", async (req, res) => {
   let { idProducto, idCategoria } = req.params;
 
-  return addCategoryToProduct(idProducto, idCategoria ).then((data)=>{
+  return addCategoryToProduct(idProducto, idCategoria).then((data) => {
     return res.status(201).send("Category added!");
   }).catch(error => {
     return res.status(400).send({ data: error });
-  });   
+  });
 });
 
 // MODIFICA UN PRODUCTO |
