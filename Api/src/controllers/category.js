@@ -1,6 +1,17 @@
 const { Category } = require('../db.js');
 
 module.exports = {
+    preload: function(category) {
+        return Category.findOrCreate({
+            where: { 
+                name: category 
+            },
+            defaults: {
+                name: category,
+                description: "Platos de " + category
+            }
+        })
+    },
     read: function() {
         return Category.findAll({
             attributes: ['id', 'name', 'description'],

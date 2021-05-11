@@ -5,17 +5,12 @@ const { searchProductsByCategoryName } = require('../controllers/product');
 var p = new Promise(resolve => resolve(true))
 const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
 
-categories.forEach((category) => (
+categories.forEach((categories) => (
     p = p.then(() => (
-        Category.findOrCreate({
-            where: { name: category },
-            defaults: {
-                name: category,
-                description: "Platos de " + category
-            }
-        }).catch((err) => console.log(err))
+            category.preload(categories)
+        ).catch((err) => console.log(err))
     ))
-))
+)
 // TRAE TODAS LAS CATEGORIAS |
 //----------------------------
 server.get('/get', (req, res, next) => {
