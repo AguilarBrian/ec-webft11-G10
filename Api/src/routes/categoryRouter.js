@@ -1,9 +1,9 @@
-const { searchProductsByCategoryName } = require('../../controllers/productController');
+const { searchProductsByCategoryName } = require('../controllers/productController');
 const server = require('express').Router();
-const { Category } = require('../../db.js');
+const { Category } = require('../db.js');
 var p = new Promise(resolve => resolve(true))
 
- const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
+const categories = ["helado", "hamburguesas", "pizza", "bebidas", "frutas", "cereales", "carnes", "verduras"];
 
 categories.forEach((category) => (
     p = p.then(() => (
@@ -13,7 +13,7 @@ categories.forEach((category) => (
                 name: category,
                 description: "Platos de " + category
             }
-          }).catch((err)=>console.log(err))        
+        }).catch((err) => console.log(err))
     ))
 ))
 // TRAE TODAS LAS CATEGORIAS |

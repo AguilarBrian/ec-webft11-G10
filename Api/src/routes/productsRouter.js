@@ -1,6 +1,6 @@
-const { getProductsByLetterIncludeInTheName,addCategoryToProduct } = require('../../controllers/productController');
+const { getProductsByLetterIncludeInTheName,addCategoryToProduct } = require('../controllers/productController');
 const server = require("express").Router();
-const { Product } = require("../../db.js");
+const { Product } = require("../db.js");
 const randomNumber = (min, max) => (Math.random() * (max - min) + (min + 0.5)) | 0
 
 
