@@ -1,5 +1,5 @@
 const server = require("express").Router();
-const { Order, Product, User } = require("../../db");
+const { Order, Product, User } = require("../db");
 
 
 
