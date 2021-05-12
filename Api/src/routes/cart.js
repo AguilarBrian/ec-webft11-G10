@@ -16,3 +16,19 @@ server.get('/:id',(req,res,next)=>{
     .then(res=>res.send(res))
     .catch(error=>res.send(error))
 })
+//Eliminar un producto
+server.delete('/:id',(req,res,next)=>{
+    const {id} = req.params
+    if(!id) return res.error()
+    order.update({
+        state:'cancelada',
+        where:{
+            userId:parseInt(id),
+            state:'carrito'
+        }
+    })
+    .then(res=>res.send(res))
+    .catch(error=>res.send(error))
+})
+
+//Vaciar el carrito
