@@ -1,6 +1,19 @@
 const server = require('express').Router();
 const { Order, Product, User } = require("../db");
 
+//Agregar producto a carrito
+server.post('/:id',(req,res,next)=>{
+    const {id} = req.params
+    const {price,quantity,productId} = req.body
+    if(!productId) return res.error()
+    if(!id) return res.error()
+    order.create({
+        price: price,
+        quantity: quantity,
+        userId:parseInt(id)
+    })
+})
+
 //Devuelve productos segun userId------
 server.get('/:id',(req,res,next)=>{
     const {id} = req.params
