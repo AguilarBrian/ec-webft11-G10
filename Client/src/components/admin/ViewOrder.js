@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import s from "./ViewOrder.module.css";
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 
 export default function ViewOrder() {
@@ -25,6 +25,9 @@ export default function ViewOrder() {
     state: "",
     address: "",
   });
+
+  const user = useSelector((state) => state.userReducer?.user);
+  console.log("cuando clikeo el boton me trae un usuario", user)
 
   // useEffect(() => {
   //   if (order) {

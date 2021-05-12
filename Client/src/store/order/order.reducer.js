@@ -11,6 +11,10 @@ const orderReducer = (state = initialState, action) => {
   switch (action.type) {
 
   case GET_ALL_ORDERS:
+    return {
+      ...state,
+      ordersUser: action.payload,
+    };
   case GET_PRODUCTS_OF_USER:
   case GET_ORDER_BY_ID:
   case PUT_ORDER_BY_ID:

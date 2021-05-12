@@ -21,3 +21,12 @@ export const getUsersById = (id) => {
     });
   };
 };
+
+
+export const getUsers = () => {
+  return function (dispatch) {
+    axios.get(`${serverUrl}users/users`).then((payload) => {
+      dispatch({ type: GET_USERS, payload: payload.data });
+    });
+  };
+};

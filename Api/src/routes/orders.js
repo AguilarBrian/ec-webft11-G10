@@ -6,7 +6,7 @@ const { Order, Product, User } = require("../db");
 
 server.post("/ols", (req, res) => {
   const {price,quantity,state,userId} = req.body
-  console.log("jhiugiug",state)
+  console.log("jhiugiug",state,price,quantity,userId)
   Order.create({
     price: price,
     quantity: quantity,
