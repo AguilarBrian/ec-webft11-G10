@@ -6,23 +6,14 @@ server.post('/:id',(req,res,next)=>{
     const {id} = req.params
     const {price,quantity,productId} = req.body
     if(!productId) return res.error()
-    if(!id) return res.error()
-    Product.findOne({
-        where:{
-            id:parseInt(productId)
-        }
-    }).then(res=>{
-        if(!res.stock){
-            return res.status(400).send('No hay stock para ese producto')
-        }
-        order.create({
-            price: price,
-            quantity: quantity,
-            userId:parseInt(id)
-        })
-        .then(res=>res.send(res))
-        .catch(error=>res.error())  
-    }).catch(error=>res.error())    
+    if(!id) return res.error()    
+    order.create({
+        price: price,
+        quantity: quantity,
+        userId:parseInt(id)
+    })
+    .then(res=>res.send(res))
+    .catch(error=>res.error())    
 })
 
 //Devuelve productos segun userId------
@@ -41,6 +32,9 @@ server.get('/:id',(req,res,next)=>{
     .catch(error=>res.send(error))
 })
 //Eliminar un producto
+
+
+//Vaciar el carrito
 server.delete('/:id',(req,res,next)=>{
     const {id} = req.params
     if(!id) return res.error()
@@ -54,5 +48,3 @@ server.delete('/:id',(req,res,next)=>{
     .then(res=>res.send(res))
     .catch(error=>res.send(error))
 })
-
-//Vaciar el carrito
