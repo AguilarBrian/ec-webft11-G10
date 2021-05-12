@@ -1,10 +1,6 @@
 
 const server = require("express").Router();
 const { Order, Product, User } = require("../db");
-
-
-
-
 // TRAE UN USUARIO POR ID |
 //------------------------
 server.get("/:id", (req, res) => {
