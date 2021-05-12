@@ -5,10 +5,16 @@ const initialState = {
   cart: cartFromlocalStorage,
   users: [],
   user: undefined,
+  productQuantity:[]
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "COUNT_CART":
+      return{
+        ...state,
+        productQuantity:action.payload
+      }
     case GET_CART:
       return {
         ...state,
