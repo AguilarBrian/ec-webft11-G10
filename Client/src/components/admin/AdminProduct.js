@@ -4,7 +4,7 @@ import MaterialTable from 'material-table'
 import { deleteProductById,getProducts } from '../../store/product/product.actions';
 import { useHistory } from "react-router-dom"
 import { Paper} from '@material-ui/core';
-
+import AppBar from "../appBar/AppBar"
 export function AdminProduct() {
     const products = useSelector(state => state.productReducer.products)
     const dispatch = useDispatch()
@@ -15,7 +15,8 @@ export function AdminProduct() {
     }, [])
 
     return (
-        <div style={{ maxWidth: "100%" }}>
+        <div>
+            <AppBar/>
             <Paper>
 
             <MaterialTable

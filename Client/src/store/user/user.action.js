@@ -19,10 +19,15 @@ export const getUsersById = (id) => {
     };
 };
 export const getCart = (cart) => {
-    return {
-        type: GET_CART,
-        payload: cart
+    return function (dispatch) {
+
+        dispatch(countProducts(cart))
+        return {
+            type: GET_CART,
+            payload: cart
+        }
     }
+
 }
 export const addToCart = (product) => {
     localStorage.setItem('cart', JSON.stringify(product))
@@ -30,4 +35,31 @@ export const addToCart = (product) => {
         type: ADD_TO_CART,
         payload: product
     }
+}
+
+export const countProducts = (cart) => {
+
+    const productSet = (cart) => {
+        if (cart && cart[0]) {
+            let productList = []
+            let productListok = []
+
+            for (let i in cart) {
+                if (productList.find(e => e === cart[i].name)) {
+                    continue
+                } else {
+                    productList.push(cart[i].name)
+                    productListok.push(cart[i])
+                }
+            }
+            return productListok
+        }
+    }
+    return {
+        type: "COUNT_CART",
+        payload: productSet(cart)
+
+    }
+
+
 }
