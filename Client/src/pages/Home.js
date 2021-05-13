@@ -1,7 +1,7 @@
 import React from 'react'
 import AppBar from '../components/appBar/AppBar'
 import Catalog from '../components/Product/catalog/Catalog';
-import CategoryCatalog from '../components/category/catalogCategory/CatalogCategory'
+import CategoryCatalog from '../components/category/CatalogCategory'
 
 export const Home = () => {
     return (
