@@ -1,46 +1,15 @@
 import React from 'react';
-import {
-  TextField, Input, makeStyles, Card, CardContent, Typography, Grid, Button
-} from '@material-ui/core/';
-import { useSelector, useDispatch } from "react-redux";
-import AppBar from "../components/appBar/AppBar"
-import defaultImg from "../components/Product/productCard/default.png"
-import { countProducts } from '../store/user/user.action';
-import SummaryCard from '../components/Product/cart/SummaryCard';
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    margin: "9px",//border
-    minHeight: "160px",
-  },
-  details: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  container: {
-    paddingTop: theme.spacing(2),
-  },
-  photo: {
-    minWidth: "240px",
-  },
-  total: {
-    float: "right",
-    paddingBottom:"0px",
-    background:"red",
-
-
-  },
-  input: {
-    paddingTop: theme.spacing(2),
-  }
-}));
+import { Card, CardContent, Typography, Grid,TextField } from '@material-ui/core/';
+import { useSelector } from "react-redux";
+import AppBar from "../../components/appBar/AppBar"
+import defaultImg from "../../components/Product/productCard/default.png"
+import SummaryCard from "../../components/Product/cart/SummaryCard"
+import { useStyles } from './styleCart'
 
 export default function Cart() {
   const classes = useStyles();
-  const dispatch = useDispatch()
 
   const productQuantity = useSelector(state => state.userReducer.productQuantity)
-
 
   return (
     <>
