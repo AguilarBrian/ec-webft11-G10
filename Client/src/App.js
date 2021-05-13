@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import { AuthProvider } from './components/AuthContext';
 import { Home } from './pages/Home';
 import PageAddProduct from './pages/adminProduct/PageAddProduct'
-import PageAdminCategory from './pages/adminCategory/PageAdminCategory'
+import PageAdminCategory from './pages/adminCategory/PageAddCategory'
 import LogIn from './pages/landingPage/LandingPage'
 import Product from './components/Product/Product'
 import { AdminProduct } from './components/admin/adminProduct/AdminProduct';
@@ -24,7 +24,7 @@ function App() {
           <Route exact path='/cart' component={CartProducts} />
           <Route exact path='/logIn' component={LogIn} />
           <Route exact path='/' component={Home} />
-          <Route path='/editProduct/:id' component={EditProduct} />
+          <Route path='/editProduct/:id' component={PageEditProduct} />
           <Route path='/adminProduct' component={AdminProduct} />
           <Route path='/createProduct' component={PageAddProduct} />
           <Route path='/adminCategories' component={PageAdminCategory} />
