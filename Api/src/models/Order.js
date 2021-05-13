@@ -16,5 +16,9 @@ module.exports = (sequelize) => {
       values: ["carrito", "creada", "procesando", "cancelada", "completa"],
       defaultValue: "carrito",
     },
+    address: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   });
 };
