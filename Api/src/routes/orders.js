@@ -3,12 +3,12 @@ const orders = require('../controllers/orders');
 const { Order, Product, User } = require("../db");
 
 server.post("/ols", (req, res) => {
-  const {price,quantity,state,userId} = req.body
-  console.log("jhiugiug",state,price,quantity,userId)
+  const {price,quantity,state,userId,address} = req.body
   Order.create({
     price: price,
     quantity: quantity,
     state:state,
+    address:address,
     userId:userId
   })
     .then((order) => {
@@ -74,16 +74,17 @@ server.get('/user/:id', (req, res) => {
 
 // MODIFICA UNA ORDEN POR ID |
 //----------------------------
-server.put("/:id", (req, res) => {
+server.put("/:id/modifica", (req, res) => {
   
   const { id } = req.params;
-  const { price, quantity, state } = req.body;
+  const { price, quantity, state, address } = req.body;
 
   Order.update(
     {
       price: price,
       quantity: quantity,
       state: state,
+      address:address
     },
     {
       where: { id: id },

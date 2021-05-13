@@ -1,24 +1,16 @@
 import React, { useState, useEffect } from "react";
 import s from "./ViewOrder.module.css";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory, useParams } from "react-router";
+import { getUsersById } from "../../store/user/user.action";
+import { cleanCart, getOrderByUserId, putOrderById } from "../../store/order/order.action";
+import { NavLink } from "react-router-dom";
+
 
 
 export default function ViewOrder() {
-  // const { order } = useSelector((state) => state.order);
-  const order = {
-    id:21,
-    user:{email:"lelo@lelo",role:"admin"},
-    state: 
-       "cart"
-      // "create",
-      // "process"
-      // "canceled",
-      // "completed"
-    , address: "12 del oeste",products:[{productsorder:{price:23,quantity:45},price:23,name:"coca"}]
-  }
-  
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [edit, setEdit] = useState(false);
   const [input, setInput] = useState({
@@ -26,26 +18,23 @@ export default function ViewOrder() {
     address: "",
   });
 
-  const user = useSelector((state) => state.userReducer?.user);
-  console.log("cuando clikeo el boton me trae un usuario", user)
+  const { id } = useParams()
+  
+  useEffect(() => {
+    dispatch(getUsersById(id))
+    dispatch( getOrderByUserId(id))
+  }, [dispatch,id])
 
-  // useEffect(() => {
-  //   if (order) {
-  //     setInput({ state: order.state, address: order.address });
-  //   }
-  //   setInput({
-  //     state: order && order.state,
-  //     address: order && order.address,
-  //   });
-  // }, [order]);
+  const user = useSelector((state) => state.userReducer?.user)
+  const orderuserid = useSelector((state) => state.orderReducer?.ordersUser)
+
+  console.log("esto trae ell orderus");
 
   const sumTotal = function () {
     let total = 0;
-    if (order.products) {
-      order.products.forEach((product) => {
-        total += product.productsorder.quantity * parseFloat(product.price);
-      });
-    }
+    if (orderuserid.products) {
+        total= orderuserid.products.reduce((ac,e)=>ac+parseFloat(e.price),0)
+      }
     return "$ " + total;
   };
 
@@ -58,24 +47,23 @@ export default function ViewOrder() {
 
   const onSave = function () {
     const data = {
-      state: input.state === "" ? order.state : input.state,
+      state: input.state === "" ? orderuserid.state : input.state,
       address: input.address,
     };
-    // dispatch(editOrder(data, order.id));
-    // dispatch(fetchOrders());
+    dispatch(putOrderById(parseInt(orderuserid.id),data))
+    dispatch( getOrderByUserId(parseInt(id)))
   };
-
+  const history=useHistory()
   const onClose = function () {
-    // dispatch(emptyCart(order.user.id));
-    alert("Se cerro la orden");
+    history.push("/PageCheckoutOrders")
   };
 
   const onClean = function () {
-    // dispatch(emptyCart(order.user.id));
+    dispatch(cleanCart(orderuserid.id));
     alert("Se eliminaron los productos de la orden");
   };
 
-  if (!order) {
+  if (!orderuserid) {
     return (
       <div className={s.viewOrder}>
         <div className={s.content}>
@@ -92,17 +80,17 @@ export default function ViewOrder() {
         <div className={[s.info, s.topShadow].join(" ")}>
           <p>
             <span>Email: </span>
-            {order.user && order.user.email}
+            {user && user.email}
           </p>
           <p>
             <span>Rol: </span>
-            {order.user && order.user.role}
+            {user && user.access}
           </p>
         </div>
         <div className={[s.info, s.botShadow].join(" ")}>
           <p>
             <span>ID: </span>
-            {order && order.id}
+            {orderuserid && orderuserid.id}
           </p>
           <p>
             <span>Estado: </span>
@@ -114,14 +102,14 @@ export default function ViewOrder() {
                 id="state"
               >
                 <option value="">Seleccione el nuevo estado</option>
-                <option value="cart">Carrito</option>
-                <option value="create">Creada</option>
-                <option value="process">Procesando</option>
-                <option value="canceled">Cancelada</option>
-                <option value="completed">Completada</option>
+                <option value="creada">Creada</option>
+                <option value="carrito">Carrito</option>
+                <option value="procesando">Procesando</option>
+                <option value="cancelada">Cancelada</option>
+                <option value="completa">Completa</option>
               </select>
             ) : (
-              order.state
+              orderuserid.state
             )}
           </p>
           <p>
@@ -134,7 +122,7 @@ export default function ViewOrder() {
                 type="text"
               />
             ) : (
-              order.address
+              orderuserid.address
             )}
           </p>
         </div>
@@ -142,17 +130,17 @@ export default function ViewOrder() {
           <thead>
             <tr>
               <th>Nombre</th>
-              <th>Cantidad</th>
+              <th>Stock</th>
               <th>Precio Unit.</th>
             </tr>
           </thead>
           <tbody>
-            {order.products &&
-              order.products.map(function (product) {
+            { orderuserid.products &&
+               orderuserid.products.map(function (product) {
                 return (
-                  <tr>
+                  <tr id={product.id}>
                     <td>{product.name}</td>
-                    <td>{product.productsorder.quantity}</td>
+                    <td>{product.stock}</td>
                     <td>{product.price}</td>
                   </tr>
                 );
@@ -182,7 +170,7 @@ export default function ViewOrder() {
             </button>
           </div>
           <div>
-            {order.state === "cart" && order.products.length > 0 && (
+            {orderuserid.state === "carrito" && orderuserid.products.length > 0 && (
               <button onClick={onClean} className={[s.btn].join(" ")}>
                 Vaciar orden
               </button>
@@ -190,9 +178,9 @@ export default function ViewOrder() {
           </div>
           <div>
             <button
-              onClick={onClose}
-              className={[s.btn].join(" ")}
+              className={[s.btn].join(" ")} onClick={onClose}
             >
+              
               Salir
             </button>
           </div>

@@ -1,8 +1,8 @@
-import {GET_ALL_ORDERS,GET_PRODUCTS_OF_USER, GET_ORDER_BY_ID, PUT_ORDER_BY_ID, GET_ORDER_BY_USER_ID} from './order.action';
+import {DELETE_CART,GET_ALL_ORDERS,GET_PRODUCTS_OF_USER, GET_ORDER_BY_ID, PUT_ORDER_BY_ID, GET_ORDER_BY_USER_ID} from './order.action';
 
 var initialState = {
   orders: [],
-  ordersUser: [], 
+  ordersUser:"", 
 };
 
 
@@ -10,17 +10,25 @@ var initialState = {
 const orderReducer = (state = initialState, action) => {
   switch (action.type) {
 
+
+  case DELETE_CART:
+        return {
+          ...state,
+          ordersUser: action.payload,
+        };
+
   case GET_ALL_ORDERS:
     return {
       ...state,
-      ordersUser: action.payload,
+      orders: action.payload,
+      
     };
   case GET_PRODUCTS_OF_USER:
   case GET_ORDER_BY_ID:
   case PUT_ORDER_BY_ID:
     return {
       ...state,
-      orders: action.payload,
+      ordersUser: action.payload,
     };
   case GET_ORDER_BY_USER_ID:
     return{

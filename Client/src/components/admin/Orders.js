@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,7 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Title from './Title';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { getOrderByUserId,getAllOrders } from "../../store/order/order.action";
 import { getUsers, getUsersById } from "../../store/user/user.action"
@@ -63,7 +63,7 @@ export default function Orders() {
 
   }, [])
 
-  const orders = useSelector((state) => state.orderReducer?.ordersUser);
+  const orders = useSelector((state) => state.orderReducer?.orders);
   // const user = useSelector((state) => state.userReducer?.user);
   console.log("esto me trae orders", orders)
 
@@ -93,9 +93,7 @@ export default function Orders() {
               <TableCell>VISA ⠀•••• 3719</TableCell>
               <TableCell>{row.quantity}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
-              <Button variant="contained" color="primary" href="/ViewOrder" onClick={()=>dispatch(getUsersById(row.userId))}>
-
-              {/* dispatch(getUsersById(e.target.iduser) */}
+              <Button variant="contained" color="primary" to={`/ViewOrder/${row.userId}`} component={Link}>
                 Link
               </Button>
             </TableRow>

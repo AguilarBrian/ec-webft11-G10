@@ -5,7 +5,6 @@ import { Home } from './pages/Home';
 import PageAddProduct from './pages/adminProduct/PageAddProduct'
 import PageAdminCategory from './pages/adminCategory/PageAdminCategory'
 import LandingPage from './pages/landingPage/LandingPage'
-// import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
 import Product from './components/Product/Product'
 import { AdminProduct } from './components/admin/AdminProduct';
 import EditProduct from './pages/adminProduct/EditProduct';

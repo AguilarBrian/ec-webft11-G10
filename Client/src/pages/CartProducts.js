@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, Card, CardContent, Typography, Grid } from '@material-ui/core/';
 import { useSelector } from "react-redux";
 import AppBar from "../components/appBar/AppBar"
-import defaultImg from "../components/product/productCard/default.png"
+import defaultImg from "../components/Product/productCard/ProductCard"
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
