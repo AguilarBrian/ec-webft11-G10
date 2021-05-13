@@ -122,7 +122,7 @@ export default function PersistentDrawerLeft() {
                 <Divider />
                 <List >
                     <ListItem button to="/adminProduct" component={Link}>
-                        <ListItemText className={classes.barOptions} primary="Admin Productos" />
+                        <ListItemText className={classes.barOptions} primary="Administrar Productos" />
                     </ListItem>
                     <ListItem button to="/CreateProduct" component={Link}>
                         <ListItemText className={classes.barOptions} primary="Crear Productos" />
