@@ -7,7 +7,7 @@ import AppBar from '../components/appBar/AppBar'
 
 import { getOneProduct } from '../store/product/product.actions';
 import { Cart } from '../components/product/cart/Cart';
-import { addToCart } from '../store/user/user.actions';
+import { addToCart } from '../store/user/user.action';
 
 export default function Product() {
 

@@ -9,10 +9,11 @@ import LandingPage from './pages/landingPage/LandingPage'
 import Product from './components/Product/Product'
 import { AdminProduct } from './components/admin/AdminProduct';
 import EditProduct from './pages/adminProduct/EditProduct';
-import {ThemeProvider} from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/core/styles'
 import theme from './theme'
 import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
 import ViewOrder from './components/admin/ViewOrder'
+import CartProducts from './pages/CartProducts'
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
         <Route path='/createProduct' component={PageAddProduct} />
         <Route path='/adminCategories' component={PageAdminCategory} />
         <Route path='/PageCheckoutOrders' component={PageCheckoutOrders} />
-        <Route path='/ViewOrder' component={ViewOrder} />
+        <Route path='/ViewOrder/:id' component={ViewOrder} />
         <Route path='/product/:id' component={Product} />
         </ThemeProvider>
       </userContext.Provider>

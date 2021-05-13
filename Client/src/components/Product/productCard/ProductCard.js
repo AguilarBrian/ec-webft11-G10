@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Typography } from '@material-ui/core';
 import { useStyles } from './styles'
 import defaultImg from './default.png'
-import { addToCart } from '../../../store/user/user.actions';
+import { addToCart } from '../../../store/user/user.action';
 import { useDispatch } from "react-redux";
 
 export default function ProductCard({ id, img, name, description, price }) {

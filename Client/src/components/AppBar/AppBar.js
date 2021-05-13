@@ -25,7 +25,7 @@ import { useStyles } from './styles'
 import { Link } from 'react-router-dom';
 import { SearchBar } from './searchBar/SearchBar';
 import { useSelector } from "react-redux";
-import { Cart } from '../Product/cart/Cart';
+import  Cart  from '../Product/cart/Cart';
 
 export default function PersistentDrawerLeft() {
   
