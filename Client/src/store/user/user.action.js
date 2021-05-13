@@ -14,11 +14,20 @@ export const GET_TOTAL = "GET_TOTAL";
 export const getUsersById = (id) => {
     return function (dispatch) {
         axios.get(`${serverUrl}users/${id}`).then((payload) => {
-            console.log("esto es el user de id", payload)
+            console.log("esto es el user de id de action", payload)
             dispatch({ type: GET_USER_BYID, payload: payload.data });
         });
     };
 };
+
+export const getUsers = () => {
+  return function (dispatch) {
+    axios.get(`${serverUrl}users/users`).then((payload) => {
+      dispatch({ type: GET_USERS, payload: payload.data });
+    });
+  };
+};
+
 export const getCart = (cart) => {
     return function (dispatch) {
 

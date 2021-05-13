@@ -40,8 +40,13 @@ const userReducer = (state = initialState, action) => {
           cart: [action.payload]
         }
       }
-    case POST_USER:
+    
     case GET_USER_BYID:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case POST_USER:
     case DELETE_USER:
     case PUT_USER:
     case GET_USERS:
@@ -56,3 +61,6 @@ const userReducer = (state = initialState, action) => {
 
 
 export default userReducer;
+
+
+

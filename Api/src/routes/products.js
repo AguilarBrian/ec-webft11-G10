@@ -126,13 +126,14 @@ server.get("/:id", (req, res, next) => {
 //----------------------
 server.post("/", (req, res) => {
 
-  const { productName, description, productImg, priceInt, stockInt, category } = req.body;
+  const { productName, description, productImg, priceInt, stockInt,  productId,category } = req.body;
   const product = {
     name: productName,
     description: description,
     price: priceInt,
     stock: stockInt,
     img: productImg,
+    productId: productId
 
   }
 
@@ -221,5 +222,7 @@ server.delete("/:id", (req, res) => {
       res.status(400).json(error);
     });
 });
+
+
 
 module.exports = server;

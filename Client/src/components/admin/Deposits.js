@@ -32,8 +32,6 @@ export default function Deposits({amounts}) {
     
   }, [])
    
-  const hoy = new Date();
-  console.log(hoy,"fechhhhaha")
 
 
   const amount = useSelector(state => state.orderReducer?.orders)
@@ -41,6 +39,8 @@ export default function Deposits({amounts}) {
   console.log("esto es amount ",amount);
 
   const deposits= amount.reduce((ac,e)=>ac+e.price,0)
+
+  // console.log("esto es la suma de amount ",deposits);
 
   const classes = useStyles();
   return (

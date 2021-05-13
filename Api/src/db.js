@@ -44,9 +44,6 @@ const {
   User,
   //Cart,
   Order,
-  // Cart,
-  // User,
-  // Order,
   // Review,
 } = sequelize.models;
 
@@ -55,18 +52,28 @@ const {
 Product.belongsToMany(Category, { through: 'Products_Categories' });
 Category.belongsToMany(Product, { through: 'Products_Categories' });
 
-Product.belongsToMany(Order, { through: 'Products_Order'  });
-Order.belongsToMany(Product, { through: 'Products_Order' });
+// Product.belongsToMany(Order, { through: 'Products_Cart' });
+// Order.belongsToMany(Product, { through: 'Products_Cart'});
+
 
 // PRODUCTS COMMENTS
 // Product.hasMany(Review, { foreignKey: "productId" });
 // Review.belongsTo(Product);
 
+Product.belongsToMany(Order, { through: "Order_line"});
+Order.belongsToMany(Product, { through: "Order_line" });
+
+// Order.hasMany(Product, { foreignKey: "productId" });
+// Product.belongsTo(Order);
+
 // User.hasMany(Review, { foreignKey: "userId" });
 // Review.belongsTo(User)
 
-// User.hasMany(Order);
-// Order.belongsTo(User);
+// user -------order------------product
+
+User.hasMany(Order);
+Order.belongsTo(User);
+
 // Cart.belongsToMany(Product, { through: Order });
 // Product.belongsToMany(Cart, { through: Order });
 
