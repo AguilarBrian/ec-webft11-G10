@@ -3,10 +3,11 @@ import {
   TextField, Input, makeStyles, Card, CardContent, Typography, Grid, Button
 } from '@material-ui/core/';
 import { useSelector, useDispatch } from "react-redux";
-import AppBar from "../components/appBar/AppBar"
-import defaultImg from "../components/Product/productCard/ProductCard"
-import { countProducts } from '../store/user/user.action';
-import SummaryCard from '../components/Product/cart/SummaryCard';
+import AppBar from "../../components/appBar/AppBar"
+import defaultImg from "../../components/Product/productCard/ProductCard"
+import { countProducts } from '../../store/user/user.action';
+import SummaryCard from '../../components/Product/cart/SummaryCard';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
