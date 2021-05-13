@@ -12,7 +12,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import theme from './theme'
 import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
 import ViewOrder from './components/admin/ViewOrder'
-import CartProducts from './pages/CartProducts'
+import CartProducts from './pages/cart/CartProducts'
 
 function App() {
   return (

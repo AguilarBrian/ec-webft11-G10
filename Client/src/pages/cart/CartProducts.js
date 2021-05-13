@@ -1,25 +1,9 @@
 import React from 'react';
-import { makeStyles, Card, CardContent, Typography, Grid } from '@material-ui/core/';
+import { Card, CardContent, Typography, Grid } from '@material-ui/core/';
 import { useSelector } from "react-redux";
-import AppBar from "../components/appBar/AppBar"
-import defaultImg from "../components/product/productCard/default.png"
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    margin: "9px",//border
-    minHeight: "160px",
-  },
-  details: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  container: {
-    paddingTop: theme.spacing(2),
-  },
-  photo: {
-    minWidth: "240px",
-  }
-}));
+import AppBar from "../../components/appBar/AppBar"
+import defaultImg from "../../components/product/productCard/default.png"
+import { useStyles } from './styleCart'
 
 export default function CustomCard() {
   const classes = useStyles();
