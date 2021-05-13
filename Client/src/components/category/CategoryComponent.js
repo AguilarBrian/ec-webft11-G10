@@ -2,7 +2,7 @@ import React from 'react';
 import { useStyles } from './styleButton'
 import { useDispatch } from 'react-redux'
 import Button from '@material-ui/core/Button';
-import { searchProducts } from '../../../store/category/category.actions'
+import { searchProducts } from '../../store/category/category.actions'
 import { Grid} from '@material-ui/core/';
 
 function CategoryComponent({ title }) {
