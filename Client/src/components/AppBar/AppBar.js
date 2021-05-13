@@ -63,7 +63,7 @@ export default function PersistentDrawerLeft() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Button variant="h6" color='inherit' to="/Home" component={Link}>
+                    <Button variant="h6" color='inherit' to="/" component={Link}>
                         FastFoodBest! or whatever
                     </Button>
                     <Cart />

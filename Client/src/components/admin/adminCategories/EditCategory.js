@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {useParams} from 'react-router-dom'
 import { Form, Field } from 'react-final-form';
 import { TextField, Select } from 'final-form-material-ui';
 import { Paper, Grid, Button, MenuItem, CssBaseline, Typography } from '@material-ui/core';
@@ -8,9 +9,9 @@ import { getCategory } from '../../../store/category/category.actions'
 
 const validate = values => {
     const errors = {};
-    if (!values.categoryId) {
-        errors.categoryId = 'Required';
-    }
+    // if (!values.categoryId) {
+    //     errors.categoryId = 'Required';
+    // }
     if (!values.name) {
         errors.name = 'Required';
     }
@@ -24,6 +25,7 @@ function EditCategory() {
     const dispatch = useDispatch()
     const statusPost = useSelector(state => state.categoryReducer.postState)
     const categories = useSelector(state => state.categoryReducer.category)
+    const {id} = useParams()
 
     const [status, setStatusPost] = useState('')
 
@@ -50,7 +52,7 @@ function EditCategory() {
     const onSubmit = async values => {
         const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
         await sleep(300);
-        dispatch(putEditCategory(values, values.categoryId))
+        dispatch(putEditCategory(values, id))
         setStatusPost(statusPost)
         values.name=''
         values.description=''
@@ -68,7 +70,7 @@ function EditCategory() {
                     <form onSubmit={handleSubmit} noValidate>
                         <Paper style={{ padding: 16 }}>
                             <Grid container alignItems="flex-start" spacing={2}>
-                                <Grid item xs={12}>
+                                {/* <Grid item xs={12}>
                                     <Field
                                         fullWidth
                                         name="categoryId"
@@ -86,7 +88,7 @@ function EditCategory() {
                                             })
                                             )}
                                     </Field>
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item xs={6}>
                                     <Field
