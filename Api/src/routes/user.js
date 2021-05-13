@@ -1,6 +1,6 @@
-
 const server = require("express").Router();
 const { Order, Product, User } = require("../db");
+
 // TRAE UN USUARIO POR ID |
 //------------------------
 server.get("/:id", (req, res) => {
@@ -12,9 +12,7 @@ server.get("/:id", (req, res) => {
         )
       )
       .catch((err) => res.send(err));
-  });
-  
-  
+  });  
   // CREAR USUARIO |
   //----------------
   server.post("/register", (req, res) => {
