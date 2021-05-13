@@ -37,10 +37,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Cart() {
   const classes = useStyles();
-  const dispatch = useDispatch()
 
   const productQuantity = useSelector(state => state.userReducer.productQuantity)
-
 
   return (
     <>

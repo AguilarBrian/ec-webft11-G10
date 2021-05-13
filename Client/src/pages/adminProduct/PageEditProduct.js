@@ -5,10 +5,11 @@ import { Paper, Grid, Button, CssBaseline, MenuItem, Typography } from '@materia
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { useDispatch, useSelector } from 'react-redux'
-import { postProducts, getOneProduct, putProduct } from '../../store/product/product.actions';
+import { getOneProduct, putProduct } from '../../store/product/product.actions';
 import { getCategory } from '../../store/category/category.actions'
 import UploadImage from '../../components/Product/UploadImage';
 import { useParams } from 'react-router-dom'
+
 const validate = values => {
     const errors = {};
     if (!values.productName) {

@@ -35,7 +35,7 @@ server.post('/', (req, res, next) => {
         return res.error()
     }
     category.create(req.body)
-        .then(category => res.send(category))
+        .then(r => res.send(r))
         .catch(next);
 })
 // MODIFICA UNA CATEGORIA |

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField, Select } from 'final-form-material-ui';
-import UploadImage from './UploadImage';
+import UploadImage from '../../Product/UploadImage';
 import { Paper, Grid, Button, CssBaseline, MenuItem, Typography } from '@material-ui/core';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { useDispatch, useSelector } from 'react-redux'
-import { postProducts } from '../../store/product/product.actions';
-import { getCategory } from '../../store/category/category.actions'
+import { postProducts } from '../../../store/product/product.actions';
+import { getCategory } from '../../../store/category/category.actions'
 
 const validate = values => {
   const errors = {};

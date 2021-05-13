@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import 'swiper/swiper-bundle.min.css';
 import CategoryComponent from './CategoryComponent'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCategory } from '../../../store/category/category.actions'
+import {getCategory} from '../../store/category/category.actions'
 import { useStyles } from './styleCategory'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Navigation, EffectCoverflow, Autoplay } from 'swiper';
