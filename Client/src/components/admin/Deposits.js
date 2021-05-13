@@ -30,17 +30,14 @@ export default function Deposits({amounts}) {
    
      dispatch(getAllOrders())
     
-  }, [])
+  }, [dispatch])
    
 
 
   const amount = useSelector(state => state.orderReducer?.orders)
-  // const products = useSelector(state => state.productReducer?.products)
-  console.log("esto es amount ",amount);
-
-  const deposits= amount.reduce((ac,e)=>ac+e.price,0)
-
-  // console.log("esto es la suma de amount ",deposits);
+  const amount2 = amount.filter(e=>e.state!=="cancelada")
+  const deposits= amount2.reduce( (ac,e)=>ac+e.price,0)
+  
 
   const classes = useStyles();
   return (
