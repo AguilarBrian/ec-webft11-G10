@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import AppBar from "../components/appBar/AppBar"
 import defaultImg from "../components/product/productCard/default.png"
 import { countProducts } from '../store/user/user.action';
+import SummaryCard from '../components/product/cart/SummaryCard';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -24,8 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
   total: {
     float: "right",
-    minHeight: "507px",
-    minWidth: "300px"
+    paddingBottom:"0px",
+    background:"red",
+
 
   },
   input: {
@@ -36,23 +38,18 @@ const useStyles = makeStyles((theme) => ({
 export default function Cart() {
   const classes = useStyles();
   const dispatch = useDispatch()
-  
-  const cartUnique= useSelector(state => state.userReducer.productQuantity)
 
-  
+  const productQuantity = useSelector(state => state.userReducer.productQuantity)
+
+
   return (
     <>
       <AppBar />
-      < Card className={classes.total}  >
-        <Typography variant="h5" >
-          SUBTOTAL 120
-             </Typography>
-        <Typography variant="h5">
-          SHIPPING    FREE              </Typography>
-        <Button variant='contained' color='primary' >BUY</Button>
+      <Card className={classes.total}  >
+        <SummaryCard />
       </Card>
-      {cartUnique && cartUnique.length > 0 ? (
-        cartUnique.map(product => {
+      {productQuantity && productQuantity.length > 0 ? (
+        productQuantity.map(product => {
           return <Card
             className={classes.root}
           >
@@ -79,7 +76,7 @@ export default function Cart() {
                 Cantidad:
               </Typography>
               <TextField
-                defaultValue={1}
+                defaultValue={product.quantity}
                 id="outlined-number"
                 type="number"
                 InputLabelProps={{
