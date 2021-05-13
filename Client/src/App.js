@@ -8,6 +8,7 @@ import LandingPage from './pages/landingPage/LandingPage'
 import Product from './components/Product/Product'
 import { AdminProduct } from './components/admin/adminProduct/AdminProduct';
 import PageEditProduct from './pages/adminProduct/PageEditProduct';
+import PageEditCategories from './pages/adminCategory/PageEditCategories';
 import { ThemeProvider } from '@material-ui/core/styles'
 import theme from './theme'
 import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
@@ -26,6 +27,7 @@ function App() {
         <Route  path='/adminProduct' component={AdminProduct} />
         <Route path='/createProduct' component={PageAddProduct} />
         <Route path='/adminCategories' component={PageAddCategory} />
+        <Route path='/creaCategories' component={PageEditCategories} />
         <Route path='/PageCheckoutOrders' component={PageCheckoutOrders} />
         <Route path='/ViewOrder/:id' component={ViewOrder} />
         <Route path='/product/:id' component={Product} />
