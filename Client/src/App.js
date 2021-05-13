@@ -3,17 +3,18 @@ import { Route } from "react-router-dom";
 import { AuthProvider } from './components/AuthContext';
 import { Home } from './pages/Home';
 import PageAddProduct from './pages/adminProduct/PageAddProduct'
-import PageAdminCategory from './pages/adminCategory/PageAddCategory'
 import LogIn from './pages/landingPage/LandingPage'
 import Product from './components/Product/Product'
-import { AdminProduct } from './components/admin/adminProduct/AdminProduct';
+import {PageAdminProduct} from './pages/adminProduct/PageAdminProduct';
 import PageEditProduct from './pages/adminProduct/PageEditProduct';
-import PageEditCategories from './pages/adminCategory/PageEditCategories';
+import PageAddCategory from './pages/adminCategory/PageAddCategory';
 import { ThemeProvider } from '@material-ui/core/styles'
 import theme from './theme'
 import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
 import ViewOrder from './components/admin/ViewOrder'
 import CartProducts from './pages/cart/CartProducts'
+import {PageAdminCategories} from './pages/adminCategory/PageAdminCategories'
+import PageEditCategory from './pages/adminCategory/PageEditCategory'
 
 function App() {
   return (
@@ -25,9 +26,12 @@ function App() {
           <Route exact path='/logIn' component={LogIn} />
           <Route exact path='/' component={Home} />
           <Route path='/editProduct/:id' component={PageEditProduct} />
-          <Route path='/adminProduct' component={AdminProduct} />
+          <Route path='/adminProduct' component={PageAdminProduct} />
           <Route path='/createProduct' component={PageAddProduct} />
-          <Route path='/adminCategories' component={PageAdminCategory} />
+          <Route path='/creaCategories' component={PageAddCategory} />
+          <Route path='/adminCategories' component={PageAdminCategories} />
+          <Route path='/creaCategories' component={PageAddCategory} />
+          <Route path='/editCategory/:id' component={PageEditCategory} />
           <Route path='/PageCheckoutOrders' component={PageCheckoutOrders} />
           <Route path='/ViewOrder/:id' component={ViewOrder} />
           <Route path='/product/:id' component={Product} />
