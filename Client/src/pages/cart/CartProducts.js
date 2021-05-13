@@ -18,7 +18,7 @@ export default function CustomCard() {
             spacing={3}
           >
             <Grid xs={2} className={classes.photo}>
-              <img height="140" src={product.img==="no tiene" ? defaultImg : product.img}></img>
+              <img src={product.img==="no tiene" ? defaultImg : product.img}></img>
             </Grid>
             <Grid xs={8} className={classes.details}>
               <CardContent className={classes.content}>

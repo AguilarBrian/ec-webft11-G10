@@ -9,6 +9,7 @@ import { postProducts, getOneProduct, putProduct } from '../../store/product/pro
 import { getCategory } from '../../store/category/category.actions'
 import UploadImage from '../../components/product/UploadImage';
 import { useParams } from 'react-router-dom'
+
 const validate = values => {
     const errors = {};
     if (!values.productName) {
