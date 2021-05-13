@@ -1,15 +1,21 @@
-import { GET_CART, ADD_TO_CART, GET_USER_BYID, POST_USER, DELETE_USER, PUT_USER, GET_USERS } from './user.action';
+import { GET_CART,GET_TOTAL, ADD_TO_CART, GET_USER_BYID, POST_USER, DELETE_USER, PUT_USER, GET_USERS } from './user.action';
 const cartFromlocalStorage = JSON.parse(localStorage.getItem('cart') || '[]')
 
 const initialState = {
   cart: cartFromlocalStorage,
   users: [],
   user: undefined,
-  productQuantity:[]
+  productQuantity:[],
+  total:0
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_TOTAL:
+      return{
+        ...state,
+        total:action.payload
+      }
     case "COUNT_CART":
       return{
         ...state,
