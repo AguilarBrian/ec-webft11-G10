@@ -1,3 +1,5 @@
+import app from "../../firebase";
+
 import React from 'react';
 import clsx from 'clsx';
 import { useTheme } from '@material-ui/core/styles';
@@ -25,10 +27,10 @@ import { useStyles } from './styles'
 import { Link } from 'react-router-dom';
 import { SearchBar } from './searchBar/SearchBar';
 import { useSelector } from "react-redux";
-import  Cart  from '../Product/cart/Cart';
+import Cart from '../Product/cart/Cart';
 
 export default function PersistentDrawerLeft() {
-  
+
     const cart = useSelector(state => state.userReducer.cart)
 
     const classes = useStyles();
@@ -65,15 +67,24 @@ export default function PersistentDrawerLeft() {
                     <Button variant="h6" color='inherit' to="/Home" component={Link}>
                         FastFoodBest! or whatever
                     </Button>
-                    <Cart  />
+                    <Cart />
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
                         </div>
                         <SearchBar />
                     </div>
+                    <Button
+                        onClick={() => app.auth().signOut()
+                            .then(res => console.log("deslogueado", res))
+
+                        }
+                        color="inherit"
+
+
+                    >logout</Button>
                     <div className={classes.grow} />
-                    <div  className={classes.sectionDesktop}>
+                    <div className={classes.sectionDesktop}>
                         <IconButton to="/cart" component={Link}
                             aria-label="" color="inherit">
 
@@ -84,11 +95,14 @@ export default function PersistentDrawerLeft() {
                         </IconButton>
                     </div>
                     <div className={classes.sectionDesktop}>
-                        <IconButton color="inherit">
+                        <IconButton color="inherit"
+                            to="/login" component={Link}
+                        >
                             <Badge color="secondary">
                                 <AccountCircleIcon fontSize="large" />
                             </Badge>
                         </IconButton>
+                        
                     </div>
                 </Toolbar>
             </AppBar>

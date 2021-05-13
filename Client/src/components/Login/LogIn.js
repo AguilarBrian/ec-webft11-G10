@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField } from 'final-form-material-ui';
-import { Paper, Grid, Button, CssBaseline} from '@material-ui/core';
+import { Paper, Grid, Button, CssBaseline } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-
+import { handleFaceAuth } from './Login copy';
 const onSubmit = async values => {
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await sleep(300);
@@ -24,8 +24,15 @@ const validate = values => {
     return errors;
 };
 
-function LogIn() {
-
+function LogIn({ faceAuth,auth }) {
+    const handleClickFaceAuth=()=>{
+        
+        faceAuth()
+    }
+    const handleClickAuth=()=>{
+        
+        auth()
+    }
     return (
         <div style={{ padding: 16, margin: 'auto', maxWidth: 350 }}>
             <CssBaseline />
@@ -33,11 +40,11 @@ function LogIn() {
                 onSubmit={onSubmit}
                 initialValues={{}}
                 validate={validate}
-                render={({ handleSubmit, submitting, pristine, values }) => (
+                render={({ handleSubmit, submitting, pristine, values, loginCommon, auth }) => (
                     <form onSubmit={handleSubmit} noValidate>
                         <Paper style={{ padding: 16 }}>
-                            <Grid container style={{display:"contents"}} spacing={6}>
-                                <Grid item xs={6} style={{maxWidth: "100%",width: "100%"}}  >
+                            <Grid container style={{ display: "contents" }} spacing={6}>
+                                <Grid item xs={6} style={{ maxWidth: "100%", width: "100%" }}  >
                                     <Field
                                         fullWidth
                                         required
@@ -47,7 +54,7 @@ function LogIn() {
                                         label="Nombre"
                                     />
                                 </Grid>
-                                <Grid item xs={6} style={{maxWidth: "100%",width: "100%"}} >
+                                <Grid item xs={6} style={{ maxWidth: "100%", width: "100%" }} >
                                     <Field
                                         fullWidth
                                         required
@@ -57,7 +64,7 @@ function LogIn() {
                                         label="Apellido"
                                     />
                                 </Grid>
-                                <Grid item xs={6} style={{maxWidth: "100%",width: "100%"}} >
+                                <Grid item xs={6} style={{ maxWidth: "100%", width: "100%" }} >
                                     <Field
                                         name="email"
                                         fullWidth
@@ -69,19 +76,24 @@ function LogIn() {
                                 </Grid>
                                 <Grid item
                                     xs={12}
-                                    style={{ marginTop: 16, display: "flex",justifyContent: "center" }}>
+                                    style={{ marginTop: 16, display: "flex", justifyContent: "center" }}>
                                     <Button
-                                        to="/Home"
-                                        component={Link}
                                         variant="contained"
                                         color="primary"
                                         type="submit"
                                         disabled={submitting}
+                                        onClick={handleClickAuth}
+
                                     >
                                         LogIn
                                     </Button>
                                 </Grid>
                             </Grid>
+                            <Button
+                            variant="contained"
+                            color="blue"
+                                onClick={handleClickFaceAuth}
+                            >Facebook</Button>
                         </Paper>
                         <pre>{JSON.stringify(values, 0, 2)}</pre>
                     </form>
