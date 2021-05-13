@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core/';
 import { useSelector, useDispatch } from "react-redux";
 import AppBar from "../components/appBar/AppBar"
-import defaultImg from "../components/Product/productCard/default.png"
+import defaultImg from "../components/Product/productCard/ProductCard"
 import { countProducts } from '../store/user/user.action';
 import SummaryCard from '../components/Product/cart/SummaryCard';
 const useStyles = makeStyles((theme) => ({
@@ -37,10 +37,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Cart() {
   const classes = useStyles();
-  const dispatch = useDispatch()
 
   const productQuantity = useSelector(state => state.userReducer.productQuantity)
-
 
   return (
     <>

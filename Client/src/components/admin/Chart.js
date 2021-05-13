@@ -2,11 +2,13 @@ import React from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from './Title';
+import { useSelector } from 'react-redux';
 
 // Generate Sales Data
 function createData(time, amount) {
   return { time, amount };
 }
+
 
 const data = [
   createData('00:00', 0),
@@ -22,6 +24,14 @@ const data = [
 
 export default function Chart() {
   const theme = useTheme();
+
+  
+ const amount = useSelector(state => state.orderReducer?.orders)
+ const amount2 = amount.filter(e=>e.state!=="cancelada")
+
+ const fecha = fdgdf
+ 
+
 
   return (
     <React.Fragment>

@@ -6,13 +6,14 @@ import PageAddProduct from './pages/adminProduct/PageAddProduct'
 import PageAdminCategory from './pages/adminCategory/PageAdminCategory'
 import LogIn from './pages/landingPage/LandingPage'
 import Product from './components/Product/Product'
-import { AdminProduct } from './components/admin/AdminProduct';
-import EditProduct from './pages/adminProduct/EditProduct';
+import { AdminProduct } from './components/admin/adminProduct/AdminProduct';
+import PageEditProduct from './pages/adminProduct/PageEditProduct';
+import PageEditCategories from './pages/adminCategory/PageEditCategories';
 import { ThemeProvider } from '@material-ui/core/styles'
 import theme from './theme'
 import PageCheckoutOrders from './pages/ordersCheck/PageCheckoutOrders'
 import ViewOrder from './components/admin/ViewOrder'
-import CartProducts from './pages/CartProducts'
+import CartProducts from './pages/cart/CartProducts'
 
 function App() {
   return (

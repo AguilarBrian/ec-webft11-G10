@@ -28,8 +28,6 @@ export default function ViewOrder() {
   const user = useSelector((state) => state.userReducer?.user)
   const orderuserid = useSelector((state) => state.orderReducer?.ordersUser)
 
-  console.log("esto trae ell orderus");
-
   const sumTotal = function () {
     let total = 0;
     if (orderuserid.products) {
