@@ -9,6 +9,7 @@ export const POST_USER = "POST_USER";
 export const PUT_USER = "PUT_USER";
 export const DELETE_USER = "DELETE_USER";
 export const SELECT_USER = "SELECT_USER";
+export const GET_TOTAL = "GET_TOTAL";
 
 export const getUsersById = (id) => {
     return function (dispatch) {
@@ -28,11 +29,33 @@ export const getUsers = () => {
 };
 
 export const getCart = (cart) => {
-    return {
-        type: GET_CART,
-        payload: cart
+    return function (dispatch) {
+
+        dispatch(countProducts(cart))
+        dispatch(getTotal(cart))
+        return {
+            type: GET_CART,
+            payload: cart
+        }
+    }
+
+}
+export const getTotal = (cart) => {
+    return function (dispatch) {
+
+        let total = 0
+        cart.forEach(prod => {
+            let price=parseInt(prod.price)
+            total = total + price
+        });
+        console.log(total)
+        dispatch( {
+            type: GET_TOTAL,
+            payload: total
+        })
     }
 }
+
 export const addToCart = (product) => {
     localStorage.setItem('cart', JSON.stringify(product))
     return {
@@ -41,3 +64,28 @@ export const addToCart = (product) => {
     }
 }
 
+export const countProducts = (cart) => {
+
+    const productSet = (cart) => {
+        if (cart && cart[0]) {
+            let productQuantitys = []
+            for (let i = 0; i < cart.length; i++) {
+                cart[i].quantity = 1
+                let repeat = productQuantitys.find(e => e.name === cart[i].name)
+                if (repeat) {
+                    repeat.quantity += 1
+                } else {
+                    productQuantitys.push(cart[i])
+                }
+            }
+            return productQuantitys
+        }
+    }
+    return {
+        type: "COUNT_CART",
+        payload: productSet(cart)
+
+    }
+
+
+}

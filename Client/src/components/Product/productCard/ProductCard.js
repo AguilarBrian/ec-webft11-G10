@@ -6,11 +6,11 @@ import defaultImg from './default.png'
 import { addToCart } from '../../../store/user/user.action';
 import { useDispatch } from "react-redux";
 
-export default function ProductCard({ id, img, name, description, price }) {
+export default function ProductCard({stock, id, img, name, description, price }) {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch()
-  const product = { id, img, name, description, price }
+  const product = {stock, id, img, name, description, price }
 
   return (
     <Card className={classes.root}>
