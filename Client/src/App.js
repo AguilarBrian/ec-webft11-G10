@@ -19,8 +19,7 @@ function App() {
     <React.Fragment>
       <userContext.Provider value={{}}>
       <ThemeProvider theme={theme}>
-      {/* <Route exact path='/cart' component={CartProducts} /> */}
-
+      <Route exact path='/cart' component={CartProducts} />
         <Route exact path='/' component={LandingPage} />
         <Route exact path='/home' component={Home} />
         <Route  path='/editProduct/:id' component={EditProduct} />

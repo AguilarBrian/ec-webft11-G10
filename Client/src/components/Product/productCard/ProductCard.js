@@ -14,7 +14,7 @@ export default function ProductCard({stock, id, img, name, description, price })
 
   return (
     <Card className={classes.root}>
-      <CardActionArea onClick={() => history.push(`/products/${id}`)}>
+      <CardActionArea onClick={() => history.push(`/product/${id}`)}>
         <CardMedia
           component="img"
           alt="Food"
