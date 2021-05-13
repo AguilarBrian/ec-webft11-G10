@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from "react-router-dom";
-import { AuthProvider } from './components/authContext';
+import { AuthProvider } from './components/AuthContext';
 import { Home } from './pages/Home';
 import PageAddProduct from './pages/adminProduct/PageAddProduct'
 import PageAdminCategory from './pages/adminCategory/PageAdminCategory'
@@ -21,8 +21,8 @@ function App() {
 
         <ThemeProvider theme={theme}>
           <Route exact path='/cart' component={CartProducts} />
-          <Route exact path='/' component={LogIn} />
-          <Route exact path='/home' component={Home} />
+          <Route exact path='/logIn' component={LogIn} />
+          <Route exact path='/' component={Home} />
           <Route path='/editProduct/:id' component={EditProduct} />
           <Route path='/adminProduct' component={AdminProduct} />
           <Route path='/createProduct' component={PageAddProduct} />

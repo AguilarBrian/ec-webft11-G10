@@ -1,9 +1,9 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
-import app,{facebookAuthProvider} from "./base.js";
-import { AuthContext } from "./Auth.js";
+import app, { facebookAuthProvider } from "../../firebase/index.js";
+import { AuthContext } from "../AuthContext";
 import { useHistory } from "react-router-dom";
-
+import LogIn from './LogIn';
 const Login = () => {
   let history = useHistory();
 
@@ -11,7 +11,7 @@ const Login = () => {
     async event => {
       event.preventDefault();
       const { email, password } = event.target.elements;
-      console.log(email,password)
+      console.log(email, password)
       try {
         await app
           .auth()
@@ -23,19 +23,19 @@ const Login = () => {
     },
     [history]
   );
-  
+
   const handleFaceAuth = () => {
     app
-    .auth()
-    .signInWithPopup(facebookAuthProvider)
-    .then(({ user }) => {
-      console.log(user)
-      history.push("/");
+      .auth()
+      .signInWithPopup(facebookAuthProvider)
+      .then(({ user }) => {
+        console.log(user)
+        history.push("/");
 
-    })
-    .catch((e) => {
-      alert(e);
-    });
+      })
+      .catch((e) => {
+        alert(e);
+      });
   };
 
   const { currentUser } = useContext(AuthContext);
@@ -43,29 +43,14 @@ const Login = () => {
   if (currentUser) {
     return <Redirect to="/" />;
   }
-
+    
   return (
-    <div>
-      <h1>Log in</h1>
-      <form onSubmit={handleLogin}>
-        <label>
-          Email
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <label>
-          Password
-          <input name="password" type="password" placeholder="Password" />
-        </label>
-        <button type="submit">Log in</button>
-      </form>
-      <button
-        onClick={handleFaceAuth}
-      >
-
-        Iniciar sesión con Facebook
-            </button>
-      
-    </div>
+    <>
+    <LogIn
+    faceAuth={handleFaceAuth}
+    auth={handleLogin}
+    />
+</>
   );
 };
 
