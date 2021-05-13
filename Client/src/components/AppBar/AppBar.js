@@ -1,5 +1,4 @@
 import app from "../../firebase";
-
 import React from 'react';
 import clsx from 'clsx';
 import { useTheme } from '@material-ui/core/styles';
@@ -64,7 +63,7 @@ export default function PersistentDrawerLeft() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Button variant="h6" color='inherit' to="/Home" component={Link}>
+                    <Button variant="h6" color='inherit' to="/" component={Link}>
                         FastFoodBest! or whatever
                     </Button>
                     <Cart />
@@ -123,7 +122,7 @@ export default function PersistentDrawerLeft() {
                 <Divider />
                 <List >
                     <ListItem button to="/adminProduct" component={Link}>
-                        <ListItemText className={classes.barOptions} primary="Admin Productos" />
+                        <ListItemText className={classes.barOptions} primary="Administrar Productos" />
                     </ListItem>
                     <ListItem button to="/CreateProduct" component={Link}>
                         <ListItemText className={classes.barOptions} primary="Crear Productos" />

@@ -9,6 +9,7 @@ import { getOneProduct, putProduct } from '../../store/product/product.actions';
 import { getCategory } from '../../store/category/category.actions'
 import UploadImage from '../../components/Product/UploadImage';
 import { useParams } from 'react-router-dom'
+import AppBar from '../../components/appBar/AppBar'
 
 const validate = values => {
     const errors = {};
@@ -30,9 +31,8 @@ const validate = values => {
     return errors;
 };
 
-function EditProduct() {
+function PageEditProduct() {
     const { id } = useParams();
-    console.log("esta es la id" + id)
     const dispatch = useDispatch()
     const categories = useSelector(state => state.categoryReducer.category)
     const oneProduct = useSelector(state => state.productReducer.oneProduct)
@@ -69,6 +69,7 @@ function EditProduct() {
 
     };
     return (
+        <AppBar/>,
         <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
             <CssBaseline />
             <Paper style={{ padding: 16 }}>
@@ -179,4 +180,4 @@ function EditProduct() {
     );
 }
 
-export default EditProduct;
+export default PageEditProduct;
