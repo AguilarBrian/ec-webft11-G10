@@ -1,4 +1,4 @@
-import { GET_CART,GET_TOTAL, ADD_TO_CART, GET_USER_BYID, POST_USER, DELETE_USER, PUT_USER, GET_USERS } from './user.action';
+import {REMOVE_FROM_CART,SET_PRODUCT_QUANTITY, GET_CART,GET_TOTAL, ADD_TO_CART, GET_USER_BYID, POST_USER, DELETE_USER, PUT_USER, GET_USERS } from './user.action';
 const cartFromlocalStorage = JSON.parse(localStorage.getItem('cart') || '[]')
 
 const initialState = {
@@ -6,11 +6,24 @@ const initialState = {
   users: [],
   user: undefined,
   productQuantity:[],
-  total:0
+  total:0,
+  productTotal:[]
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case REMOVE_FROM_CART:
+      return{
+        ...state,
+        productQuantity:state.productQuantity.filter(prod=>{
+          return action.payload !==prod.name
+        })
+      }
+    case SET_PRODUCT_QUANTITY:
+      return{
+        ...state,
+        productTotal:[action.payload, ...state.productQuantity]
+      }
     case GET_TOTAL:
       return{
         ...state,

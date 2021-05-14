@@ -7,7 +7,7 @@ import { Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux'
 
 
-const UploadImage = ({img}) => {
+const UploadImage = ({ img }) => {
     const [image, setImage] = useState(null);//local image
     const [url, setUrl] = useState(null);
     const [progress, setProgress] = useState(0);
@@ -57,8 +57,11 @@ const UploadImage = ({img}) => {
     return (
         <>
             <label>Product Image</label>
-            <progress className={css.chargeBar} value={progress} max="100" />
-            <input className={css.buttonStyle} type="file" onChange={handleChange}/>
+            {progress > 0 ? (
+                <progress className={css.chargeBar} value={progress} max="100" />
+
+            ) : ("")}
+            <input className={css.buttonStyle} type="file" onChange={handleChange} />
             {image ?
                 (
                     <div>

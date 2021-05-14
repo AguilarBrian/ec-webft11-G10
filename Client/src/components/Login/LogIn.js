@@ -2,8 +2,7 @@ import React from 'react';
 import { Form, Field } from 'react-final-form';
 import { TextField } from 'final-form-material-ui';
 import { Paper, Grid, Button, CssBaseline } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import { handleFaceAuth } from './Login copy';
+
 const onSubmit = async values => {
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await sleep(300);
@@ -88,14 +87,17 @@ function LogIn({ faceAuth,auth }) {
                                         LogIn
                                     </Button>
                                 </Grid>
+                                
                             </Grid>
                             <Button
+                            item
+                            xs={12}
+                            
                             variant="contained"
-                            color="blue"
+                            color="secondary"
                                 onClick={handleClickFaceAuth}
                             >Facebook</Button>
                         </Paper>
-                        <pre>{JSON.stringify(values, 0, 2)}</pre>
                     </form>
                 )}
             />

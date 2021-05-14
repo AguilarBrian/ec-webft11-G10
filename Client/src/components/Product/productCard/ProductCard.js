@@ -11,7 +11,7 @@ export default function ProductCard({stock, id, img, name, description, price })
   const history = useHistory();
   const dispatch = useDispatch()
   const product = {stock, id, img, name, description, price }
-
+  
   return (
     <Card className={classes.root}>
       <CardActionArea onClick={() => history.push(`/product/${id}`)}>

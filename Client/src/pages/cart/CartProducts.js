@@ -1,13 +1,12 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {
   TextField, Input, makeStyles, Card, CardContent, Typography, Grid, Button
 } from '@material-ui/core/';
 import { useSelector, useDispatch } from "react-redux";
 import AppBar from "../../components/appBar/AppBar"
 import defaultImg from "../../components/Product/productCard/ProductCard"
-import { countProducts } from '../../store/user/user.action';
 import SummaryCard from '../../components/Product/cart/SummaryCard';
-
+import { setProductQuantity,getTotal,removeFromCart } from '../../store/user/user.action';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -26,8 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
   total: {
     float: "right",
-    paddingBottom:"0px",
-    background:"red",
+    paddingBottom: "0px",
+    background: "white",
+
 
 
   },
@@ -38,9 +38,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Cart() {
   const classes = useStyles();
-
+  const dispatch = useDispatch()
   const productQuantity = useSelector(state => state.userReducer.productQuantity)
+  const productTotal = useSelector(state => state.userReducer.productTotal)
 
+  const setQuantity = (product,e) => {
+
+    e.target.value>0 && dispatch(setProductQuantity(product, e.target.value))
+  }
+  useEffect(() => {
+    dispatch(getTotal(productQuantity))
+
+    
+  }, [dispatch,setQuantity,productQuantity])
   return (
     <>
       <AppBar />
@@ -76,15 +86,17 @@ export default function Cart() {
               </Typography>
               <TextField
                 defaultValue={product.quantity}
-                id="outlined-number"
                 type="number"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                inputProps={{ min: 1, max: 10 }}
-
+                inputProps={{ min: 1, max: product.stock }}
+                onChange={(e)=>setQuantity(product,e)}
                 variant="outlined"
               >1</TextField>
+              <p>({product.stock} disponibles)</p>
+              <Button 
+                     variant="contained"
+                     color=""
+                     onClick={()=>dispatch(removeFromCart(product.name))}
+              >remove from cart</Button>
 
             </Grid>
           </Card>
