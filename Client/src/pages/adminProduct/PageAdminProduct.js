@@ -20,6 +20,7 @@ export function PageAdminProduct() {
             <AppBar/>
             <Paper>
             <MaterialTable
+             
                 columns={[
                     { title: "ID", field: "id" },
                     { title: "Name", field: "name" },

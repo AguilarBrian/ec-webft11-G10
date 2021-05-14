@@ -68,9 +68,6 @@ function AddProduct() {
   return (
     <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
       <CssBaseline />
-      <Paper style={{ padding: 16 }}>
-        <UploadImage />
-      </Paper>
       <Form
         onSubmit={onSubmit}
         initialValues={{}}
@@ -102,7 +99,7 @@ function AddProduct() {
                     label="Descripcion"
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={6}>
                   <Field
                     fullWidth
                     name="category"
@@ -121,6 +118,10 @@ function AddProduct() {
                       )}
                   </Field>
                 </Grid>
+                  <Grid item xs={6}>
+                  <UploadImage/>
+
+                  </Grid>
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                   <Grid item xs={6}>
                     <Field
